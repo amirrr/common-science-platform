@@ -1,14 +1,29 @@
-import type { CorrelationData } from '@/types/correlation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import type { CorrelationData } from "@/types/correlation";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   ChartLegend,
   ChartLegendContent,
-} from '@/components/ui/chart';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Image from 'next/image';
+} from "@/components/ui/chart";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import Image from "next/image";
 
 interface CorrelationDisplayProps {
   correlation: CorrelationData;
@@ -29,12 +44,16 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
   return (
     <Card className="w-full shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-primary">{correlation.title}</CardTitle>
-        <CardDescription className="text-base">{correlation.description}</CardDescription>
+        <CardTitle className="text-2xl font-bold text-primary">
+          {correlation.title}
+        </CardTitle>
+        <CardDescription className="text-base">
+          {correlation.description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         {correlation.imagePlaceholder ? (
-           <div className="aspect-video w-full overflow-hidden rounded-lg border">
+          <div className="aspect-video w-full overflow-hidden rounded-lg border">
             <Image
               src={correlation.imagePlaceholder.url}
               alt={correlation.imagePlaceholder.alt}
@@ -56,15 +75,35 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                   bottom: 5,
                 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="hsl(var(--border))"
+                />
                 <XAxis dataKey="label" stroke="hsl(var(--foreground))" />
                 <YAxis yAxisId="left" stroke="hsl(var(--chart-1))" />
-                <YAxis yAxisId="right" orientation="right" stroke="hsl(var(--chart-2))" />
-                <Tooltip
-                  content={<ChartTooltipContent labelClassName="text-sm" className="rounded-lg border bg-background p-2 shadow-sm" />}
-                  cursor={{ stroke: "hsl(var(--accent))", strokeWidth: 2, strokeDasharray: "3 3" }}
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  stroke="hsl(var(--chart-2))"
                 />
-                <Legend content={<ChartLegendContent wrapperStyle={{ paddingTop: '20px' }} />} />
+                <Tooltip
+                  content={
+                    <ChartTooltipContent
+                      labelClassName="text-sm"
+                      className="rounded-lg border bg-background p-2 shadow-sm"
+                    />
+                  }
+                  cursor={{
+                    stroke: "hsl(var(--accent))",
+                    strokeWidth: 2,
+                    strokeDasharray: "3 3",
+                  }}
+                />
+                <Legend
+                  content={
+                    <ChartLegendContent style={{ paddingTop: "20px" }} />
+                  }
+                />
                 <Line
                   yAxisId="left"
                   type="monotone"
@@ -72,8 +111,13 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                   name={correlation.series1Name}
                   stroke="var(--color-series1)"
                   strokeWidth={2}
-                  dot={{ fill: "var(--color-series1)", r:4 }}
-                  activeDot={{ r: 6, fill: "var(--color-series1)", stroke: "hsl(var(--background))", strokeWidth: 2 }}
+                  dot={{ fill: "var(--color-series1)", r: 4 }}
+                  activeDot={{
+                    r: 6,
+                    fill: "var(--color-series1)",
+                    stroke: "hsl(var(--background))",
+                    strokeWidth: 2,
+                  }}
                 />
                 <Line
                   yAxisId="right"
@@ -82,8 +126,13 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                   name={correlation.series2Name}
                   stroke="var(--color-series2)"
                   strokeWidth={2}
-                  dot={{ fill: "var(--color-series2)", r:4 }}
-                   activeDot={{ r: 6, fill: "var(--color-series2)", stroke: "hsl(var(--background))", strokeWidth: 2 }}
+                  dot={{ fill: "var(--color-series2)", r: 4 }}
+                  activeDot={{
+                    r: 6,
+                    fill: "var(--color-series2)",
+                    stroke: "hsl(var(--background))",
+                    strokeWidth: 2,
+                  }}
                 />
               </LineChart>
             </ResponsiveContainer>
