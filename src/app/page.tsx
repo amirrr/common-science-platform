@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { MOCK_CORRELATIONS } from '@/lib/data';
 import { useEffect } from 'react';
-import { USER_ID_STORAGE_KEY } from '@/types/correlation';
+import { USER_ID_STORAGE_KEY, RESPONSES_STORAGE_KEY, DEMOGRAPHICS_STORAGE_KEY, CRT_RESPONSES_STORAGE_KEY, LAST_CHOSEN_MODE_KEY } from '@/types/correlation';
 
 export default function ResearchNoticePage() {
   const firstCorrelationId = MOCK_CORRELATIONS.length > 0 ? MOCK_CORRELATIONS[0].id : '';
@@ -19,12 +19,17 @@ export default function ResearchNoticePage() {
   }, []);
 
   const handleStartStudy = () => {
-    // Clear previous study data when starting anew, except for userId
+    // Clear previous study data when starting anew, except for userId and cookie consent
     Object.keys(localStorage).forEach(key => {
-      if (key !== USER_ID_STORAGE_KEY) {
+      if (key !== USER_ID_STORAGE_KEY && key !== 'correlation_analyzer_cookie_consent') { // Persist cookie consent
         localStorage.removeItem(key);
       }
     });
+    // Clear specific study-related keys more explicitly
+    localStorage.removeItem(RESPONSES_STORAGE_KEY);
+    localStorage.removeItem(DEMOGRAPHICS_STORAGE_KEY);
+    localStorage.removeItem(CRT_RESPONSES_STORAGE_KEY);
+    localStorage.removeItem(LAST_CHOSEN_MODE_KEY);
   };
 
   return (
@@ -54,10 +59,16 @@ export default function ResearchNoticePage() {
             You will also be asked to complete a short Cognitive Reflection Test and provide some anonymous demographic information.
           </p>
           <p>
-            Your anonymous responses will be used to analyze common patterns in reasoning and potential misconceptions. This research aims to improve how data literacy and critical thinking about statistics are taught. Upon completion, your anonymized data (including a unique participant ID, your responses to correlations, CRT answers, and demographic information) will be submitted for research analysis.
+            Your anonymous responses will be used to analyze common patterns in reasoning and potential misconceptions. This research aims to improve how data literacy and critical thinking about statistics are taught.
+          </p>
+          <h2 className="text-lg font-semibold text-primary pt-3">Data Privacy & GDPR</h2>
+          <p>
+            We are committed to protecting your privacy. All data collected is anonymized using a randomly generated participant ID. We do not collect any directly identifiable personal information unless explicitly provided by you (e.g., optional demographic fields).
+            The data, including your responses, CRT answers, and demographic information, will be stored securely and used solely for research purposes as described.
+            This study uses browser `localStorage` to save your progress and responses temporarily until they are submitted. This data is stored only on your device until submission. By proceeding, you acknowledge and consent to this use of `localStorage` for the functionality of the study.
           </p>
           <p>
-            Participation is voluntary, and you can withdraw at any time. The study is expected to take approximately 15-20 minutes to complete.
+            Participation is voluntary, and you can withdraw at any time by closing your browser window. The study is expected to take approximately 15-20 minutes to complete.
           </p>
         </section>
 
@@ -70,7 +81,7 @@ export default function ResearchNoticePage() {
             </Link>
           </div>
         ) : (
-          <p className="text-red-500 mt-8">No correlations available to start the study.</p>
+          <p className="text-destructive mt-8">No correlations available to start the study.</p>
         )}
       </main>
       <footer className="w-full max-w-4xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">

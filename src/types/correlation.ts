@@ -1,8 +1,7 @@
-
-import type { z } from 'zod';
-import type { AnalyzeUserExplanationOutput } from '@/ai/flows/analyze-user-explanation';
+import type { z } from "zod";
+import type { AnalyzeUserExplanationOutput } from "@/ai/flows/analyze-user-explanation";
 // Import the Zod schema directly for ExplanationFormValues
-import type { explanationFormSchema } from '@/components/correlation-analyzer/explanation-form';
+import type { explanationFormSchema } from "@/components/correlation-analyzer/explanation-form";
 
 export interface SeriesDataPoint {
   label: string; // e.g., Year, Month
@@ -10,7 +9,7 @@ export interface SeriesDataPoint {
   value2: number;
 }
 
-export type PersuasionMode = 'ethos' | 'pathos' | 'logos' | 'other';
+export type PersuasionMode = "ethos" | "pathos" | "logos" | "other";
 
 export interface ExplanationOption {
   id: string; // Unique ID for this specific explanation choice, e.g., "ice-cream-exp-1"
@@ -31,7 +30,7 @@ export interface CorrelationData {
     url: string;
     alt: string;
     aiHint: string;
-  }
+  };
 }
 
 export type AnalysisResultData = AnalyzeUserExplanationOutput;
@@ -61,7 +60,10 @@ export interface CRTData {
 }
 
 // Types for progressive save API payload
-export type ProgressiveSaveDataType = 'correlationResponse' | 'crtData' | 'demographicsData';
+export type ProgressiveSaveDataType =
+  | "correlationResponse"
+  | "crtData"
+  | "demographicsData";
 
 export interface CorrelationResponsePayload {
   correlationId: string;
@@ -74,13 +76,13 @@ export interface ProgressiveSavePayload {
   data: CorrelationResponsePayload | CRTData | DemographicsData;
 }
 
-
 // Storage Keys
-export const USER_ID_STORAGE_KEY = 'correlation_analyzer_user_id';
-export const RESPONSES_STORAGE_KEY = 'correlation_analyzer_responses';
-export const DEMOGRAPHICS_STORAGE_KEY = 'correlation_analyzer_demographics';
-export const CRT_RESPONSES_STORAGE_KEY = 'correlation_analyzer_crt_responses';
-export const LAST_CHOSEN_MODE_KEY = 'correlation_analyzer_last_mode';
+export const USER_ID_STORAGE_KEY = "correlation_analyzer_user_id";
+export const RESPONSES_STORAGE_KEY = "correlation_analyzer_responses";
+export const DEMOGRAPHICS_STORAGE_KEY = "correlation_analyzer_demographics";
+export const CRT_RESPONSES_STORAGE_KEY = "correlation_analyzer_crt_responses";
+export const LAST_CHOSEN_MODE_KEY = "correlation_analyzer_last_mode";
+export const COOKIE_CONSENT_KEY = "correlation_analyzer_cookie_consent";
 
 // Study flow constants
 export const NUM_POST_CORRELATION_PAGES_WITH_PROGRESS = 2; // CRT Test, Demographics
