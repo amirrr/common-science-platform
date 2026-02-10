@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,11 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { ExplanationOption } from "@/types/correlation";
-import { Loader2, Info } from "lucide-react";
+import { Loader2, Info, ArrowRight } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 export const explanationFormSchema = z.object({
@@ -40,6 +38,7 @@ export type ExplanationFormValues = z.infer<typeof explanationFormSchema>;
 interface ExplanationFormProps {
   explanationsToList: ExplanationOption[];
   onSubmitAttempt: (data: ExplanationFormValues) => void;
+  onNext?: () => void;
   isSubmitting: boolean;
   existingResponse?: ExplanationFormValues | null;
 }
@@ -47,6 +46,7 @@ interface ExplanationFormProps {
 export function ExplanationForm({
   explanationsToList,
   onSubmitAttempt,
+  onNext,
   isSubmitting,
   existingResponse,
 }: ExplanationFormProps) {
@@ -117,49 +117,18 @@ export function ExplanationForm({
                               value={explanation.id}
                               id={`explanation-${explanation.id}`}
                               disabled={field.disabled}
-                              className="mt-1" // Align radio button with first line of text
+                              className="mt-1"
                             />
                           </FormControl>
                           <Label
                             htmlFor={`explanation-${explanation.id}`}
-                            className="font-normal cursor-pointer flex-1"
+                            className="font-normal text-md cursor-pointer flex-1"
                           >
                             {explanation.text}
                           </Label>
                         </FormItem>
                       ))}
                     </RadioGroup>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="rating"
-              render={({
-                field: { onChange, value, disabled, ...fieldProps },
-              }) => (
-                <FormItem>
-                  <FormLabel className="text-lg font-medium">
-                    Rate your confidence in your chosen explanation (1-5):{" "}
-                    {value}
-                  </FormLabel>
-                  <FormControl>
-                    <div className="flex items-center space-x-4 pt-2">
-                      <Slider
-                        value={[value]}
-                        min={1}
-                        max={5}
-                        step={1}
-                        onValueChange={(val) => onChange(val[0])}
-                        className="w-[60%]"
-                        aria-label="Confidence rating"
-                        disabled={disabled}
-                        {...fieldProps}
-                      />
-                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -186,7 +155,16 @@ export function ExplanationForm({
                 </FormItem>
               )}
             />
-            {!existingResponse && (
+            {existingResponse ? (
+              <Button
+                type="button"
+                onClick={onNext}
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90"
+              >
+                Next Correlation <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            ) : (
               <Button
                 type="submit"
                 disabled={isSubmitting || form.formState.disabled}

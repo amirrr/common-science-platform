@@ -30,7 +30,7 @@ export function AnalysisResultCard({ analysis }: AnalysisResultCardProps) {
           Feedback Analysis
         </CardTitle>
         <CardDescription>
-          Here's what our AI thinks about your explanation.
+          Here&apos;s what our AI thinks about your explanation.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -61,8 +61,8 @@ export function AnalysisResultCard({ analysis }: AnalysisResultCardProps) {
                 analysis.sentiment.toLowerCase().includes("positive")
                   ? "default"
                   : analysis.sentiment.toLowerCase().includes("negative")
-                  ? "destructive"
-                  : "secondary"
+                    ? "destructive"
+                    : "secondary"
               }
               className="capitalize"
             >

@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
-        <CookieBanner /> {/* Add CookieBanner here */}
+        <CookieBanner />
       </body>
     </html>
   );

@@ -3,44 +3,35 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { MOCK_CORRELATIONS } from "@/lib/data";
-import { useEffect } from "react";
-import {
-  USER_ID_STORAGE_KEY,
-  RESPONSES_STORAGE_KEY,
-  DEMOGRAPHICS_STORAGE_KEY,
-  CRT_RESPONSES_STORAGE_KEY,
-  LAST_CHOSEN_MODE_KEY,
-} from "@/types/correlation";
+import { useEffect, useState } from "react";
 
 export default function ResearchNoticePage() {
-  const firstCorrelationId =
-    MOCK_CORRELATIONS.length > 0 ? MOCK_CORRELATIONS[0].id : "";
+  const [firstCorrelationId, setFirstCorrelationId] = useState<string>("");
 
   useEffect(() => {
-    // Ensure a userId exists or generate a new one
-    if (!localStorage.getItem(USER_ID_STORAGE_KEY)) {
-      localStorage.setItem(USER_ID_STORAGE_KEY, crypto.randomUUID());
-    }
-  }, []);
-
-  const handleStartStudy = () => {
-    // Clear previous study data when starting anew, except for userId and cookie consent
-    Object.keys(localStorage).forEach((key) => {
-      if (
-        key !== USER_ID_STORAGE_KEY &&
-        key !== "correlation_analyzer_cookie_consent"
-      ) {
-        // Persist cookie consent
-        localStorage.removeItem(key);
+    // Fetch first correlation ID
+    const fetchCorrelations = async () => {
+      try {
+        const response = await fetch("/api/correlations");
+        if (response.ok) {
+          const data = (await response.json()) as { id: string; title: string }[];
+          if (data.length > 0) {
+            // Check for first unanswered
+            const storedResponsesRaw = localStorage.getItem("correlation_analyzer_responses");
+            const userResponses = storedResponsesRaw 
+              ? JSON.parse(storedResponsesRaw) as Record<string, any>
+              : {};
+            
+            const firstUnanswered = data.find(c => !userResponses[c.id]);
+            setFirstCorrelationId(firstUnanswered ? firstUnanswered.id : data[0].id);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch correlations:", error);
       }
-    });
-    // Clear specific study-related keys more explicitly
-    localStorage.removeItem(RESPONSES_STORAGE_KEY);
-    localStorage.removeItem(DEMOGRAPHICS_STORAGE_KEY);
-    localStorage.removeItem(CRT_RESPONSES_STORAGE_KEY);
-    localStorage.removeItem(LAST_CHOSEN_MODE_KEY);
-  };
+    };
+    fetchCorrelations();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-4 md:p-8">
@@ -71,7 +62,6 @@ export default function ResearchNoticePage() {
               Choose what you believe is the most plausible explanation from a
               given list.
             </li>
-            <li>Rate your confidence in your chosen explanation.</li>
             <li>Briefly provide your reasoning (optional).</li>
           </ul>
           <p>
@@ -82,28 +72,13 @@ export default function ResearchNoticePage() {
             Your anonymous responses will be used to analyze common patterns in
             reasoning and potential misconceptions. This research aims to
             improve how data literacy and critical thinking about statistics are
-            taught.
-          </p>
-          <h2 className="text-lg font-semibold text-primary pt-3">
-            Data Privacy & GDPR
-          </h2>
-          <p>
-            We are committed to protecting your privacy. All data collected is
-            anonymized using a randomly generated participant ID. We do not
-            collect any directly identifiable personal information unless
-            explicitly provided by you (e.g., optional demographic fields). The
-            data, including your responses, CRT answers, and demographic
-            information, will be stored securely and used solely for research
-            purposes as described. This study uses browser `localStorage` to
-            save your progress and responses temporarily until they are
-            submitted. This data is stored only on your device until submission.
-            By proceeding, you acknowledge and consent to this use of
-            `localStorage` for the functionality of the study.
+            taught. Upon completion, your anonymized data (including a unique
+            participant ID, your responses to correlations, CRT answers, and
+            demographic information) will be submitted for research analysis.
           </p>
           <p>
-            Participation is voluntary, and you can withdraw at any time by
-            closing your browser window. The study is expected to take
-            approximately 15-20 minutes to complete.
+            Participation is voluntary, and you can withdraw at any time. The
+            study is expected to take approximately 15-20 minutes to complete.
           </p>
         </section>
 
@@ -113,14 +88,13 @@ export default function ResearchNoticePage() {
               <Button
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90"
-                onClick={handleStartStudy}
               >
                 Proceed to Study <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>
         ) : (
-          <p className="text-destructive mt-8">
+          <p className="text-red-500 mt-8">
             No correlations available to start the study.
           </p>
         )}

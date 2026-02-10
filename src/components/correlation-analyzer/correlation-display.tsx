@@ -8,9 +8,7 @@ import {
 } from "@/components/ui/card";
 import {
   ChartContainer,
-  ChartTooltip,
   ChartTooltipContent,
-  ChartLegend,
   ChartLegendContent,
 } from "@/components/ui/chart";
 import {
@@ -44,8 +42,14 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
   return (
     <Card className="w-full shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-primary">
-          {correlation.title}
+        <CardTitle className="text-xl font-bold">
+          <span style={{ color: "hsl(var(--chart-1))" }}>
+            {correlation.series1Name}
+          </span>
+          <span className="text-muted-foreground mx-2">vs</span>
+          <span style={{ color: "hsl(var(--chart-2))" }}>
+            {correlation.series2Name}
+          </span>
         </CardTitle>
         <CardDescription className="text-base">
           {correlation.description}
@@ -99,11 +103,7 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                     strokeDasharray: "3 3",
                   }}
                 />
-                <Legend
-                  content={
-                    <ChartLegendContent style={{ paddingTop: "20px" }} />
-                  }
-                />
+                <Legend content={<ChartLegendContent className="pt-5" />} />
                 <Line
                   yAxisId="left"
                   type="monotone"

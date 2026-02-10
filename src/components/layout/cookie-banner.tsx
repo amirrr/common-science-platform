@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { COOKIE_CONSENT_KEY } from "@/types/correlation";
 import { Cookie } from "lucide-react";
@@ -11,7 +11,7 @@ export function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (consent !== "true") {
-      setIsVisible(true);
+      queueMicrotask(() => setIsVisible(true));
     }
   }, []);
 

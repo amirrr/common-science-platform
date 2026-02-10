@@ -1,5 +1,4 @@
 import type { z } from "zod";
-import type { AnalyzeUserExplanationOutput } from "@/ai/flows/analyze-user-explanation";
 // Import the Zod schema directly for ExplanationFormValues
 import type { explanationFormSchema } from "@/components/correlation-analyzer/explanation-form";
 
@@ -12,10 +11,9 @@ export interface SeriesDataPoint {
 export type PersuasionMode = "ethos" | "pathos" | "logos" | "other";
 
 export interface ExplanationOption {
-  id: string; // Unique ID for this specific explanation choice, e.g., "ice-cream-exp-1"
+  id: string;
   text: string;
   persuasionMode: PersuasionMode;
-  isCorrect?: boolean; // Optional: to mark the scientifically accepted explanation
 }
 
 export interface CorrelationData {
@@ -33,7 +31,11 @@ export interface CorrelationData {
   };
 }
 
-export type AnalysisResultData = AnalyzeUserExplanationOutput;
+export type AnalysisResultData = {
+  keyMisconceptions: string[];
+  sentiment: string;
+  explanationQuality: string;
+};
 
 // Type for the data submitted from the explanation form, derived from Zod schema
 export type ExplanationFormValues = z.infer<typeof explanationFormSchema>;
@@ -47,9 +49,13 @@ export interface UserCorrelationResponse {
 
 // Type for demographic data
 export interface DemographicsData {
-  age: number | null;
+  birthYear: number;
+  gender: string;
+  genderOther?: string;
+  employmentStatus: string;
+  employmentIndustry?: string;
+  jobTitle?: string;
   country: string;
-  occupation: string;
 }
 
 // Type for CRT data
@@ -71,7 +77,7 @@ export interface CorrelationResponsePayload {
 }
 
 export interface ProgressiveSavePayload {
-  userId: string;
+  userId?: string; // Optional: handled by session cookie on server
   dataType: ProgressiveSaveDataType;
   data: CorrelationResponsePayload | CRTData | DemographicsData;
 }

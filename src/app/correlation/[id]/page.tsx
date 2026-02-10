@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { CorrelationDisplay } from "@/components/correlation-analyzer/correlation-display";
@@ -11,10 +11,8 @@ import {
 import type {
   CorrelationData,
   ExplanationOption,
-  PersuasionMode,
   ProgressiveSavePayload,
 } from "@/types/correlation";
-import { MOCK_CORRELATIONS } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowRight, Home } from "lucide-react";
@@ -22,7 +20,6 @@ import { useToast } from "@/hooks/use-toast";
 import {
   RESPONSES_STORAGE_KEY,
   LAST_CHOSEN_MODE_KEY,
-  USER_ID_STORAGE_KEY,
   NUM_POST_CORRELATION_PAGES_WITH_PROGRESS,
 } from "@/types/correlation";
 
@@ -36,64 +33,73 @@ export default function CorrelationPage() {
   const [displayExplanations, setDisplayExplanations] = useState<
     ExplanationOption[]
   >([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [userResponses, setUserResponses] = useState<
     Record<string, ExplanationFormValues>
   >({});
   const [hasSubmittedCurrent, setHasSubmittedCurrent] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
+
+  const [allCorrelations, setAllCorrelations] = useState<
+    { id: string; title: string }[]
+  >([]);
+  const [loading, setLoading] = useState(true);
 
   const { toast } = useToast();
 
-  const numCorrelations = MOCK_CORRELATIONS.length;
-  const totalStudyParts =
-    numCorrelations + NUM_POST_CORRELATION_PAGES_WITH_PROGRESS;
-  const currentIndex = MOCK_CORRELATIONS.findIndex(
-    (c) => c.id === currentCorrelationId
+  const numCorrelations = allCorrelations.length;
+  const currentIndex = allCorrelations.findIndex(
+    (c) => c.id === currentCorrelationId,
   );
+  const totalStudyParts =
+    numCorrelations > 0
+      ? numCorrelations + NUM_POST_CORRELATION_PAGES_WITH_PROGRESS
+      : 0;
   const currentOverallStep = currentIndex + 1;
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem(USER_ID_STORAGE_KEY);
-    if (storedUserId) {
-      setUserId(storedUserId);
-    } else {
-      // router.push('/'); // Should not happen if intro page sets it
-    }
-
     const storedResponsesRaw = localStorage.getItem(RESPONSES_STORAGE_KEY);
     if (storedResponsesRaw) {
       setUserResponses(JSON.parse(storedResponsesRaw));
     }
-  }, [router]);
+
+    // Fetch all correlations for navigation and progress
+    const fetchAll = async () => {
+      try {
+        const response = await fetch("/api/correlations");
+        if (response.ok) {
+          const data = await response.json();
+          setAllCorrelations(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch all correlations:", error);
+      }
+    };
+    fetchAll();
+  }, []);
 
   const handleNextCorrelation = useCallback(() => {
-    if (currentIndex === -1) {
-      router.push("/"); // Fallback if something went wrong
+    if (currentIndex === -1 || allCorrelations.length === 0) {
+      router.push("/");
       return;
     }
     const nextIndex = currentIndex + 1;
-    if (nextIndex < numCorrelations) {
-      router.push(`/correlation/${MOCK_CORRELATIONS[nextIndex].id}`);
+    if (nextIndex < allCorrelations.length) {
+      router.push(`/correlation/${allCorrelations[nextIndex].id}`);
     } else {
-      localStorage.removeItem(LAST_CHOSEN_MODE_KEY); // Clear mode for next section (CRT)
+      localStorage.removeItem(LAST_CHOSEN_MODE_KEY);
       router.push("/finish-study");
     }
-  }, [currentIndex, numCorrelations, router]);
+  }, [currentIndex, allCorrelations, router]);
 
   const saveResponseToFirestore = async (formData: ExplanationFormValues) => {
-    if (!userId || !currentCorrelationId) {
+    if (!currentCorrelationId) {
       toast({
         title: "Error",
-        description:
-          "User ID or Correlation ID missing. Cannot save to database.",
+        description: "Correlation ID missing. Cannot save to database.",
         variant: "destructive",
       });
       return;
     }
-    // setIsSubmitting(true); // Handled by caller
     const payload: ProgressiveSavePayload = {
-      userId,
       dataType: "correlationResponse",
       data: {
         correlationId: currentCorrelationId,
@@ -109,110 +115,100 @@ export default function CorrelationPage() {
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(
-          errorData.message || `HTTP error! Status: ${response.status}`
+          errorData.message || `HTTP error! Status: ${response.status}`,
         );
       }
-      // console.log(`Correlation response for ${currentCorrelationId} saved to DB.`);
     } catch (error) {
       console.error("Failed to save correlation response to Firestore:", error);
-      toast({
-        title: "Save Error",
-        description: `Could not save response to database. It's saved locally. ${
-          error instanceof Error ? error.message : ""
-        }`,
-        variant: "destructive",
-      });
+      throw error; // Rethrow to handle in caller
     }
-    // finally { setIsSubmitting(false); } // Handled by caller
   };
 
   const handleSaveResponseAndNavigate = useCallback(
     async (formData: ExplanationFormValues) => {
-      setIsSubmitting(true);
+      // 1. Update local state and storage immediately
       const updatedResponses = {
         ...userResponses,
         [currentCorrelationId]: formData,
       };
       localStorage.setItem(
         RESPONSES_STORAGE_KEY,
-        JSON.stringify(updatedResponses)
+        JSON.stringify(updatedResponses),
       );
       setUserResponses(updatedResponses);
       setHasSubmittedCurrent(true);
 
-      if (currentCorrelation && formData.selectedExplanationId) {
-        const chosenOption = currentCorrelation.suggestedExplanations.find(
-          (opt) => opt.id === formData.selectedExplanationId
-        );
-        if (chosenOption) {
-          localStorage.setItem(
-            LAST_CHOSEN_MODE_KEY,
-            JSON.stringify(chosenOption.persuasionMode)
-          );
-        }
-      }
-
-      await saveResponseToFirestore(formData); // Progressive save
-
-      setIsSubmitting(false);
-
-      toast({
-        title: "Explanation Saved!",
-        description:
-          "Your explanation has been saved. Proceed to the next one.",
-        variant: "default",
+      // 2. Show a resolving toast
+      const { update } = toast({
+        title: "Saving response...",
+        description: "Your answer is being synced to the server.",
       });
 
-      setTimeout(() => {
-        handleNextCorrelation();
-      }, 1000);
+      // 3. Trigger background save (non-blocking)
+      saveResponseToFirestore(formData)
+        .then(() => {
+          update({
+            id: "save-success",
+            title: "Response saved!",
+            description: "Sync complete.",
+            variant: "default",
+          } as any);
+        })
+        .catch((err) => {
+          update({
+            id: "save-error",
+            title: "Sync Error",
+            description: "Could not sync to server. Answer is saved locally.",
+            variant: "destructive",
+          } as any);
+        });
+
+      // 4. Navigate immediately to the next correlation
+      handleNextCorrelation();
     },
     [
       userResponses,
       currentCorrelationId,
       toast,
-      currentCorrelation,
       handleNextCorrelation,
       saveResponseToFirestore,
-    ]
+    ],
   );
 
   useEffect(() => {
-    const correlation = MOCK_CORRELATIONS.find(
-      (c) => c.id === currentCorrelationId
-    );
-    if (correlation) {
-      setCurrentCorrelation(correlation);
-      const currentResponse = userResponses[currentCorrelationId];
-      setHasSubmittedCurrent(!!currentResponse);
+    if (!currentCorrelationId) return;
 
-      const explanations = [...correlation.suggestedExplanations];
-      const lastChosenModeRaw = localStorage.getItem(LAST_CHOSEN_MODE_KEY);
-      if (lastChosenModeRaw) {
-        try {
-          const lastChosenMode = JSON.parse(
-            lastChosenModeRaw
-          ) as PersuasionMode;
-          const preferredIndex = explanations.findIndex(
-            (exp) => exp.persuasionMode === lastChosenMode
-          );
-          if (preferredIndex > 0) {
-            // Only move if not already first
-            const [item] = explanations.splice(preferredIndex, 1);
-            explanations.unshift(item);
-          }
-        } catch (e) {
-          console.error("Error parsing last chosen mode:", e);
-          localStorage.removeItem(LAST_CHOSEN_MODE_KEY); // Clear corrupted data
+    const fetchCorrelation = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `/api/correlation/${currentCorrelationId}`,
+        );
+        if (response.ok) {
+          const correlation = (await response.json()) as CorrelationData;
+          setCurrentCorrelation(correlation);
+
+          const currentResponse = userResponses[currentCorrelationId];
+          setHasSubmittedCurrent(!!currentResponse);
+
+          // Ordering logic removed because persuasionMode is stripped.
+          // If needed, this should be handled by the API taking a preference parameter.
+          setDisplayExplanations(correlation.suggestedExplanations);
+        } else {
+          router.push("/");
         }
+      } catch (error) {
+        console.error("Failed to fetch correlation:", error);
+        router.push("/");
+      } finally {
+        setLoading(false);
       }
-      setDisplayExplanations(explanations);
-    } else {
-      // router.push('/'); // Redirect if correlation not found
-    }
-  }, [currentCorrelationId, router, userResponses]);
+    };
 
-  if (!currentCorrelation || displayExplanations.length === 0) {
+    fetchCorrelation();
+  }, [currentCorrelationId, router]);
+
+  if (loading || !currentCorrelation || displayExplanations.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
         <p className="text-foreground">Loading correlation...</p>
@@ -232,40 +228,25 @@ export default function CorrelationPage() {
           {currentOverallStep} of {totalStudyParts})
         </p>
         <div className="text-center px-2">
-          <h1 className="text-lg md:text-xl font-semibold text-primary leading-tight">
-            {currentCorrelation.title}
+          <h1 className="text-md md:text-md font-semibold leading-tight">
+            <span>{currentCorrelation.series1Name}</span>
+            <span className="text-muted-foreground mx-2">vs</span>
+            <span>{currentCorrelation.series2Name}</span>
           </h1>
-          {/* <p className="text-xs md:text-sm text-muted-foreground mt-0.5">{currentCorrelation.description}</p> */}
         </div>
       </header>
 
-      {/* Adjust mt-X value based on final sticky header height. Approx:
-          py-3 (1.5rem) + progress (0.5rem+0.25rem) + step text (0.75rem+0.5rem) + title (1.25rem) + border = ~5rem
-          Adding some buffer: mt-24 (6rem)
-      */}
       <main className="w-full max-w-4xl space-y-6 md:space-y-8 mt-24">
-        {/* The CorrelationDisplay still shows its own title/desc. Can be hidden later if redundant. */}
         <CorrelationDisplay correlation={currentCorrelation} />
 
         <ExplanationForm
           key={currentCorrelation.id} // Important for re-rendering form with new defaults
           explanationsToList={displayExplanations}
           onSubmitAttempt={handleSaveResponseAndNavigate}
-          isSubmitting={isSubmitting}
+          onNext={handleNextCorrelation}
+          isSubmitting={false}
           existingResponse={userResponses[currentCorrelationId] || null}
         />
-
-        {hasSubmittedCurrent && (
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
-            <Button
-              onClick={handleNextCorrelation}
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90"
-            >
-              Next <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        )}
       </main>
       <footer className="w-full max-w-4xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
         <p>
