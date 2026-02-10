@@ -3,14 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { AnalysisResultCard } from "@/components/correlation-analyzer/analysis-result-card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type {
   UserCorrelationResponse,
   DemographicsData,
@@ -193,20 +186,24 @@ export default function ResultsPage() {
   };
 
   const getCRTFeedback = (qIndex: number, answer: string) => {
-    const correctAnswers = ["5 cents", "5 minutes", "47 days"];
+    const correctAnswers = [
+      { value: "5", label: "5 cents" },
+      { value: "5", label: "5 minutes" },
+      { value: "47", label: "47 days" },
+    ];
     const intuitiveAnswers = ["10", "100", "24"];
-    const isCorrect = answer.trim() === correctAnswers[qIndex - 1];
+    const isCorrect = answer.trim() === correctAnswers[qIndex - 1].value;
     const isIntuitive = answer.trim() === intuitiveAnswers[qIndex - 1];
 
     if (isCorrect) return { status: "correct", text: "Correct!" };
     if (isIntuitive)
       return {
         status: "intuitive",
-        text: `Incorrect. This is the common "intuitive" but wrong answer. The correct answer is ${correctAnswers[qIndex - 1]}.`,
+        text: `Incorrect. This is the common "intuitive" but wrong answer. The correct answer is ${correctAnswers[qIndex - 1].label}.`,
       };
     return {
       status: "incorrect",
-      text: `Incorrect. The correct answer is ${correctAnswers[qIndex - 1]}.`,
+      text: `Incorrect. The correct answer is ${correctAnswers[qIndex - 1].label}.`,
     };
   };
 

@@ -90,39 +90,45 @@ export default function CorrelationPage() {
     }
   }, [currentIndex, allCorrelations, router]);
 
-  const saveResponseToFirestore = async (formData: ExplanationFormValues) => {
-    if (!currentCorrelationId) {
-      toast({
-        title: "Error",
-        description: "Correlation ID missing. Cannot save to database.",
-        variant: "destructive",
-      });
-      return;
-    }
-    const payload: ProgressiveSavePayload = {
-      dataType: "correlationResponse",
-      data: {
-        correlationId: currentCorrelationId,
-        formData,
-      },
-    };
-    try {
-      const response = await fetch("/api/submit-study-data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          errorData.message || `HTTP error! Status: ${response.status}`,
-        );
+  const saveResponseToFirestore = useCallback(
+    async (formData: ExplanationFormValues) => {
+      if (!currentCorrelationId) {
+        toast({
+          title: "Error",
+          description: "Correlation ID missing. Cannot save to database.",
+          variant: "destructive",
+        });
+        return;
       }
-    } catch (error) {
-      console.error("Failed to save correlation response to Firestore:", error);
-      throw error; // Rethrow to handle in caller
-    }
-  };
+      const payload: ProgressiveSavePayload = {
+        dataType: "correlationResponse",
+        data: {
+          correlationId: currentCorrelationId,
+          formData,
+        },
+      };
+      try {
+        const response = await fetch("/api/submit-study-data", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            errorData.message || `HTTP error! Status: ${response.status}`,
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Failed to save correlation response to Firestore:",
+          error,
+        );
+        throw error; // Rethrow to handle in caller
+      }
+    },
+    [currentCorrelationId, toast],
+  );
 
   const handleSaveResponseAndNavigate = useCallback(
     async (formData: ExplanationFormValues) => {
@@ -206,7 +212,7 @@ export default function CorrelationPage() {
     };
 
     fetchCorrelation();
-  }, [currentCorrelationId, router]);
+  }, [currentCorrelationId, router, userResponses]);
 
   if (loading || !currentCorrelation || displayExplanations.length === 0) {
     return (
