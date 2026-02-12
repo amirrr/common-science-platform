@@ -101,20 +101,17 @@ export async function POST(request: NextRequest) {
         }
 
         // Validate the shape and size of formData
-        const { selectedExplanationId, rating, explanationText } =
+        const { rankedExplanationIds, explanationText } =
           crData.formData;
         if (
-          typeof selectedExplanationId !== "string" ||
-          selectedExplanationId.length > 100
+          !Array.isArray(rankedExplanationIds) ||
+          rankedExplanationIds.length === 0 ||
+          !rankedExplanationIds.every(
+            (id) => typeof id === "string" && id.length <= 100,
+          )
         ) {
           return NextResponse.json(
-            { message: "Invalid selectedExplanationId." },
-            { status: 400 },
-          );
-        }
-        if (typeof rating !== "number" || rating < 1 || rating > 5) {
-          return NextResponse.json(
-            { message: "Invalid rating value." },
+            { message: "Invalid rankedExplanationIds." },
             { status: 400 },
           );
         }
@@ -130,8 +127,7 @@ export async function POST(request: NextRequest) {
 
         // Only save the fields you expect
         const sanitizedFormData = {
-          selectedExplanationId,
-          rating,
+          rankedExplanationIds,
           explanationText,
           submittedAt: timestamp,
         };

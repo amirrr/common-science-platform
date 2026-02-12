@@ -356,40 +356,73 @@ export default function ResultsPage() {
         {userResponsesWithAnalysis.length > 0 ? (
           userResponsesWithAnalysis.map((response, index) => {
             const correlation = correlationsMap[response.correlationId];
-            const chosenExplanation = correlation?.suggestedExplanations.find(
-              (opt) => opt.id === response.formData.selectedExplanationId,
-            );
+            const rankedIds = response.formData.rankedExplanationIds || [];
+
+            const displayIds = rankedIds.slice(0, 3);
 
             return (
-              <Card key={index} className="mt-6 shadow-md">
-                <CardHeader>
-                  <CardTitle className="text-lg font-medium">
+              <Card key={index} className="mt-6 shadow-md border-primary/10">
+                <CardHeader className="bg-muted/30 pb-3">
+                  <CardTitle className="text-lg font-semibold text-primary/80">
                     {getCorrelationTitle(response.correlationId)}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3 text-sm">
-                  <div className="flex flex-col space-y-2">
-                    <p>
-                      <strong>Your Chosen Explanation:</strong>{" "}
-                      {chosenExplanation?.text || "N/A"}
-                    </p>
+                <CardContent className="space-y-4 pt-4">
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center">
+                      <BarChart3 className="h-4 w-4 mr-2" />
+                      Your Ranking
+                    </h4>
+                    <div className="space-y-2">
+                      {displayIds.length > 0 ? (
+                        displayIds.map((id, rankIndex) => {
+                          const explanation =
+                            correlation?.suggestedExplanations.find(
+                              (opt) => opt.id === id,
+                            );
+                          return (
+                            <div
+                              key={id}
+                              className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50"
+                            >
+                              <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-bold text-xs shrink-0 mt-0.5">
+                                {rankIndex + 1}
+                              </div>
+                              <p className="text-sm font-medium leading-relaxed">
+                                {explanation?.text || "Unknown Explanation"}
+                              </p>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <p className="text-sm text-muted-foreground italic px-1">
+                          No explanation selected.
+                        </p>
+                      )}
+                    </div>
                   </div>
+
                   {response.formData.explanationText && (
-                    <p>
-                      <strong>Your Reasoning:</strong>{" "}
-                      <span className="italic">
+                    <div className="pt-2 border-t border-border/50">
+                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                        Your Reasoning
+                      </h4>
+                      <p className="text-sm italic leading-relaxed text-foreground/80 bg-accent/5 p-3 rounded-lg border border-accent/10">
                         &quot;{response.formData.explanationText}&quot;
-                      </span>
-                    </p>
+                      </p>
+                    </div>
                   )}
                 </CardContent>
               </Card>
             );
           })
         ) : (
-          <p className="text-muted-foreground">
-            No correlation responses found.
-          </p>
+          <div className="text-center py-12 bg-muted/20 rounded-xl border-2 border-dashed border-border">
+            <p className="text-muted-foreground">
+              No correlation responses found. Start the study to see your
+              results!
+            </p>
+          </div>
         )}
 
         <div className="mt-12 text-center pb-12">
