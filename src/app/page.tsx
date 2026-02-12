@@ -14,16 +14,23 @@ export default function ResearchNoticePage() {
       try {
         const response = await fetch("/api/correlations");
         if (response.ok) {
-          const data = (await response.json()) as { id: string; title: string }[];
+          const data = (await response.json()) as {
+            id: string;
+            title: string;
+          }[];
           if (data.length > 0) {
             // Check for first unanswered
-            const storedResponsesRaw = localStorage.getItem("correlation_analyzer_responses");
-            const userResponses = storedResponsesRaw 
-              ? JSON.parse(storedResponsesRaw) as Record<string, any>
+            const storedResponsesRaw = localStorage.getItem(
+              "correlation_analyzer_responses",
+            );
+            const userResponses = storedResponsesRaw
+              ? (JSON.parse(storedResponsesRaw) as Record<string, any>)
               : {};
-            
-            const firstUnanswered = data.find(c => !userResponses[c.id]);
-            setFirstCorrelationId(firstUnanswered ? firstUnanswered.id : data[0].id);
+
+            const firstUnanswered = data.find((c) => !userResponses[c.id]);
+            setFirstCorrelationId(
+              firstUnanswered ? firstUnanswered.id : data[0].id,
+            );
           }
         }
       } catch (error) {

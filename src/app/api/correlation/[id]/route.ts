@@ -36,7 +36,7 @@ export async function GET(
   const sanitizedCorrelation = {
     ...correlation,
     suggestedExplanations: correlation.suggestedExplanations.map(
-      ({ isCorrect, persuasionMode, ...rest }) => rest,
+      ({ ...rest }) => rest,
     ),
   };
 

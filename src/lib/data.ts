@@ -166,27 +166,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-727-exp1",
         text: "Winning more games (A) can boost team morale and confidence (M). With higher confidence, hitters may swing more aggressively and perform better, leading to more runs scored (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-727-exp2",
         text: "Scoring more runs (B) can reduce pressure on the pitching staff (M') because they have bigger leads to protect. Less pressure can mean fewer mistakes and better pitching outcomes, which helps the team win more games (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-727-exp3",
         text: "A stronger overall roster (C)\u2014better hitters, pitchers, and defenders\u2014can cause both more runs scored (B) and more games won (A). In this case, the team quality drives both stats, making them move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-727-exp4",
         text: "Winning more games (A) can increase fan support and energy at the ballpark (M1), which may help hitters play better and score more runs (B). At the same time, winning can lead the manager to give more playing time to hot hitters and favorable lineups (M2), which can also increase runs scored (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-727-exp5",
         text: "Scoring more runs (B) can improve the team\u2019s run differential (M1'), which can increase confidence in late-game situations (M2') and lead to better late-game decisions like bullpen usage and pinch-hitting (M3'). Those improvements can translate into more wins (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -444,27 +439,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5693-exp1",
         text: "More total points (A) can lead to a better average point differential (M: scoring margin\u2014outscoring opponents), and teams with better scoring margins tend to win more games (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5693-exp2",
         text: "More wins (B) can lead to the team playing with more confidence and staying aggressive on offense (M': offensive play-calling/effort), which can raise the total points they score over the season (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5693-exp3",
         text: "A stronger overall team (C: roster quality/coach quality) can both score more points (A) and win more games (B), making points and wins look linked even because both come from the same underlying strength.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5693-exp4",
         text: "Scoring more points (A) can increase wins (B) through two separate routes: (M1) it lets the team build leads so the defense can play more freely, and (M2) it forces opponents to take more risks to catch up, leading to more opponent mistakes\u2014both routes increase the chance of winning.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5693-exp5",
         text: "More wins (B) can lead to (M1') better playoff positioning and more national attention, which can lead to (M2') more player confidence/buy-in, which can lead to (M3') better offensive execution, which results in more points scored (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -572,27 +562,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6789-exp1",
         text: "More free throws (A) can lead to more points (B) because the mediator (M) is \u201cmade free throws.\u201d If Kobe gets to the line more often, he has more chances to score easy points, so his total points go up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6789-exp2",
         text: "More points (B) can lead to more free throws (A) because the mediator (M') is \u201cdefenses playing him more aggressively to stop him.\u201d When Kobe is scoring a lot, defenders may foul more while trying to prevent shots, which sends him to the line and increases his free throw total.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6789-exp3",
         text: "A third factor (C) like \u201cminutes played / games played\u201d can raise both. If Kobe plays more minutes or more games, he has more time to score points and more chances to get fouled and take free throws, making A and B move together even without one directly causing the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6789-exp4",
         text: "Free throws (A) can increase points (B) through two different mediators: (M1) \u201cbonus/free points at the line\u201d (each trip adds points without using as many shot attempts) and (M2) \u201cgetting key defenders in foul trouble\u201d (fouls can force defenders to play softer or get benched), which can make Kobe\u2019s overall scoring easier and higher.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6789-exp5",
         text: "Points (B) can increase free throws (A) through a chain: (M1') \u201cstar reputation/attention grows,\u201d leading to (M2') \u201cdefenses send more double-teams and physical pressure,\u201d leading to (M3') \u201cmore contact and fouls on drives and shots,\u201d which results in more free throws.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -749,27 +734,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-229-exp1",
         text: "More international tourists worldwide (A) often means more people flying, including to and from Australia. The mediator (M) is the number of international flights (or passenger-kilometers) involving Australia, which goes up when global tourism booms, and that increased flight activity raises jet fuel use in Australia (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-229-exp2",
         text: "Higher jet fuel use in Australia (B) can reflect Australia becoming a bigger flight hub with more routes and better connectivity. The mediator (M') is increased airline capacity and cheaper/more convenient travel options (more seats, more direct flights), which can encourage more international trips overall, pushing up worldwide tourist arrivals (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-229-exp3",
         text: "A global economic upswing (C) can drive both variables. When incomes rise and businesses expand, more people can afford international travel (raising A) and air traffic generally increases, including flights operating in Australia, which increases jet fuel use there (raising B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-229-exp4",
         text: "A rise in worldwide tourist arrivals (A) can increase Australia\u2019s jet fuel use (B) through two different paths: (M1) more tourists choose Australia as a destination, increasing inbound/outbound international flights and fuel burn; and (M2) airlines add more connecting flights through Australian airports (e.g., more regional connections and transit traffic), which also increases fuel used in Australia.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-229-exp5",
         text: "More jet fuel used in Australia (B) can signal expanded aviation operations, which can set off a chain: (M1') airlines add routes and flight frequency in the region, leading to (M2') improved global connectivity and shorter/cheaper itineraries, leading to (M3') more people deciding to take international trips, which increases worldwide tourist arrivals (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -926,27 +906,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8827-exp1",
         text: "More jet fuel used in Germany could mean more flights are operating to and from German airports. Those extra flight seats (M: more available international flight capacity via Germany as a hub) make it easier for people to travel internationally, which can raise the total number of international tourist arrivals worldwide.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8827-exp2",
         text: "If international tourism worldwide increases, airlines add more routes and frequencies. That can lead to more connecting and long-haul traffic through major European hubs (M': airlines expand schedules through Germany/Europe), which increases jet fuel consumption in Germany.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8827-exp3",
         text: "A strong global economy (C) can increase both variables at the same time: people have more money and confidence to travel (raising worldwide tourist arrivals), and airlines operate more flights and cargo runs (raising jet fuel used in Germany).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8827-exp4",
         text: "Higher jet fuel use in Germany can reflect two separate pathways that both boost global tourist arrivals: (M1) more passenger flights and connections through German hubs, and (M2) more air-cargo and business travel that supports international events, trade shows, and business trips\u2014each of which can indirectly increase tourism numbers worldwide.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8827-exp5",
         text: "When worldwide tourist arrivals rise (B), destinations invest more in hotels, attractions, and marketing (M1'), which boosts demand for airline service and route expansion (M2'), leading airlines to schedule more flights and reposition aircraft through European hubs like Germany (M3'), which increases jet fuel used in Germany (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1103,27 +1078,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-730-exp1",
         text: "More movies released can increase global awareness and interest in the places shown on screen. If films feature certain countries or landmarks, they can spark \u201cmovie tourism,\u201d where people decide to travel to those destinations after seeing them in movies. (Mediator M: interest in visiting filmed locations / movie-induced destination marketing.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-730-exp2",
         text: "When international tourism rises, destinations earn more money and get more attention, which can attract film productions. More tourists can lead to better infrastructure, more services, and more local incentives to host filming, making it easier and cheaper to produce movies\u2014so more movies get made. (Mediator M': improved local film-production support and incentives funded/encouraged by tourism.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-730-exp3",
         text: "A third factor can drive both more movies and more tourism: global economic growth. When the world economy is doing well, people have more disposable income to travel, and entertainment companies have more money to finance and distribute films\u2014so both numbers rise together even if one doesn\u2019t cause the other. (Confounder C: worldwide economic prosperity/income growth.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-730-exp4",
         text: "More movies can increase tourism through two different routes at once: (1) movies act like advertising for places and cultures, making people curious to visit; and (2) movies create celebrities and big fan communities, and fans travel for film festivals, premieres, studio tours, and themed attractions. (Mediator M1: destination awareness/positive image; Mediator M2: fan-driven travel and film events/attractions.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-730-exp5",
         text: "Rising international tourism can set off a chain that ends in more movies being released: more tourists \u2192 more spending in tourist areas \u2192 more investment in hotels, venues, and city services \u2192 more attractive, film-ready locations and better logistics \u2192 more film shoots and productions \u2192 more movies released. (M1': tourist spending; M2': infrastructure/venue investment; M3': increased film production capacity and location availability.)",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1210,27 +1180,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3784-exp1",
         text: "More movies released can mean more premieres, festivals, press tours, and promotional events around the country. These events bring cast, crew, media, and fans who book hotel rooms, increasing demand and allowing hotels to charge more per room (higher revenue per available room).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3784-exp2",
         text: "When hotels are earning more per room, it can signal that travel and spending are strong. That stronger economy can lead to more investor confidence and more money available for entertainment, which encourages studios to finance and release more movies.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3784-exp3",
         text: "A strong overall economy (like high consumer spending and business confidence) can cause both things at once: studios release more movies because people will buy tickets, and hotels earn more because more people are traveling for work and leisure.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3784-exp4",
         text: "Movies can boost hotel revenue in two different ways: (1) More movie productions on location mean more crew members staying in hotels for weeks or months. (2) More popular releases can increase tourism to filming locations or big fan events, which also fills hotels and raises room revenue.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3784-exp5",
         text: "Higher hotel revenue can lead hotel companies to expand and hire more, which boosts local employment and incomes. Higher incomes increase discretionary spending on entertainment, which raises box office demand; seeing stronger demand, studios respond by releasing more movies.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1417,27 +1382,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4175-exp1",
         text: "If movie ticket sales go up, studios and theaters may spend more on advertising and run more big premieres. That extra hype can lead to more movie-related events, conventions, and promotions held in Las Vegas, which increases hotel check-ins there.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4175-exp2",
         text: "If Las Vegas hotel check-ins rise, more people are traveling and looking for entertainment. After a Vegas trip, they may keep spending on entertainment back home\u2014like going to the movies more often\u2014so higher Vegas travel can indirectly raise movie ticket sales.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4175-exp3",
         text: "A stronger economy could raise both at the same time. When people have more disposable income and confidence, they go to the movies more and also take more trips to Las Vegas, increasing hotel check-ins.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4175-exp4",
         text: "Higher movie ticket sales can signal stronger interest in entertainment overall. That can increase (M1) entertainment tourism (people traveling for shows/experiences) and also increase (M2) corporate promotions and conferences tied to entertainment brands. Both of those channels can separately lead to more Las Vegas hotel check-ins.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4175-exp5",
         text: "More Las Vegas hotel check-ins can indicate more overall travel. More travel can lead to (M1') more exposure to advertising and trailers in airports/hotels, which leads to (M2') higher awareness of new releases, which leads to (M3') more intention to see movies\u2014ending in higher movie ticket sales.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1528,27 +1488,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8519-exp1",
         text: "More jet fuel used in France can mean more flights operating. More available flights (mediator) makes it easier for tourists to travel to Paris, which increases visitors to Disneyland.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8519-exp2",
         text: "If Disneyland gets more visitors, the region becomes busier and more attractive for airlines. Airlines add more flights to meet travel demand (mediator), which increases jet fuel used in France.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8519-exp3",
         text: "A strong tourist season (confounder), like summer holidays or major school breaks, can cause both more people flying (higher jet fuel use) and more people going to Disneyland at the same time.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8519-exp4",
         text: "Higher jet fuel use can reflect (M1) more international flights bringing tourists to France and also (M2) more domestic/business travel that boosts hotel bookings and local activity. Both channels can increase the number of people who end up visiting Disneyland.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8519-exp5",
         text: "More Disneyland visitors can lead to (M1') higher demand for hotels and attractions nearby, which leads to (M2') more tour packages and travel deals being sold, which leads to (M3') airlines scheduling additional flights. More flights then increase jet fuel used in France.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1641,27 +1596,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4795-exp1",
         text: "When households spend more on public transportation, it can make long-distance trips easier and cheaper (mediator: easier/cheaper travel logistics). That increased ease of getting around can lead to more families taking vacations that include Disney\u2019s Magic Kingdom, raising Disney visitor counts.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4795-exp2",
         text: "When more people plan trips to Disney (higher Disney visitors), families often fly into Orlando and then use local transit (buses, shuttles, commuter rail) instead of renting cars (mediator: increased use of Orlando-area transit by tourists). That extra transit usage shows up as higher household spending on public transportation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4795-exp3",
         text: "A strong economy (confounder: overall economic growth / higher consumer confidence) can make people both spend more on everyday things like commuting and transit and also spend more on vacations like Disney. So both numbers rise together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4795-exp4",
         text: "Higher public transportation spending could reflect (M1) more commuting for work and also (M2) more comfort/familiarity with using transit. More commuting can mean more income and routine travel, and more familiarity can make families more willing to plan big trips; both pathways can independently increase Disney visits.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4795-exp5",
         text: "More Disney visitors can boost (M1') tourism demand in Orlando, which leads to (M2') expanded/added transit services (more shuttles, bus routes, rail connections), which then leads to (M3') more local households and visitors using and paying for public transportation. That chain can raise measured household spending on public transportation.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1748,27 +1698,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5919-exp1",
         text: "When households spend more on gasoline, it often means they\u2019re driving more. More driving can lead to more road trips and travel, which increases hotel stays and pushes up hotel revenue per available room.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5919-exp2",
         text: "When hotels are earning more per room, it often reflects stronger travel demand. More people traveling means more people driving to destinations or between cities, which increases gasoline use and raises household spending on gasoline.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5919-exp3",
         text: "A stronger economy can make both happen at the same time. When people have more jobs and higher incomes, they tend to travel more (boosting hotel revenue) and also drive more or feel less need to cut back on gas spending (raising gasoline spending).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5919-exp4",
         text: "Gasoline spending can be linked to hotel revenue through two different routes: (1) more gas spending can signal more leisure road trips, increasing hotel stays; and (2) higher gas spending can also reflect more work-related driving and business activity, which leads to more business travel and hotel bookings.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5919-exp5",
         text: "Higher hotel revenue can trigger a chain reaction: hotels invest more in advertising and promotions (M1'), which increases overall travel activity (M2') and leads more people to take driving-based trips (M3'), which increases how much households spend on gasoline.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1859,27 +1804,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7053-exp1",
         text: "Household spending on new cars (A) could lead to more people owning or driving newer cars (M), which increases total miles driven and time on the road. More time on the road raises the chance of accidents, so car crashes (B) go up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7053-exp2",
         text: "If car crashes (B) increase, more vehicles get damaged or totaled (M'). People then need replacements, so households spend more on new cars (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7053-exp3",
         text: "A strong economy (C) can cause both: people have more money and confidence to buy new cars (A), and at the same time more people commute, travel, and drive for work or leisure\u2014leading to more crashes (B). So the economy drives both.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7053-exp4",
         text: "Spending on new cars (A) can raise crashes (B) through two different paths: (M1) more cars on the road because more households buy vehicles, increasing traffic exposure; and (M2) more high-powered/fast vehicles purchased, which can lead to higher driving speeds or riskier driving, increasing crash risk.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7053-exp5",
         text: "More car crashes (B) can lead to higher insurance claims and payouts (M1'), which can push insurance premiums up (M2'). Higher premiums make it more expensive to keep an older car insured and maintained, nudging people toward replacing it (M3'), which increases household spending on new cars (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -1995,27 +1935,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7018-exp1",
         text: "More car crashes can lead to more damaged or abandoned cars and more insurance claims. That can increase the number of cars sitting unattended (e.g., at repair lots, tow yards, or on streets), which can make it easier for thieves to steal cars\u2014raising carjackings.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7018-exp2",
         text: "More carjackings can put more stolen vehicles on the road. Stolen cars are often driven faster and more recklessly (or driven by people trying to escape), which can increase dangerous driving and lead to more crashes.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7018-exp3",
         text: "A shared factor like overall traffic volume and congestion could raise both. When more people are driving, crashes tend to go up (more chances for collisions), and carjackings can also go up because there are more cars and more potential victims available.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7018-exp4",
         text: "Car crashes could increase carjackings through two different paths: (M1) crashes create more vulnerable situations (cars stopped on the roadside, people distracted after an accident), and (M2) crashes increase repair and rental-car churn (more cars moving through lots and being left unattended). Both paths can make it easier for criminals to steal cars, increasing carjackings.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7018-exp5",
         text: "More carjackings could lead to (M1') more police attention and pursuit activity in some areas, which can lead to (M2') more high-speed chases and risky evasive driving, which can lead to (M3') more dangerous traffic conditions overall, resulting in more crashes.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2146,27 +2081,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7103-exp1",
         text: "Higher unemployment means more people lose income and struggle to pay mortgages, credit cards, and car loans. That leads to more loan defaults (mediator: loan losses), which weakens banks\u2019 balance sheets and can push some banks into failure.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7103-exp2",
         text: "When banks fail, they often stop lending and can trigger a credit crunch. Reduced lending (mediator: tighter credit/less business financing) makes it harder for businesses to operate and expand, leading to layoffs and higher unemployment.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7103-exp3",
         text: "A broader recession or economic downturn (confounder) can cause both unemployment to rise and bank failures to increase at the same time. The economy weakening reduces hiring while also increasing defaults and losses for banks.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7103-exp4",
         text: "Unemployment can raise bank failures through two routes: (1) households miss payments more often (mediator M1: consumer loan and mortgage delinquencies), and (2) job losses reduce spending so local businesses earn less and may default (mediator M2: business loan defaults). Both routes increase bank losses and failures.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7103-exp5",
         text: "Bank failures can start a domino effect: bank failures lead to reduced lending and fewer available credit lines (M1\u2019), which forces businesses to cut investment and production (M2\u2019), which then leads to layoffs and slower hiring (M3\u2019), ultimately raising the unemployment rate.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2252,27 +2182,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6968-exp1",
         text: "Inflation (A) could change interest rates (M). When inflation rises, the Federal Reserve may raise interest rates to cool prices. Higher interest rates can slow borrowing and spending by households and businesses, which can reduce economic growth and therefore affect GDP per capita (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6968-exp2",
         text: "GDP per capita (B) could affect consumer spending (M'). When people earn more on average, they tend to spend more. Stronger demand can push prices up, leading to higher inflation (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6968-exp3",
         text: "A common factor like an oil/energy price shock (C) can move both. If energy prices spike, inflation (A) rises because many goods become more expensive to produce and ship. At the same time, higher energy costs can slow the economy and reduce GDP per capita (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6968-exp4",
         text: "Inflation (A) might affect GDP per capita (B) through two different channels: (M1) Purchasing power\u2014higher inflation makes paychecks buy less, so people cut back on goods and services, slowing growth; and (M2) Business uncertainty\u2014when prices change fast, firms find planning harder and may invest less, which can reduce productivity and GDP per person.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6968-exp5",
         text: "GDP per capita (B) could raise employment and wages (M1'), which boosts household spending (M2'). Higher spending can strain available supply of goods and services (M3')\u2014meaning the economy is running near capacity\u2014and that supply pressure can lead to higher inflation (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2403,27 +2328,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6470-exp1",
         text: "If households spend more on food, grocery stores and food suppliers may see stronger demand. They can respond by raising prices, and those higher food prices feed into the overall CPI. Here the mediator is \u201cfood prices rising due to stronger demand.\u201d",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6470-exp2",
         text: "If CPI (overall inflation) rises, the cost of living goes up. Employers may raise wages or households may lean more on credit to keep up, which gives people more dollars to spend. That extra income/credit then shows up as higher dollar spending on food. Here the mediator is \u201chigher wages or more borrowing in response to inflation.\u201d",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6470-exp3",
         text: "A third factor like an economic boom (strong job market and rising incomes) can cause both higher household food spending and higher inflation at the same time. People buy more and businesses raise prices, so both A and B move together even if neither directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6470-exp4",
         text: "Higher household food spending can push CPI up through two different channels: (1) more demand leads retailers to raise food prices (mediator M1: demand-driven food price increases), and (2) bigger food sales can drive up costs like hiring, trucking, and packaging, which raises prices more broadly (mediator M2: higher input and distribution costs spreading through the economy).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6470-exp5",
         text: "Inflation can lead to higher household food spending through a chain: CPI rises \u2192 the central bank raises interest rates (M1') \u2192 borrowing gets more expensive and some households shift budgets away from big purchases toward necessities (M2') \u2192 more of the remaining budget is allocated to food and essentials (M3') \u2192 measured annual spending on food increases (A), even if people aren\u2019t buying much more food in quantity.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2509,27 +2429,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4873-exp1",
         text: "A possible story is: when households spend more on Christmas gifts (A), it boosts retail sales for stores. Higher retail sales (M) lead companies to produce more, hire more workers, and record more revenue, which adds to the economy\u2019s total output\u2014raising GDP per capita (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4873-exp2",
         text: "Another story is: when GDP per capita is higher (B), people generally have more income and feel more financially secure. Higher disposable income/consumer purchasing power (M') makes families more willing and able to spend more on Christmas gifts (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4873-exp3",
         text: "A third explanation is a shared cause: inflation or overall price levels (C) can push up the dollar amount people spend on gifts (A) because items cost more, and it can also raise GDP per capita (B) in dollar terms because many prices and wages are higher across the economy.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4873-exp4",
         text: "Gift spending (A) could raise GDP per capita (B) through two separate channels: (M1) more retail and shipping activity (stores sell more; delivery companies move more packages), and (M2) more seasonal hiring and extra work hours (more paychecks and wages). Both channels increase economic activity and contribute to higher GDP per capita.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4873-exp5",
         text: "A longer chain could be: higher GDP per capita (B) leads to stronger job markets (M1') which leads to higher wage growth (M2') which increases household disposable income and optimism (M3'), and that results in higher Christmas gift spending (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2662,27 +2577,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6654-exp1",
         text: "(A) Higher household spending on mortgage interest and charges can squeeze a family\u2019s monthly budget. (M) That financial stress can increase things like missed bills, unemployment spells, or people turning to risky ways to get money. (B) In some places, that can translate into more property crime like burglaries.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6654-exp2",
         text: "(B) If burglary rates rise in a neighborhood, people feel less safe. (M') That can lead to higher insurance costs, security upgrades, and lower home values, and it may push buyers toward different kinds of loans or refinancing to manage costs. (A) Those changes can end up increasing what households pay in mortgage interest and related charges.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6654-exp3",
         text: "(C) A broader economic cycle (like recessions vs. booms) can affect both. During tougher times, interest rates/borrowing conditions and household finances can change (affecting mortgage interest spending), while job losses and financial strain can also raise burglary rates. So both A and B move together because the economy is driving both.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6654-exp4",
         text: "Path 1: (A) Higher mortgage interest spending leaves less money for basics. (M1) More households fall behind financially or face eviction/instability. (B) Neighborhood instability can be linked with more burglaries.\n\nPath 2: (A) Higher mortgage interest spending can reduce disposable income at the community level. (M2) Local spending drops, some businesses struggle, and fewer resources may be available for private security and community upkeep. (B) Weaker informal surveillance and fewer security measures can coincide with higher burglary rates.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6654-exp5",
         text: "(B) Higher burglary rates make an area seem riskier. (M1') That pushes up home insurance premiums and increases lender concern about risk. (M2') Lenders respond with tighter loan terms or higher interest rates/fees in that area. (M3') Homeowners then refinance less favorably or pay higher rates on new mortgages. (A) As a result, household spending on mortgage interest and charges goes up.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2815,27 +2725,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6636-exp1",
         text: "(A) Household mortgage-interest spending rises when families take on bigger mortgages. That can squeeze household budgets and increase financial stress (M: financial strain). In some areas, higher financial strain can contribute to more people taking risks or resorting to theft, which can show up as a higher robbery rate (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6636-exp2",
         text: "If robberies (B) rise, neighborhoods can feel less safe. That can lower local home values and make lenders view the area as riskier, changing borrowing terms (M': higher lending risk/insurance/security costs tied to housing). Homeowners may end up refinancing less favorably or paying more fees/charges, increasing what households spend on mortgage interest and related charges (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6636-exp3",
         text: "A third factor could drive both: for example, a weakening economy (C: recession/unemployment). When unemployment rises, robberies (B) can increase, and at the same time households may face tougher finances, fall behind, refinance, or carry higher-cost debt\u2014raising measured mortgage interest and charges (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6636-exp4",
         text: "Mortgage-interest spending (A) could be linked to robberies (B) through two different paths: (M1) tighter household budgets leading to more economic desperation in a community, and separately (M2) reduced spending on neighborhood upkeep/security (less money for lighting, alarms, community programs) because more income goes to mortgages. Both paths can make robberies more likely (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6636-exp5",
         text: "Robberies (B) increase \u2192 (M1') residents feel less safe and some people move away or avoid buying there \u2192 (M2') local housing demand falls and prices stagnate \u2192 (M3') homeowners refinance, take on different mortgage products, or end up with higher effective borrowing costs/fees relative to income \u2192 household spending on mortgage interest and charges (A) rises.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -2956,27 +2861,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6702-exp1",
         text: "(A) Higher US employment can lead to higher consumer and business spending (M: overall economic activity), which can boost demand for insurance and investment returns for AIG, pushing up AIG\u2019s stock price (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6702-exp2",
         text: "(B) A rising AIG stock price can make AIG and similar firms feel more confident and able to raise money (M': easier access to capital and expansion plans), which can support more hiring in the broader economy and slightly improve the employment rate (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6702-exp3",
         text: "A third factor like the Federal Reserve\u2019s interest-rate policy (C) can move both: rate cuts can stimulate hiring (raising employment, A) and also lift stock prices (including AIG, B) by making borrowing cheaper and bonds less attractive than stocks.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6702-exp4",
         text: "Employment improvements (A) can raise AIG\u2019s stock (B) through two separate channels: (M1) more employed people buy/keep insurance policies (more premium revenue), and (M2) a stronger job market often reduces loan defaults and business failures, lowering insurance/credit losses and improving expected profits.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6702-exp5",
         text: "A higher AIG stock price (B) can trigger a chain: (M1') AIG\u2019s market value rises, (M2') executives and investors become more willing to fund growth and acquisitions, (M3') AIG expands operations and vendors ramp up to support that growth\u2014together creating more jobs, which nudges up the employment rate (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3099,27 +2999,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2933-exp1",
         text: "When US households spend more on transportation, overall economic activity tends to be stronger. That can lift demand for commercial and industrial real estate (warehouses, offices, retail sites). Brookfield owns/operates a lot of real assets, so better business conditions can improve its earnings outlook, which can push up BN\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2933-exp2",
         text: "If Brookfield\u2019s stock price rises, it can signal (or contribute to) stronger financial markets and household wealth\u2014especially for people with pensions or index funds that hold Brookfield. Feeling wealthier can make households more willing to spend on big-ticket transportation items (cars, flights, vacations), raising transportation spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2933-exp3",
         text: "A common driver could be overall US economic growth (or a strong labor market). When jobs and wages are up, people commute more, travel more, and buy cars (transportation spending rises). At the same time, investors expect higher profits across many companies, including Brookfield, so BN\u2019s stock price rises too.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2933-exp4",
         text: "Transportation spending could affect BN through two different channels: (1) More travel and commuting increases demand for airports, toll roads, and logistics hubs; Brookfield has exposure to infrastructure and logistics-related assets, helping its results. (2) Higher transportation spending often includes more fuel use and shipping, which can boost inflation and interest-rate expectations; changes in rates can affect real-asset valuations and investor appetite for Brookfield, moving the stock.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2933-exp5",
         text: "A rise in BN\u2019s stock price can improve Brookfield\u2019s ability to raise money cheaply (higher market value makes financing easier). That can lead Brookfield to invest more in infrastructure and real estate projects, which creates construction/operations jobs and boosts local incomes. Higher incomes then lead households to spend more on transportation (commuting, car purchases, travel).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3242,27 +3137,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6093-exp1",
         text: "When households spend more on transportation (gas, flights, ride-shares), a lot of that extra spending is paid with credit cards. That can increase card transaction volume and fee revenue for American Express, which can lead investors to value AXP higher, raising the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6093-exp2",
         text: "If AXP\u2019s stock price rises, it can reflect that the company is doing well and may expand rewards, discounts, or marketing. Those better perks can encourage cardholders to book more trips or spend more on transportation using their Amex cards, increasing measured household transportation spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6093-exp3",
         text: "A strong economy (like higher employment and wages) can make people travel and drive more, boosting household transportation spending, while also improving business conditions and profits for financial companies like American Express\u2014pushing up AXP\u2019s stock price. The economy is the common factor causing both to move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6093-exp4",
         text: "Household transportation spending can push AXP\u2019s stock price up through two separate routes: (1) More transportation purchases mean more credit-card swipes, which raises Amex\u2019s fee income. (2) More travel-related spending often means more premium travel activity (airfare, hotels, rentals) where Amex has strong cardholder penetration, which can increase high-margin revenues (like annual fees and interest) and improve profit expectations\u2014both supporting a higher stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6093-exp5",
         text: "A higher AXP stock price can lead to (1) the company feeling more confident and investing more in card rewards and partnerships, which then (2) increases cardholder incentives to travel (more points, statement credits), which then (3) results in households taking more trips or using more paid transportation\u2014raising household transportation spending.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3378,27 +3268,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-9096-exp1",
         text: "If Ecuador uses more petroleum, it may import more refined fuels or crude. Higher demand in the region can tighten fuel markets and lift global refining margins or oil prices (M). Higher oil prices/margins can improve Exxon Mobil\u2019s expected profits, which can push XOM\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9096-exp2",
         text: "If XOM\u2019s stock price rises, it often reflects investors expecting stronger oil supply and investment. That can lead Exxon (and peers) to increase production and exports, affecting global supply and prices (M'). Cheaper or more available petroleum products can encourage higher consumption in Ecuador.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9096-exp3",
         text: "A global oil-market cycle (C)\u2014like worldwide economic growth or recession\u2014can move both at the same time. When the world economy is strong, Ecuador tends to consume more petroleum, and Exxon tends to earn more, so XOM\u2019s stock price can rise too. When the world economy weakens, both can fall.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9096-exp4",
         text: "Ecuador\u2019s higher petroleum use could influence XOM through two different channels: (M1) it can signal stronger Latin American fuel demand, nudging up regional fuel spreads and oil prices; and (M2) it can increase demand for related products/services (like lubricants, chemicals, or LNG) that Exxon sells. Either channel can increase expected earnings and support XOM\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9096-exp5",
         text: "A change in XOM\u2019s stock price can reflect investor beliefs about future oil prices and supply (M1'). Those expectations can influence actual investment and production decisions across the oil industry (M2'), which then affects global oil prices and availability (M3'). Changes in price/availability can finally change how much petroleum Ecuador consumes.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3515,27 +3400,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2037-exp1",
         text: "More gasoline being pumped in Singapore can signal stronger fuel demand and higher refining/trading activity in the region. That can push up Asian oil-product prices and overall oil-market sentiment (M: stronger regional demand / higher product and crude price expectations), which can improve expectations for oil producers\u2019 revenues and profits, and then lift Hess Corporation\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2037-exp2",
         text: "If Hess\u2019s stock price rises, it can reflect investors expecting higher future oil output and stronger industry conditions. Those expectations can boost trading, shipping, and procurement activity across oil markets (M': higher global oil-market optimism and trading flows), which can lead to more crude and refined products being routed through hubs like Singapore\u2014showing up as more gasoline pumped there.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2037-exp3",
         text: "A third factor could be global oil demand and the broader economy (C: world economic growth / global fuel demand). When the global economy is strong, more gasoline tends to be handled in Singapore and oil companies like Hess are expected to earn more, so Hess\u2019s stock price rises too\u2014creating a correlation even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2037-exp4",
         text: "Gasoline pumped in Singapore could affect Hess\u2019s stock through two separate channels: (M1) it may indicate tighter fuel supply and higher refined-product margins, which often supports higher crude prices; and (M2) it may signal stronger Asian demand, improving overall investor sentiment toward energy stocks. Either higher expected oil prices or better energy-sector sentiment can independently push Hess\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2037-exp5",
         text: "A rise in Hess\u2019s stock price can attract more investor money into the energy sector (M1': more investment flows into oil/energy). That can encourage more production, trading, and shipping activity (M2': increased upstream and trading volumes), which can raise the amount of fuel being imported, stored, and moved through major hubs (M3': higher throughput at Singapore\u2019s refining/storage hub), eventually showing up as more gasoline pumped in Singapore.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3658,27 +3538,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7900-exp1",
         text: "When households spend more on home maintenance, Home Depot sells more materials and services. Higher sales lead to higher profits (mediator M = Home Depot revenue/profit), and investors bid up the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7900-exp2",
         text: "If Home Depot\u2019s stock price rises, it can make the company and the \u201chome improvement sector\u201d look strong and expanding. That encourages Home Depot to open more stores, run more promotions, and advertise more (mediator M' = expanded marketing/promotions/availability), which nudges households to spend more on maintenance.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7900-exp3",
         text: "A strong economy can push both up at the same time. When people have higher income and confidence (confounder C = overall economic strength), they spend more on home maintenance, and investors also value Home Depot more, raising its stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7900-exp4",
         text: "Household maintenance spending can lift Home Depot\u2019s stock price through two different pathways: (1) more spending leads to more in-store/online purchases (M1 = sales volume), and (2) more spending can reduce discounting and improve pricing power because demand is strong (M2 = profit margins). Both higher sales and better margins can raise profits and therefore the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7900-exp5",
         text: "A higher Home Depot stock price can start a multi-step chain that ends in more household spending: higher stock price (B) can make it cheaper for Home Depot to raise money (M1' = easier/cheaper financing), which helps it invest in better stores, faster delivery, and more services (M2' = improved convenience/offerings). Those improvements increase customer usage and project starts (M3' = more projects undertaken), which raises household spending on home maintenance (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3802,27 +3677,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7848-exp1",
         text: "(A) Higher household spending on home maintenance can lead to higher paint and coating sales for Sherwin-Williams. Those stronger sales improve Sherwin-Williams\u2019 earnings, and better earnings often push up the company\u2019s stock price (B). Here, the mediator (M) is Sherwin-Williams\u2019 revenue/earnings from home-improvement demand.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7848-exp2",
         text: "(B) When Sherwin-Williams\u2019 stock price rises, it can be a sign that the company (and often the home-improvement sector) is doing well and expanding. That can lead to more stores, heavier advertising, and more promotions that make home projects feel easier or more attractive to consumers, increasing household maintenance spending (A). Here, the mediator (M\u2019) is Sherwin-Williams\u2019 marketing/promotions and expanded retail availability driven by business strength.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7848-exp3",
         text: "A stronger economy (C)\u2014like higher employment, rising wages, and higher consumer confidence\u2014can make households spend more on home maintenance (A) and also make investors more optimistic about companies like Sherwin-Williams, raising the stock price (B). The economy is the shared driver causing both to move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7848-exp4",
         text: "Household maintenance spending (A) can affect Sherwin-Williams\u2019 stock price (B) through two different routes: (M1) more DIY and contractor purchases increase Sherwin-Williams\u2019 sales volume, and (M2) strong demand can allow Sherwin-Williams to raise prices or improve profit margins. Higher sales and/or higher margins can boost profits, which can lift the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7848-exp5",
         text: "(B) A higher Sherwin-Williams stock price can make it easier for the company to raise money and invest. That can lead to (M1\u2019) more store openings and distribution improvements, which leads to (M2\u2019) better product availability and faster delivery, which leads to (M3\u2019) more homeowners and contractors choosing Sherwin-Williams products and taking on more projects\u2014raising overall household home-maintenance spending (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -3945,27 +3815,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8090-exp1",
         text: "(A) Higher home-maintenance spending can signal that households have extra discretionary money and are actively buying repair supplies and household goods. That boosts retail sales (M: overall big-box retail demand and sales), which can improve investor expectations for retailers like Costco, raising (B) Costco\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8090-exp2",
         text: "(B) If Costco\u2019s stock price rises, it can reflect a broader stock-market upswing that lifts many people\u2019s investment accounts. That increases household wealth (M': wealth effect / higher retirement and brokerage balances), making families feel more comfortable spending on home maintenance (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8090-exp3",
         text: "A strong economy (C: overall economic conditions\u2014jobs, wages, and consumer confidence) can cause both higher home-maintenance spending (A) and higher expected profits for Costco, which pushes up its stock price (B). The economy is driving both, not necessarily one causing the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8090-exp4",
         text: "(A) When home-maintenance spending rises, it can affect Costco\u2019s stock through two channels: (M1) more spending on household items and consumables during home projects (cleaning supplies, storage, snacks for project days) can lift Costco sales; and (M2) increased demand for home-improvement-related big-ticket items (appliances, flooring, patio items) can also raise Costco revenue. Both channels can improve profits and push up (B) the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8090-exp5",
         text: "(B) A higher Costco stock price can be part of a broader \u2018markets are optimistic\u2019 signal, which can (M1') improve overall investor sentiment, leading (M2') to easier credit and lower borrowing costs (banks lend more readily), which (M3') makes homeowners more willing/able to finance repairs or renovations\u2014resulting in higher home-maintenance spending (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4089,27 +3954,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6288-exp1",
         text: "When households spend more on home maintenance, they often buy more everyday consumables while doing projects (paper towels, cleaning sprays, trash bags, laundry products). That boosts P&G\u2019s sales and profits, and better profits can push PG\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6288-exp2",
         text: "If PG\u2019s stock price rises, many people\u2019s 401(k)s and index funds also rise because they hold PG. Feeling wealthier, households may decide they can afford to fix up or maintain their homes, increasing home-maintenance spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6288-exp3",
         text: "The overall economy (jobs and wages) can drive both. In good economic times, households have more money to spend on home maintenance, and investors expect stronger consumer spending, which can lift PG\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6288-exp4",
         text: "There could be two pathways from home-maintenance spending to PG\u2019s stock price: (1) More maintenance means more cleaning and household-product purchases, raising P&G revenue; and (2) more maintenance activity can increase demand for \u201chome-related\u201d retail overall, leading analysts to upgrade consumer-staples expectations, improving investor sentiment toward PG and pushing the stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6288-exp5",
         text: "PG\u2019s stock price rises \u2192 retirement accounts and mutual funds that hold PG go up (M1') \u2192 households feel more financially secure and willing to borrow or spend (M2') \u2192 they approve a bigger home-maintenance budget or hire contractors (M3') \u2192 annual household home-maintenance spending increases.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4231,27 +4091,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6452-exp1",
         text: "When households spend more on food overall, more of that spending goes to fast food. Higher fast\u2011food sales lift McDonald\u2019s revenue and profits, which can push McDonald\u2019s stock price up. (Mediator M: McDonald\u2019s sales/profits.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6452-exp2",
         text: "If McDonald\u2019s stock price rises, it can reflect a stronger economy and rising investor confidence. That improves household financial sentiment (people feel safer spending), which leads families to spend more on food. (Mediator M': household confidence/wealth sentiment.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6452-exp3",
         text: "A stronger economy (more jobs, higher wages, lower inflation pressure) can make households spend more on food and also make investors bid up stocks like McDonald\u2019s. So both move together because they\u2019re responding to the same economic conditions. (Confounder C: overall economic strength\u2014income/employment/inflation.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6452-exp4",
         text: "Household food spending can affect McDonald\u2019s stock through two different channels: (1) more eating out increases McDonald\u2019s restaurant traffic and profits; (2) higher food demand can raise food and labor costs, and McDonald\u2019s ability to raise menu prices without losing customers affects expected margins\u2014investors price that in. (M1: restaurant traffic/sales; M2: expected profit margins via input costs and pricing power.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6452-exp5",
         text: "A rise in McDonald\u2019s stock price can lead to (1) gains for investors who own the stock (including through index funds/401(k)s), which (2) increases their perceived wealth and willingness to spend, which (3) raises their overall consumption\u2014including food spending at home and away from home. (Chain mediators M1': investment gains; M2': perceived wealth; M3': higher overall consumer spending.)",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4374,27 +4229,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-9048-exp1",
         text: "When households spend more on bakery items, it can signal stronger overall demand for convenient/fast food. A possible mediator is \u201coverall quick\u2011service restaurant sales\u201d: higher bakery spending goes along with more eating-out and higher sales for chains like McDonald\u2019s, and stronger sales can push MCD\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9048-exp2",
         text: "If McDonald\u2019s stock price rises, it can reflect a booming economy and higher consumer confidence. A possible mediator is \u201chousehold confidence/wealth effect\u201d: rising stock prices make people feel more secure and willing to spend, including on bakery products at grocery stores.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9048-exp3",
         text: "A third factor could be driving both. For example, \u201cthe overall state of the economy (income growth/inflation)\u201d can raise grocery bills and spending on bakery products while also improving company profits and investor optimism, lifting McDonald\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9048-exp4",
         text: "There could be two different pathways from bakery spending to MCD stock. (M1) \u201cFood input costs (wheat/sugar/dairy prices)\u201d: higher bakery spending might reflect higher ingredient prices, which can also raise McDonald\u2019s costs and affect profits/stock valuation. (M2) \u201cConsumer preference for convenience\u201d: higher bakery spending could signal more purchases of ready-to-eat foods, which can also mean more fast\u2011food demand, boosting McDonald\u2019s sales and stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9048-exp5",
         text: "McDonald\u2019s stock price could move first, then ripple through the economy to bakery spending. For example: (M1') \u201crising stock market sentiment\u201d leads to (M2') \u201chigher household wealth and confidence,\u201d which leads to (M3') \u201cmore discretionary grocery spending,\u201d which finally shows up as higher annual household spending on bakery products.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4517,27 +4367,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7153-exp1",
         text: "When households spend more on major appliances, more of those purchases (or related items like warranties, installation, and accessories) happen through online retail. That boosts Amazon\u2019s sales and profits, which can lead investors to value Amazon more highly and push up the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7153-exp2",
         text: "If Amazon\u2019s stock price rises, it can make Amazon and its employees feel wealthier and more confident (through stock-based pay and investment gains). That extra confidence and spending power can lead to higher household spending on big-ticket items like appliances.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7153-exp3",
         text: "A strong economy (higher employment and wage growth) can cause both: households buy more appliances because they can afford them, and investors bid up Amazon\u2019s stock because they expect higher consumer spending and business growth.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7153-exp4",
         text: "There could be two separate pathways from appliance spending to Amazon\u2019s stock price: (1) Higher appliance spending signals stronger consumer demand, which improves expectations for retail companies like Amazon and lifts the stock. (2) Higher appliance spending increases demand for delivery, financing, and add-on products sold online, which directly increases Amazon\u2019s revenue, also supporting a higher stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7153-exp5",
         text: "Amazon\u2019s stock price goes up \u2192 Amazon can raise money or invest more easily and expands its retail/logistics and promotions \u2192 shopping on Amazon becomes cheaper/faster/more convenient for big items \u2192 more households choose to buy major appliances (or appliance-related services) as a result.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4648,27 +4493,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6118-exp1",
         text: "When people in Arizona spend more on food, they may look harder for cheaper household items to balance their budgets. That can increase traffic and sales at Dollar Tree, which can improve the company\u2019s earnings outlook and push its stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6118-exp2",
         text: "If Dollar Tree\u2019s stock price rises, the company may expand stores, hiring, and local promotions. Those changes can bring more jobs and paychecks into Arizona, and with more income people may spend more on food per person.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6118-exp3",
         text: "Inflation can raise grocery prices in Arizona (making per-capita food spending look higher) while also affecting Dollar Tree\u2019s business and investor expectations (which can move the stock price). So inflation could be driving both at the same time.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6118-exp4",
         text: "Higher Arizona food spending could be connected to (M1) stronger population growth and (M2) higher overall consumer demand. Population growth can mean more potential customers near Dollar Tree stores, and higher consumer demand can lift retail sales\u2014both channels can improve Dollar Tree\u2019s results and influence its stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6118-exp5",
         text: "A higher Dollar Tree stock price can make it easier for the company to raise money and invest (M1\u2019). That can lead to more store openings and more local hiring (M2\u2019), which can increase household income and spending power in Arizona (M3\u2019). With more money coming in, people may spend more on food per person.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4751,27 +4591,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5902-exp1",
         text: "More active PayPal accounts can mean more people are paying digitally overall. That broader shift boosts spending that runs through card networks too (mediator: overall digital payments volume), which can improve Visa\u2019s business outlook and push up its stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5902-exp2",
         text: "If Visa\u2019s stock price rises, investors may interpret it as a sign the payments industry is doing well. That optimism can lead to more marketing, partnerships, and merchant investment across digital payments (mediator: industry investment/expansion), which can make it easier for PayPal to attract and retain more active accounts.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5902-exp3",
         text: "A strong economy can raise consumer spending and online shopping (confounder: overall economic conditions). That can both increase the number of people actively using PayPal and improve expectations for Visa\u2019s profits, making Visa\u2019s stock price rise\u2014so both move together even if neither directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5902-exp4",
         text: "PayPal active accounts might link to Visa\u2019s stock through two different paths at the same time: (1) more PayPal users \u2192 more e-commerce checkout activity (M1) \u2192 more card usage behind the scenes \u2192 better outlook for Visa; and (2) more PayPal users \u2192 higher confidence in fintech/digital payments as a growth area (M2) \u2192 investors buy payments stocks like Visa \u2192 Visa\u2019s stock price rises.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5902-exp5",
         text: "Visa\u2019s rising stock price can set off a multi-step chain: higher Visa stock price \u2192 higher investor confidence in payment companies (M1') \u2192 more funding/attention for digital payments products and promotions (M2') \u2192 more merchants offer and promote digital wallet options (M3') \u2192 more people end up actively using PayPal accounts.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4852,27 +4687,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3790-exp1",
         text: "Gold prices (A) rise when investors get nervous. That fear can increase demand for defensive assets and raise general \u201crisk-off\u201d sentiment (M). In a risk-off mood, investors often sell cyclical/resource stocks like BHP (B), pushing BHP\u2019s stock price down (or changing it), creating a correlation between gold and BHP.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3790-exp2",
         text: "If BHP\u2019s stock (B) moves sharply, it can influence broader views about the mining/commodities sector and global growth (M'). Those changing expectations can affect how much investors want gold as a safe store of value, moving gold\u2019s price (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3790-exp3",
         text: "A shared driver is the US dollar and interest-rate environment (C). When US rates rise (or the dollar strengthens), gold often falls (because it doesn\u2019t pay interest and is priced in dollars) and resource-company stocks like BHP can also fall (because financing is pricier and commodity demand expectations can weaken). That common factor can make A and B move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3790-exp4",
         text: "Gold (A) can connect to BHP (B) through two different channels. (M1) A higher gold price can signal inflation fears, which can lead to higher expected interest rates and lower valuations for many stocks, including BHP. (M2) A higher gold price can also signal economic or geopolitical stress, which can reduce expectations for industrial demand for commodities (like iron ore/copper), hurting BHP\u2019s expected profits and its share price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3790-exp5",
         text: "BHP\u2019s share price (B) can affect perceptions of global industrial demand (M1'), which can influence expectations for inflation and central-bank policy (M2'), which then changes real interest rates and the attractiveness of holding gold (M3'). Those shifts in gold\u2019s attractiveness can move gold\u2019s price (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -4993,27 +4823,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8626-exp1",
         text: "(A -> M -> B) Higher CPI inflation can push up expected prices for industrial metals like copper (M). If investors think copper will sell for more, they expect Southern Copper\u2019s future revenues and profits to rise, so SCCO\u2019s stock price (B) can go up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8626-exp2",
         text: "(B -> M' -> A) If SCCO\u2019s stock price rises, it can reflect a broader jump in copper and commodity-related stocks (M') driven by expectations of a hotter economy. Those expectations can lead businesses to raise prices and workers to demand higher wages, which can feed into higher measured CPI inflation (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8626-exp3",
         text: "(A <- C -> B) A common driver could be overall economic demand or growth (C). When the economy is strong, people and businesses spend more, which can raise CPI inflation (A) and also increase demand for copper, boosting SCCO\u2019s stock price (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8626-exp4",
         text: "(A -> M1 -> B and A -> M2 -> B) Inflation can affect SCCO through two paths: (M1) higher inflation often leads to a weaker U.S. dollar, and a weaker dollar can push dollar-priced commodities like copper higher, helping SCCO; and (M2) inflation can make investors prefer \u2018real assets\u2019 like commodities and commodity producers, increasing investor demand for SCCO shares and lifting the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8626-exp5",
         text: "(B -> M1' -> M2' -> M3' -> A) A rising SCCO stock price (B) can signal booming copper markets (M1'), which can raise costs for manufacturers that use copper (M2'). Those higher input costs can be passed on to consumers as higher prices for goods like appliances, cars, and electronics (M3'), which then shows up as higher CPI inflation (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5134,27 +4959,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6915-exp1",
         text: "(A -> M -> B) Higher CPI inflation can push the Federal Reserve to raise interest rates (M). Higher rates can slow construction and mining activity and make borrowing more expensive for customers, which can reduce expected sales/profits for Caterpillar. Investors then bid CAT\u2019s stock price (B) down (or up if inflation is falling and rates are expected to ease).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6915-exp2",
         text: "(B -> M' -> A) When CAT\u2019s stock rises, it can reflect a broad \u201creflation/boom\u201d mood where investors expect strong industrial demand (M'). That same stronger demand can contribute to higher prices across the economy, which later shows up as higher CPI inflation (A). In this story, CAT is acting like an early signal of economic heat that later appears in inflation data.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6915-exp3",
         text: "(A <- C -> B) A common driver could be overall economic growth (C). When the economy is strong, demand rises and inflation (A) tends to be higher, and companies like Caterpillar often sell more equipment and look more profitable, boosting CAT\u2019s stock (B). When growth slows, both inflation and CAT can fall together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6915-exp4",
         text: "(A -> M1 -> B) and (A -> M2 -> B) Inflation can affect CAT through two channels at once. M1: Inflation influences interest rates and credit conditions, changing how much customers invest in heavy equipment, moving CAT\u2019s stock. M2: Inflation raises input costs (steel, fuel, labor) and can squeeze profit margins or force price increases; that changes profit expectations and therefore CAT\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6915-exp5",
         text: "(B -> M1' -> M2' -> M3' -> A) A rising CAT stock can lead to easier financing and more investment in Caterpillar-related projects (M1', a \u201cwealth/confidence and capital access\u201d effect). That can support more construction and industrial activity (M2'), which increases demand for commodities, labor, and transportation (M3'). Those higher economy-wide costs and prices can then show up as higher CPI inflation (A) over time.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5240,27 +5060,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5062-exp1",
         text: "When US GDP per person rises, people generally have more disposable income. That can lead to higher consumer spending on branded snacks and candy (M: consumer snack spending), which can boost Hershey\u2019s sales and profits, making investors willing to pay more for HSY stock.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5062-exp2",
         text: "If Hershey\u2019s stock price rises, it can make the company\u2019s market value jump. That can encourage the company to invest more\u2014like expanding factories or hiring (M': company investment and hiring). Those actions add a small amount to overall economic output, which can slightly lift GDP per person.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5062-exp3",
         text: "A strong overall economy and optimistic markets can push up both GDP per person and stock prices at the same time (C: broad economic/market conditions such as low unemployment, easy credit, and investor optimism). In that case, GDP and HSY move together mainly because they share the same underlying driver.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5062-exp4",
         text: "GDP per person can influence HSY through more than one path: (M1) higher incomes can increase chocolate and snack purchases, improving Hershey\u2019s earnings; and separately (M2) a stronger economy can lower business risk and improve investor confidence, leading investors to accept higher stock valuations. Both channels can make HSY rise when GDP per person rises.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5062-exp5",
         text: "A rising HSY stock price can increase the wealth of shareholders and employees with stock-based pay (M1': household wealth). That can lead to more spending in the economy (M2': consumer spending), which can prompt businesses to produce and hire more (M3': higher overall production and employment). Together, those steps can increase GDP per person.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5346,27 +5161,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6922-exp1",
         text: "(A -> M -> B) When US GDP per person rises, people generally have more disposable income. (M = consumer spending on non\u2011essential/athleisure clothing) That can increase Lululemon\u2019s sales and profits, and investors may bid up the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6922-exp2",
         text: "(B -> M' -> A) If Lululemon\u2019s stock price rises a lot, it can make shareholders feel wealthier. (M' = the \u201cwealth effect,\u201d where people spend more because their investments went up) That extra spending can slightly boost overall economic activity, which can show up in higher GDP per person.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6922-exp3",
         text: "(A <- C -> B) The overall economic/financial environment can drive both. (C = interest rates/monetary policy and general market conditions) For example, lower interest rates can stimulate the economy (raising GDP per person) and also push investors into stocks and raise valuations (lifting LULU\u2019s stock price).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6922-exp4",
         text: "(A -> M1 -> B and A -> M2 -> B) GDP per person can affect Lululemon through more than one route: (M1 = higher consumer demand for premium fitness apparel) and separately (M2 = investor optimism about retail growth leading to higher valuation multiples). Both channels can push the stock price up when GDP per person is higher.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6922-exp5",
         text: "(B -> M1' -> M2' -> M3' -> A) A rising Lululemon stock price can help the company raise money or use stock-based incentives more effectively. (M1' = easier/cheaper funding and stronger corporate confidence) That can lead to (M2' = more store openings, hiring, and marketing) which increases (M3' = payroll and business investment in the economy). Over time, that added activity can contribute (a little) to higher GDP per person.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5452,27 +5262,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7689-exp1",
         text: "(A) Higher US GDP per capita means the average person has more disposable income. (M) That leads to more spending on entertainment (movies, theme parks, streaming). (B) Disney\u2019s annual revenue rises because more people buy tickets, subscriptions, and merchandise.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7689-exp2",
         text: "(B) When Disney\u2019s revenue grows, it often expands operations and invests more in the US. (M') That expansion can create jobs and higher wages for employees and suppliers. (A) Higher wages and employment can raise GDP per capita.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7689-exp3",
         text: "(C) The overall strength of the US economy/business cycle (boom vs. recession) affects both. (A) In good times, GDP per capita tends to be higher. (B) In good times, people and advertisers spend more, so Disney\u2019s revenue also tends to be higher\u2014making the two move together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7689-exp4",
         text: "Path 1: (A) Higher GDP per capita \u2192 (M1) more travel/leisure budgets \u2192 (B) more visits to Disney parks and cruises. Path 2: (A) Higher GDP per capita \u2192 (M2) advertisers and brands spend more on marketing/media \u2192 (B) higher ad and licensing revenue for Disney\u2019s TV networks, streaming, and sports content.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7689-exp5",
         text: "(B) Higher Disney revenue \u2192 (M1') more content production and park investment \u2192 (M2') more jobs for contractors, creative workers, hospitality staff, and suppliers \u2192 (M3') higher total labor income in the economy \u2192 (A) higher US GDP per capita.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5643,27 +5448,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8404-exp1",
         text: "Inflation (CPI) goes up, which often leads to higher ticket prices, hotel rates, and subscription fees across the economy (M: higher prices Disney can charge). With Disney charging more per visit or per month, its total annual revenue can rise even if the number of customers doesn\u2019t change much.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8404-exp2",
         text: "Disney\u2019s revenue rises because more people buy Disney-related goods and services, which increases Disney\u2019s spending on labor, productions, and advertising (M': higher demand and spending in Disney\u2019s ecosystem). That extra spending can add a small amount of upward pressure to overall prices, contributing slightly to inflation (CPI).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8404-exp3",
         text: "A strong overall economy (C: economic growth/high consumer confidence) can make people spend more, boosting Disney\u2019s revenue, and at the same time push prices up as demand rises, increasing inflation (CPI). So both CPI and Disney revenue move together because the economy is stronger, not necessarily because one directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8404-exp4",
         text: "Inflation increases Disney\u2019s revenue through two routes: (M1) higher wages and input costs lead Disney to raise prices for parks, cruises, and streaming, which raises revenue; and (M2) inflation reduces the value of money, so reported revenue in dollars can look larger even if the real (inflation-adjusted) amount of activity is similar.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8404-exp5",
         text: "Disney revenue rises, leading Disney to hire more people and invest more in productions and theme parks (M1': more hiring/investment). That boosts incomes for workers and suppliers (M2': higher household and business income), which raises spending in the economy (M3': higher overall demand). Higher demand can then push prices up, increasing inflation (CPI).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5754,27 +5554,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7331-exp1",
         text: "More people going to the cinema can boost interest in Disney films and characters. That increased excitement (M = \u201cDisney brand interest from recent movies\u201d) can then make more people decide to visit Disneyland.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7331-exp2",
         text: "A trip to Disneyland can get people more into Disney stories and characters. After the trip, they may want to keep that feeling going by watching related movies at the cinema (M' = \u201cpost-visit excitement/loyalty to Disney content\u201d), which raises UK cinema attendance.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7331-exp3",
         text: "When the economy is doing well, people have more spare money for leisure. That can increase both cinema trips in the UK and expensive holidays like visiting Disneyland (C = \u201coverall consumer spending/household disposable income\u201d).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7331-exp4",
         text: "Cinema attendance might rise because there are big family-friendly releases. That can lead to more Disneyland visitors through two routes: (M1 = \u201ckids/family enthusiasm after seeing Disney or similar films\u201d) and (M2 = \u201cmore advertising/trailers and promotions seen in cinemas\u201d), both pushing more people to plan a Disneyland trip.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7331-exp5",
         text: "More Disneyland visitors can lead to more people posting photos and videos online (M1' = \u201csocial media buzz\u201d). That buzz can increase interest in Disney and theme-park-related entertainment (M2' = \u201cstronger pop-culture attention to Disney\u201d). This can feed into higher awareness and anticipation for new releases (M3' = \u201chigher intention to see movies in theatres\u201d), which then increases UK cinema attendance.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5865,27 +5660,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8167-exp1",
         text: "When households spend more on clothing, they may be buying outfits for vacations (M: \u201cpreparing for trips\u201d). More vacation planning and readiness can lead to more families taking trips that include Disneyland, increasing Disneyland visitors.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8167-exp2",
         text: "If more people go to Disneyland, they often buy Disney-themed apparel or new outfits for the trip (M': \u201ctrip-related clothing purchases\u201d). Those extra clothing purchases raise overall household spending on clothing.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8167-exp3",
         text: "A stronger economy (C: \u201coverall economic conditions/income\u201d) can make people both spend more on clothing and also afford more travel and entertainment like Disneyland. So the same underlying factor drives both numbers up and down.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8167-exp4",
         text: "Higher clothing spending can be a sign of (M1) \u201cmore social events and outings\u201d (people dress up more, go out more), which can include theme-park trips. It can also reflect (M2) \u201chigher household disposable income,\u201d which separately makes Disneyland trips more affordable\u2014both pathways can increase Disneyland visitors.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8167-exp5",
         text: "More Disneyland visitors can boost (M1') \u201cDisney-related marketing and pop-culture buzz,\u201d which increases (M2') \u201cdemand for Disney merchandise,\u201d leading retailers to stock and promote more (M3') \u201cDisney-branded clothing,\u201d which results in higher household spending on clothing.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -5997,27 +5787,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6326-exp1",
         text: "When Californians spend more at restaurants, it can be a sign that consumer discretionary spending is strong. That same strong spending environment can boost Disney\u2019s theme-park attendance and in-park spending (M: Disney parks and experiences revenue/attendance), which can improve Disney\u2019s earnings outlook and push the DIS stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6326-exp2",
         text: "If Disney\u2019s stock price rises, it can lift investor confidence and household wealth for people who own stocks or work in finance/tech in California. That \u201cwealth effect\u201d (M\u2019: higher perceived wealth and willingness to splurge) can lead some people to eat out more, raising per-capita restaurant spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6326-exp3",
         text: "A strong California economy (C: jobs and wage growth) can make people spend more on restaurants and also make investors more optimistic about consumer-facing companies like Disney. So both restaurant spending and DIS can rise together even if neither directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6326-exp4",
         text: "Higher restaurant spending can reflect broader leisure activity. It may increase Disney\u2019s performance through two channels: (M1) more travel and tourism spending, leading to more visits to Disneyland and higher ticket/hotel revenue; and (M2) stronger advertising and media spending from restaurants and local businesses, which can support Disney\u2019s media/streaming and ad-related revenue. Both channels can help DIS move up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6326-exp5",
         text: "A rise in DIS can signal a stronger outlook for Disney. That can lead Disney to (M1\u2019) invest more in California operations (like Disneyland expansions and marketing), which (M2\u2019) increases local hiring and contractor work, which (M3\u2019) raises local incomes and foot traffic near entertainment/tourist areas\u2014ultimately boosting restaurant spending per person in California.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6110,27 +5895,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6003-exp1",
         text: "When people in Colorado spend more at restaurants, it can boost the local economy and tax revenues. That extra economic strength can make it easier for companies to sponsor sports and for fans to buy tickets/merch. More sponsorship + more fan spending helps increase the NHL\u2019s total revenue.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6003-exp2",
         text: "When the NHL makes more money, it often means hockey is more popular and there are more high-profile games and events. Those events bring more people out\u2014fans go downtown before or after games. That increased game-day activity leads to more restaurant visits and higher per-capita restaurant spending in Colorado.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6003-exp3",
         text: "A shared driver could be overall economic conditions (like higher incomes and lower unemployment). When the economy is strong, people eat out more in Colorado, and people across the country also spend more on entertainment like NHL tickets, streaming, and merchandise\u2014raising NHL revenue at the same time.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6003-exp4",
         text: "Restaurant spending could connect to NHL revenue through two separate pathways: (M1) More restaurant spending signals more tourism and travel, which can increase attendance at NHL games and related spending. (M2) More restaurant spending also signals stronger consumer confidence, which can increase purchases of NHL subscriptions, merchandise, and tickets. Both paths push NHL revenue up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6003-exp5",
         text: "Higher NHL revenue can lead to bigger league investments (M1\u2019) such as more marketing and more prominent broadcasts. That can increase interest in hockey and attendance at games/events (M2\u2019), which boosts local foot traffic in areas around arenas (M3\u2019). More foot traffic means more people eating out, raising Colorado\u2019s per-capita restaurant spending.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6246,27 +6026,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7779-exp1",
         text: "(A) Higher restaurant spending in Michigan can signal a stronger local economy and more people going out. That can lead to higher game-day and nightlife foot traffic near stadiums (M: more local entertainment activity), which boosts ticket sales, sponsorship interest, and merchandise purchases\u2014raising NFL team revenue (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7779-exp2",
         text: "(B) When NFL teams earn more revenue, they often spend more on marketing, events, and improving the game-day experience. That can bring more visitors and fans out to games and watch parties (M': more fan events and game-day tourism), which increases how much people spend at nearby restaurants in Michigan (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7779-exp3",
         text: "A third factor could drive both: (C) overall economic conditions (like higher incomes, lower unemployment, and population growth). When the economy is strong, people dine out more (A) and they also have more money for tickets, merchandise, and sports subscriptions\u2014raising NFL revenues (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7779-exp4",
         text: "Restaurant spending (A) could affect NFL revenue (B) through two different routes: (M1) more social outings and sports viewing at bars/restaurants increases fan engagement and merchandise interest, and (M2) healthier local business activity makes the area more attractive to sponsors and advertisers. Both pathways can lift team revenue.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7779-exp5",
         text: "Higher NFL revenue (B) can set off a chain: teams invest in better stadiums and surrounding development (M1': more entertainment district development) which attracts more visitors and events (M2': more tourism and crowd traffic), which increases demand for meals before/after events (M3': more dining occasions), leading to higher per-capita restaurant spending in Michigan (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6382,27 +6157,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5679-exp1",
         text: "Higher per-person restaurant spending in New Jersey can signal a more active local leisure economy. That can lead to more people going out for sports (mediator: more game-day outings and sports-related socializing), which increases ticket sales, concessions, and local sponsorship interest, helping boost NFL team revenue.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5679-exp2",
         text: "When NFL teams generate more revenue, they often invest more in marketing, events, and game-day experiences (mediator: bigger fan engagement and more watch parties/going-out culture). That can encourage more people to eat out\u2014before games, after games, or for televised games\u2014raising restaurant spending per person in New Jersey.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5679-exp3",
         text: "A third factor could drive both: overall regional income and cost of living (confounder: higher average incomes/metro-area prosperity). Wealthier, more expensive areas tend to spend more at restaurants and also support higher NFL revenues through pricier tickets, premium seating, and larger corporate sponsorships.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5679-exp4",
         text: "Restaurant spending could connect to NFL revenue through two different pathways: (M1) a stronger hospitality/tourism scene that brings more visitors who also attend games, and (M2) a larger network of bars and restaurants that buy sports TV packages and run promotions, indirectly boosting the teams\u2019 audience and sponsorship value\u2014both increasing NFL revenue.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5679-exp5",
         text: "Higher NFL team revenue can lead to (M1') more high-profile games and events, which leads to (M2') more visitors and local foot traffic, which leads to (M3') more dining out around event days\u2014ultimately increasing per-capita restaurant spending in New Jersey.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6499,27 +6269,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7509-exp1",
         text: "(A) Higher total farm income can mean farm products are plentiful and/or cheaper. That can lower Chipotle\u2019s ingredient costs (M: food input costs like produce and meat), which can boost profit expectations and push up CMG\u2019s stock price (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7509-exp2",
         text: "(B) If Chipotle\u2019s stock price rises, the company may expand faster (M': Chipotle expansion and purchasing). More restaurants can mean Chipotle buys more U.S. farm products, which can slightly raise demand and revenues for farms, contributing to higher total farm income (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7509-exp3",
         text: "A strong overall economy (C: economic growth/consumer spending) can raise restaurant sales and investor optimism, lifting CMG\u2019s stock price (B). The same strong economy can also boost demand for food and agricultural products, helping increase total U.S. farm income (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7509-exp4",
         text: "Path 1: Higher farm income (A) can reflect strong agricultural output, which can reduce ingredient price pressure (M1: lower commodity/produce prices), improving Chipotle margins and lifting CMG\u2019s stock (B). Path 2: Higher farm income (A) can also come from higher-quality or more reliable supply (M2: supply stability/quality), reducing shortages and menu disruptions for Chipotle, supporting sales and stock price (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7509-exp5",
         text: "(B) A higher CMG stock price can make it easier for Chipotle to raise money (M1': cheaper financing/more capital). That can fund more new restaurants and marketing (M2': faster expansion). Expansion increases long-term purchasing contracts and demand for certain crops and livestock (M3': increased farm demand/contracts), which can contribute to higher total U.S. farm income (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6651,27 +6416,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8738-exp1",
         text: "If households spend more on eggs, egg demand rises. That can lead to higher egg prices and/or more egg production, which increases farms\u2019 sales revenue; higher sales revenue pushes up total gross income for US farms.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8738-exp2",
         text: "If US farms\u2019 total gross income rises, farms and related agribusinesses may hire more workers or pay better wages. Higher household income then leads people to spend more overall at the grocery store, including on eggs.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8738-exp3",
         text: "General inflation (or overall food price inflation) can raise the price of eggs (making households spend more on eggs even if they buy the same amount) and also raise the dollar value of farm output across many products, making total farm gross income look higher at the same time.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8738-exp4",
         text: "Household egg spending can lift farm income through two routes: (1) higher egg demand increases egg prices and egg-farm revenue, and (2) stronger demand encourages retailers and producers to expand egg supply (more hens, more feed purchases, more production), increasing the volume of farm sales. Both routes raise total farm gross income.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8738-exp5",
         text: "Higher total farm gross income can lead to more investment in agriculture (new barns, better equipment) which increases production efficiency and supply. Greater supply can lower or stabilize egg prices, which changes how much households spend on eggs (even if they buy the same number of eggs).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6799,27 +6559,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6433-exp1",
         text: "When households spend more on food overall (A), grocery stores and restaurants see higher demand and order more dairy products. That higher demand (M: more retail/restaurant orders for cheese) leads cheese producers to make more cheese (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6433-exp2",
         text: "If the US produces more cheese (B), cheese can become more available and sometimes cheaper, so stores promote it and people buy more cheese-containing items. Those extra purchases (M': higher cheese purchases and related foods like pizza, sandwiches) increase total household food spending (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6433-exp3",
         text: "A growing population (C) can raise both numbers at once: more people means households collectively spend more on food (A), and it also means the country produces more cheese to feed everyone (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6433-exp4",
         text: "Higher household food spending (A) can push up cheese production (B) through two different paths: (M1) more eating out and takeout (restaurants order more cheese) and (M2) more grocery spending on convenience foods like frozen pizza and prepared meals (manufacturers order more cheese). Both channels increase demand and lead producers to make more cheese.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6433-exp5",
         text: "More cheese production (B) can lead to a longer chain of effects: (M1') more cheese inventory and wider distribution in stores, which leads to (M2') more marketing and more cheese-based products on shelves, which leads to (M3') households buying and consuming more of those products\u2014raising total household food spending (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6902,27 +6657,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7125-exp1",
         text: "As GDP per person rises, people generally have more disposable income. That can lead to higher demand for restaurant meals and premium foods like cheese. To make more cheese, producers use more milk fat, so higher GDP per capita can indirectly increase milk fat used for cheese through higher consumer spending on cheese.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7125-exp2",
         text: "If the cheese industry expands and uses more milk fat, it can create more jobs and business activity in dairy farming, processing, transportation, and retail. That growth can raise incomes in those sectors, which can slightly lift overall GDP per capita. So more milk fat used for cheese could be linked to higher GDP per person through added economic activity and wages.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7125-exp3",
         text: "A third factor like population growth (or changes in the size of the U.S. economy) can move both numbers together. More people can mean more total cheese consumption, which increases total milk fat used, and at the same time population and workforce changes can coincide with higher measured GDP per capita. In that case, population-related trends help explain the correlation without one directly causing the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7125-exp4",
         text: "GDP per capita can push milk fat used for cheese through two different pathways. (1) Higher incomes increase at-home purchases of cheese (more grocery demand). (2) Higher incomes also increase eating out and food service demand (more pizzas, burgers, and other cheese-heavy foods). Both channels raise total cheese production, which increases milk fat use.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7125-exp5",
         text: "More milk fat used for cheese can lead to more cheese production, which can increase revenue for dairy processors and farms. That can then lead to more investment (new plants, equipment, and higher productivity), which can raise wages and output in the dairy supply chain. Added output and higher incomes can contribute to higher GDP per capita\u2014so the link can run from milk fat used for cheese through several steps to GDP per person.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -6988,27 +6738,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5710-exp1",
         text: "People who buy more milk may also do more home cooking and baking (M). More cooking/baking increases the need for spreadable fats, so they end up buying more margarine.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5710-exp2",
         text: "Higher margarine use might lead people to make more toast, sandwiches, or boxed meals at home (M'). Those foods are often eaten with a glass of milk or used in recipes that call for milk, so milk purchases rise.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5710-exp3",
         text: "Household size or having children at home (C) could drive both. Bigger families often buy more milk (kids drink it) and also buy more margarine because they make more meals and sandwiches.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5710-exp4",
         text: "Milk consumption could be linked to margarine through two different routes: (M1) more milk goes with more breakfast-at-home habits (cereal/toast), which increases margarine use; and (M2) more milk goes with more baking (cakes/cookies), which also increases margarine use.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5710-exp5",
         text: "More margarine consumption (B) could reflect more home meal prep (M1'), which leads to more grocery shopping and stocking up on staples (M2'), which leads to more use of milk in everyday cooking/drinks (M3'), resulting in higher milk consumption (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7135,27 +6880,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8999-exp1",
         text: "People who buy more mozzarella often cook more homemade meals (M: more home cooking, like pizza/lasagna). Cooking more at home uses eggs for baking, breading, breakfasts, and recipes, which raises annual egg spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8999-exp2",
         text: "Households that spend more on eggs may do more baking and breakfast cooking (M': more frequent cooking at home). That same cooking habit can lead them to buy mozzarella for dishes like omelets, casseroles, and homemade pizza, increasing mozzarella consumption.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8999-exp3",
         text: "Household size could drive both (C: more people in the home). Bigger households tend to buy more of many foods, including mozzarella and eggs, so the two rise together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8999-exp4",
         text: "Mozzarella consumption could be linked to egg spending through two different pathways: (M1: more pizza/Italian-style home meals) which often also includes eggs in doughs/breading/desserts, and (M2: more grocery shopping overall) where people who buy more mozzarella also buy more staples like eggs during the same trips.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8999-exp5",
         text: "Higher egg spending might reflect more at-home breakfasts and baking (M1': more cooking at home), which can lead to buying more ingredients for full meals (M2': more scratch cooking and meal planning), which increases making dishes that commonly use mozzarella (M3': more homemade pizza/casseroles), resulting in higher mozzarella consumption.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7276,27 +7016,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-26-exp1",
         text: "Higher smoking rates can lead to more accidental fires started by careless smoking (like improperly put-out cigarettes or smoking in bed). Those accidental fires can sometimes be recorded as arson or increase overall fire incidents, which can make the arson rate (B) appear higher.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-26-exp2",
         text: "When arson is more common, communities may feel less safe and more stressed. That added stress and anxiety can lead some adults to cope by smoking more, so higher arson (B) could indirectly raise smoking rates (A) through increased community stress.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-26-exp3",
         text: "Economic hardship could drive both. Places with higher poverty/unemployment may have more smoking because of stress and fewer health resources, and also more arson because of crime, vacant buildings, or insurance fraud. In that case, the economy (C) is pushing up both A and B.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-26-exp4",
         text: "Smoking could be connected to arson through two different pathways: (M1) more smoking leads to more cigarette-related fires and risky fire behavior, increasing arson/fire rates; and (M2) higher smoking is sometimes linked with heavier alcohol/drug use in a community, which can increase reckless or criminal behavior, including intentionally setting fires.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-26-exp5",
         text: "Higher arson rates (B) can damage neighborhoods and leave more burned-out or abandoned properties (M1'). That can lead to neighborhood decline and fewer local services and opportunities (M2'), which increases long-term stress and hopelessness for residents (M3'). More chronic stress can lead to higher smoking rates (A) as a coping habit.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7417,27 +7152,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2195-exp1",
         text: "Higher arson in Massachusetts could lead to more community stress and disruption (M: stress and mental health strain). In response, some people may smoke more as a coping habit, raising the adult smoking rate.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2195-exp2",
         text: "Higher smoking rates could increase careless cigarette disposal (M': more cigarette-caused small fires/ignition opportunities). That can make it easier for fires to start and may increase incidents recorded as arson or intentional burning-related fire events.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2195-exp3",
         text: "Economic hardship (C: poverty/unemployment) could raise both outcomes: it can increase crime and destructive acts like arson, and it can also increase smoking because stress is higher and smoking rates tend to be higher in disadvantaged communities.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2195-exp4",
         text: "Arson could be linked to higher smoking through two separate pathways: (M1) it can increase fear/stress in neighborhoods, leading some people to smoke more; and (M2) it can weaken community resources (like damaged housing/businesses and strained local services), reducing access to prevention/support programs and indirectly increasing smoking.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2195-exp5",
         text: "Higher smoking can lead to (M1') worse overall health and addiction levels, which can contribute to (M2') higher financial strain (spending on cigarettes, medical costs, missed work). That strain can contribute to (M3') increased conflict and risky/illegal behavior in some settings, which could raise the likelihood of arson incidents.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7558,27 +7288,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2549-exp1",
         text: "Higher arson in Delaware could lead to more community stress and disruption (M: stress/trauma after fires). That stress can make some adults more likely to smoke as a coping habit, raising the smoking rate.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2549-exp2",
         text: "Higher smoking rates could increase the amount of careless disposal of cigarettes (M': more lit cigarettes tossed outside/into trash). That can start accidental fires that sometimes get recorded as arson-related incidents, increasing the arson rate.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2549-exp3",
         text: "A third factor could drive both, such as economic hardship (C: poverty/unemployment). Tough economic conditions can increase smoking (as coping/addiction) and can also be linked to more fires and deliberate property damage, including arson.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2549-exp4",
         text: "Arson could raise smoking through two different pathways: (M1) increased stress and anxiety after repeated fires, and (M2) weakened community resources (less funding for health programs, fewer cessation services) after damage and disruption. Both can push smoking rates up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2549-exp5",
         text: "Higher smoking can lead to (M1') worse health and more nicotine dependence, which can contribute to (M2') financial strain from medical bills and missed work, which can increase (M3') desperation and involvement in risky or criminal behavior\u2014sometimes including setting fires\u2014raising the arson rate.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7699,27 +7424,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3643-exp1",
         text: "If robbery rates in Nebraska rise, it can make some neighborhoods feel less safe and more stressful. That stress (M: community stress/trauma) can lead some adults to smoke more as a coping habit, increasing the smoking rate.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3643-exp2",
         text: "If more adults smoke, more people may develop nicotine addiction and spend money regularly on cigarettes. Financial strain or addiction-related desperation (M': financial stress/addiction-driven need for cash) could push a small number of people toward theft or robbery, raising robbery rates.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3643-exp3",
         text: "A third factor could drive both. For example, economic hardship (C: higher unemployment/poverty) can increase robbery (people are more desperate or crime opportunities rise) and also increase smoking (people use cigarettes to cope with stress), creating a correlation even if one doesn\u2019t cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3643-exp4",
         text: "Robbery could affect smoking through two different pathways. (M1: fear/stress) Higher robberies make people feel anxious, and some smoke to calm down. (M2: reduced community resources) Higher crime can weaken local businesses and programs, leading to fewer health campaigns or less access to quitting support, which also raises smoking.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3643-exp5",
         text: "Smoking could influence robbery through a multi-step chain. Higher smoking (B) can worsen health over time (M1': more smoking-related illness), which can lead to missed work or job loss (M2': reduced income/unemployment), which can increase financial desperation (M3': severe money pressure), which may raise robbery rates (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7836,27 +7556,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8500-exp1",
         text: "More arson leads to more fires and investigations (M: overall fire incidents/case workload). That higher workload pushes the state and cities to hire more fire inspectors.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8500-exp2",
         text: "When there are more fire inspectors, they do more inspections and investigations (M': detection and reporting). That can uncover and officially record more arson cases that would otherwise be missed, making the measured arson rate look higher.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8500-exp3",
         text: "A third factor like population growth or urban density (C) can increase both: more people/buildings can mean more opportunities for arson, and it also requires hiring more fire inspectors to cover more properties.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8500-exp4",
         text: "Arson can raise inspector numbers through two separate paths: (M1) more property damage and costly fires leads officials to expand fire-prevention staffing; and (M2) public concern and media attention after arson spikes leads to political pressure and budget increases to hire more inspectors.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8500-exp5",
         text: "More fire inspectors can lead to (M1') more inspections and code enforcement, which leads to (M2') more building upgrades and changes in how vacant/unsafe buildings are handled, which leads to (M3') shifts in which fires get classified as arson versus accident\u2014changing the recorded arson rate.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -7987,27 +7702,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7263-exp1",
         text: "Higher arson rates can lead to more home and property loss, insurance battles, and sudden financial stress. That stress (M: financial strain and conflict at home) can increase arguments and make divorce more likely.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7263-exp2",
         text: "When divorce rates rise, more households go through separation and moves. That can leave some people feeling angry, depressed, or unstable (M': emotional distress and resentment), which in a small number of cases can contribute to setting fires or other destructive behavior.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7263-exp3",
         text: "An economic downturn (C: higher unemployment/poverty) can push both problems up at the same time\u2014money stress can increase marital conflict and divorce, and it can also increase desperation, crime, or vandalism including arson. That makes arson and divorce look linked even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7263-exp4",
         text: "Arson can raise divorce rates through more than one pathway: (M1) it can cause direct financial damage and debt, and (M2) it can create fear and trauma in the family and neighborhood. Both money problems and psychological stress can separately increase the chance of divorce.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7263-exp5",
         text: "Higher divorce rates can lead to (M1') more family disruption and people moving, which can lead to (M2') weaker neighborhood ties and less informal supervision, which can lead to (M3') more opportunities for vandalism and crime. With more unsupervised or unstable situations, arson incidents may rise.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8138,27 +7848,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-9161-exp1",
         text: "Higher arson rates (A) could lead to more people losing homes or businesses, creating money stress and emotional trauma (M). That added stress can strain marriages and increase the divorce rate (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9161-exp2",
         text: "A higher divorce rate (B) can lead to more family conflict and resentment (M'). In a small number of cases, that conflict may escalate into revenge or destructive behavior, including setting fires (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9161-exp3",
         text: "A weak local economy or high unemployment (C) could raise financial stress and instability. That can increase both divorce (B) and crimes like arson (A), making them move together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9161-exp4",
         text: "Arson (A) might increase divorce (B) through two different paths: (M1) direct financial damage (repair costs, lost income, insurance problems) and (M2) mental-health strain (fear, trauma, anxiety). Either path can put pressure on relationships and make divorce more likely.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-9161-exp5",
         text: "Higher divorce rates (B) could lead to more single-parent or disrupted households (M1'), which can increase supervision gaps and youth behavior problems (M2'), which can raise vandalism and risky behavior in the community (M3'), and that can include more fire-setting and arson (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8289,27 +7994,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5468-exp1",
         text: "Higher robbery rates can make people feel less safe and more stressed in daily life. That stress can lead to more arguments and strain at home (M: chronic stress and relationship conflict), which can increase the divorce rate.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5468-exp2",
         text: "If the divorce rate rises, more households may face financial strain and instability right afterward. That can increase poverty or desperation for some people (M': financial hardship), which can contribute to more robberies.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5468-exp3",
         text: "A broader economic downturn can push both numbers up at the same time. When unemployment or cost of living rises (C: economic stress), robberies may increase and marriages may also be more likely to end in divorce.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5468-exp4",
         text: "Robberies could raise the divorce rate through two different routes: (M1) fear and stress that increases conflict at home, and (M2) people moving away from high-crime areas, which disrupts social support and adds pressure on relationships\u2014both can make divorce more likely.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5468-exp5",
         text: "More divorces could lead to more single-parent or single-adult households (M1'), which can reduce household income and stability (M2') and increase the number of people under financial pressure (M3'). That financial pressure can, for some, raise the risk of committing robbery, increasing the robbery rate.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8440,27 +8140,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6068-exp1",
         text: "Higher burglary rates can raise stress and feelings of insecurity in neighborhoods. That stress can strain relationships, and some couples may end up divorcing. (Burglary rate \u2192 community stress/fear \u2192 divorce rate)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6068-exp2",
         text: "When divorce rates rise, more households may become single-income or face financial strain. That can increase economic hardship in some areas, which can lead to more people turning to property crime like burglary. (Divorce rate \u2192 financial strain \u2192 burglary rate)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6068-exp3",
         text: "A broader economic downturn (like rising unemployment or falling wages) could push some people toward burglary while also putting money pressure on marriages, increasing divorces. (Economic conditions \u2192 burglary rate and divorce rate)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6068-exp4",
         text: "Burglary could be linked to divorce through two different pathways: (1) it increases fear and stress at home, and (2) it causes financial loss (stolen items, repairs, insurance issues). Both stress and financial setbacks can increase the chance of divorce. (Burglary rate \u2192 stress \u2192 divorce rate; Burglary rate \u2192 financial loss \u2192 divorce rate)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6068-exp5",
         text: "More divorces can lead to more single-parent or single-adult households, which may reduce informal neighborhood watchfulness. Reduced watchfulness can weaken community social ties, and weaker social ties can make burglaries easier to commit. (Divorce rate \u2192 more single-adult households \u2192 less neighborhood watchfulness \u2192 weaker community cohesion \u2192 burglary rate)",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8591,27 +8286,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6805-exp1",
         text: "More burglaries can make neighborhoods feel unsafe and stressful. That stress can increase arguments at home and reduce trust, which can push some couples toward divorce.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6805-exp2",
         text: "When divorce rates rise, more households split and people may have to move quickly or live alone. That can lead to more vacant homes or less supervision in a neighborhood, creating easier targets and more opportunities for burglars.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6805-exp3",
         text: "Economic hardship could drive both. If jobs are scarce or wages fall, some people may turn to burglary, and money stress can also strain marriages and increase divorces.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6805-exp4",
         text: "Burglaries could raise divorce rates through two different paths: (1) Fear and anxiety after crime increases day-to-day stress and conflict in couples; (2) Financial losses from stolen property, repairs, and higher insurance costs add money problems that can also lead to divorce.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6805-exp5",
         text: "Higher divorce can lead to more single-parent or single-adult households, which can reduce time and energy for neighborhood involvement. With fewer neighbors watching out for each other, informal supervision drops, and burglars may find it easier to break in, increasing burglary rates.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8727,27 +8417,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3102-exp1",
         text: "Higher burglary rates (A) can lead to more financial losses and unpaid bills for households and businesses. Those unpaid debts increase the need for debt collection services (M: delinquent accounts), which leads to more bill collectors being employed (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3102-exp2",
         text: "If there are more bill collectors (B), more people with overdue debts may feel stressed or financially squeezed. That financial stress (M': severe financial distress) could push a small number of people toward theft-related crimes, increasing burglaries (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3102-exp3",
         text: "A weak economy (C), such as high unemployment or falling wages, can increase burglaries (A) because more people are struggling, and it can also increase the number of bill collectors (B) because more people fall behind on payments.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3102-exp4",
         text: "Burglaries (A) could raise the number of bill collectors (B) through two paths: (M1) more insurance claims and deductibles that leave people with bills they can\u2019t pay, and (M2) businesses spending more on security/repairs, creating new debts and late payments\u2014both increasing collection work and hiring.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3102-exp5",
         text: "More bill collectors (B) may lead to more aggressive or frequent collection contact (M1': increased collection pressure), which can cause more defaults and damaged credit (M2': worse credit/financial access), which can lead to housing instability or desperate situations (M3': instability), which could increase burglaries (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8865,27 +8550,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2395-exp1",
         text: "Higher motor vehicle thefts (A) can push companies and residents to rely more on deliveries instead of driving their own vehicles. That increases demand for delivery services, which leads to more courier and messenger jobs (B). (Mediator M: shift toward delivery/outsourcing transportation because people feel less safe owning/using vehicles.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2395-exp2",
         text: "More couriers and messengers (B) means more delivery vans and vehicles are on the road and parked at stops. That creates more easy targets and more opportunities for theft, which can raise the motor vehicle theft rate (A). (Mediator M': more frequently unattended/accessible vehicles during deliveries.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2395-exp3",
         text: "A growing economy and population in Kansas (C) can increase both the number of couriers (more shopping and deliveries) (B) and the number of vehicles and traffic (more potential targets), which can increase vehicle thefts (A). The two move together because they share the same underlying driver.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2395-exp4",
         text: "Motor vehicle thefts (A) could raise courier jobs (B) through two different pathways: (M1) People replace stolen cars and choose to lease/finance vehicles, and dealers/parts/suppliers need more deliveries, increasing courier work; and (M2) After thefts, businesses invest more in moving goods securely (scheduled pickups, tracked deliveries), which increases use of professional courier services.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2395-exp5",
         text: "More couriers and messengers (B) can lead to (M1') more delivery vehicles circulating and stopping in many places, which leads to (M2') more vehicles left running/unlocked or briefly unattended, which leads to (M3') higher chances for criminals to spot patterns and exploit opportunities, which increases motor vehicle thefts (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -8954,27 +8634,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-749-exp1",
         text: "More Associate degrees in precision production (A) lead to more people with hands-on manufacturing and technical skills available in Maryland. Employers then expand local aircraft/electronics maintenance operations or hire more support staff (M: growth in local technical-industrial hiring), which increases the number of avionics technicians (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-749-exp2",
         text: "When Maryland has more avionics technician jobs (B), local employers advertise openings and offer better pay or tuition support. That encourages more people to enroll in nearby community college technical programs (M': increased student demand for job-aligned training), resulting in more precision production Associate degrees being awarded (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-749-exp3",
         text: "A third factor drives both: Maryland\u2019s overall aerospace/defense activity (C). If the state has more defense contracts, military bases, airports, or aerospace companies, it creates more avionics technician jobs (B) and also pushes schools to offer/expand technical programs, producing more precision production degrees (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-749-exp4",
         text: "Precision production degrees (A) can raise avionics technician counts (B) through two different paths: (M1) Graduates take entry-level manufacturing roles at aerospace suppliers, and those firms later train/promote some workers into avionics roles; and (M2) Colleges expand labs, partnerships, and certifications tied to hands-on electronics/quality work, making it easier for local employers to recruit or upskill people into avionics jobs.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-749-exp5",
         text: "More avionics technician jobs in Maryland (B) can start a chain reaction: (M1') employers struggle to fill roles and raise wages/recruiting, which (M2') increases public awareness and interest in technical careers, which (M3') leads colleges and workforce agencies to expand/market precision production Associate programs\u2014ending with more degrees awarded (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9032,27 +8707,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-1850-exp1",
         text: "More engineering master\u2019s degrees (A) can lead to more advanced manufacturing projects and product design work in the state (M: growth in high-tech manufacturing activity). That extra design-and-build work increases demand for patternmakers who create molds and patterns (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-1850-exp2",
         text: "If Tennessee has more patternmaker jobs available (B), companies may expand local manufacturing operations and partner with universities (M': industry-university partnerships and employer demand for advanced skills). That can encourage more engineers to enroll in and complete master\u2019s programs (A) to qualify for higher-level roles.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-1850-exp3",
         text: "A shared driver could be overall economic and industrial growth in Tennessee (C: expansion of manufacturing and investment). When the state attracts more manufacturing investment, it can both increase patternmaker employment (B) and support/attract more engineering graduate programs and students (A), making them move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-1850-exp4",
         text: "Engineering master\u2019s degrees (A) may raise patternmaker employment (B) through two routes: (M1) more R&D and prototype development that needs patterns and molds, and (M2) more startups and new product lines that require tooling and patternmaking to ramp up production.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-1850-exp5",
         text: "More patternmakers (B) can help factories produce tooling faster and more reliably (M1': higher production capability), which attracts additional manufacturing contracts (M2': more industrial projects) and then encourages universities and employers to expand advanced engineering roles and graduate programs (M3': stronger demand for master\u2019s-level engineers), leading to more engineering master\u2019s degrees awarded (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9119,27 +8789,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5057-exp1",
         text: "More engineering master\u2019s degrees are awarded, which increases the number of people with advanced engineering training. That larger pool of qualified candidates makes it easier for Georgia employers to hire civil engineers, raising the number of civil engineers in the state.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5057-exp2",
         text: "Georgia has a growing number of civil engineer jobs, which leads to higher demand for advanced credentials. In response, universities expand or promote engineering master\u2019s programs (or students enroll to qualify for better roles), resulting in more engineering master\u2019s degrees being awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5057-exp3",
         text: "Georgia\u2019s construction and infrastructure boom (like new roads, bridges, and development) can drive both outcomes at once: it creates more civil engineering jobs (more civil engineers in Georgia) and also encourages more people to pursue engineering master\u2019s degrees to take advantage of those opportunities.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5057-exp4",
         text: "Engineering master\u2019s degrees awarded can raise the number of civil engineers in Georgia in two ways: (1) more graduates move to Georgia for civil engineering jobs, and (2) more graduates get promoted or retrained into civil engineering roles within Georgia companies\u2014both pathways increase the civil engineer headcount.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5057-exp5",
         text: "If Georgia has more civil engineers, that can lead to more large engineering projects and stronger industry presence. That can then create more partnerships and funding for local universities, which allows them to expand graduate engineering programs, ultimately increasing the number of engineering master\u2019s degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9213,27 +8878,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7117-exp1",
         text: "More associate degrees in engineering technologies create a larger pool of technically trained workers. Some of these graduates get hired by aerospace companies (mediator: entry-level technical hiring/training pipeline), and that helps grow the number of aerospace engineers in California.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7117-exp2",
         text: "When California has more aerospace engineers, the industry is bigger and needs more support staff and technicians. Companies then partner with community colleges and encourage programs to expand (mediator: industry demand and school partnerships), which leads to more associate degrees being awarded in engineering technologies.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7117-exp3",
         text: "A third factor\u2014like growth in California\u2019s aerospace industry and overall tech economy\u2014can drive both outcomes. That growth makes aerospace engineering jobs increase and also pushes colleges to produce more engineering-technology graduates, so A and B move together even if neither directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7117-exp4",
         text: "Associate degrees could raise aerospace engineer counts through two different paths at once: (1) graduates become technicians who later upskill into engineering roles (mediator M1: career ladder/upskilling), and (2) more graduates attract or help expand aerospace firms locally because staffing is easier (mediator M2: company expansion/relocation decisions). Both paths increase the number of aerospace engineers in California.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7117-exp5",
         text: "More aerospace engineers can lead to more visible success in the sector, which increases interest in aerospace careers (M1': public awareness/role models). That boosts student enrollment in related technical programs (M2': enrollment demand), which prompts colleges to expand capacity and graduate more students (M3': program expansion/resources), resulting in more associate degrees in engineering technologies.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9307,27 +8967,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7110-exp1",
         text: "More associate degrees in math and statistics means more people with basic quantitative training enter the workforce. A key middle step (mediator) is a larger pool of qualified applicants, which makes it easier for North Carolina employers to hire statisticians\u2014so the number of statisticians grows.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7110-exp2",
         text: "If North Carolina has more statisticians, that can raise local demand for entry-level support and data-related roles. A mediator is community colleges responding to employer demand by expanding or promoting math/stats associate programs, which leads to more degrees being awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7110-exp3",
         text: "A third factor could be driving both. For example, a growing state economy (confounder) can both (a) create more jobs for statisticians and (b) lead more people to enroll in community college programs like math/stats, increasing degrees awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7110-exp4",
         text: "Degrees could affect the number of statisticians through two different pathways. (M1) More degrees raise the number of people who transfer to four-year programs and finish bachelor\u2019s/master\u2019s degrees, eventually becoming statisticians. (M2) More degrees also increase the number of people who qualify for entry-level analyst jobs, and some of them later move into statistician roles\u2014both paths increase the statistician count.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7110-exp5",
         text: "More statisticians in the state can lead to (M1') more visible success stories and professional networking in statistics, which leads to (M2') more student interest in data and statistics, which leads to (M3') community colleges creating/expanding relevant programs and course sections\u2014resulting in more math/stats associate degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9400,27 +9055,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3062-exp1",
         text: "More associate degrees in physical sciences can lead to more people with quantitative training. Those graduates may go on to learn data analysis or take entry-level analytics roles, which increases the pool of people who later become statisticians in Michigan.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3062-exp2",
         text: "If Michigan has more statisticians, they may work with community colleges and industry to create or expand science programs. That support (better programs, more advising, more internships) can attract and graduate more students in physical-science associate degrees.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3062-exp3",
         text: "A stronger Michigan economy or growing tech/manufacturing sector could drive both outcomes at once: it creates more jobs for statisticians and also motivates more students to earn physical-science associate degrees to get good local jobs.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3062-exp4",
         text: "Physical-science associate degrees could increase statisticians through two paths: (M1) some graduates transfer to four-year programs and then specialize in statistics; and (M2) others get hired into lab/quality-control roles and then move into data-focused positions where they become statisticians.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3062-exp5",
         text: "More statisticians in Michigan can improve data-driven planning in companies and government (M1), which helps attract or expand science- and engineering-heavy employers (M2). Those employers create more demand for science credentials and partnerships with community colleges (M3), which leads to more physical-science associate degrees being awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9492,27 +9142,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3769-exp1",
         text: "More associate engineering degrees means more locally trained technical workers, which can attract or expand high-tech employers and research labs in Michigan (M: growth of engineering/tech industries and labs). As those labs grow, they hire more physicists, raising the number of physicists in the state.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3769-exp2",
         text: "If Michigan has more physicists, there may be more physics and research activity at nearby universities and labs, which can lead to more outreach, partnerships, and encouragement for students to enter technical fields (M': stronger STEM programs and recruitment). That can increase enrollment and completions in associate engineering programs.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3769-exp3",
         text: "A strong Michigan economy in manufacturing/automotive/high-tech (C) can both increase demand for engineering technicians (leading to more associate engineering degrees) and increase hiring of physicists for R&D, making both numbers rise together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3769-exp4",
         text: "More associate engineering degrees can boost the number of physicists through two different paths: (M1) companies can expand engineering teams and then add R&D groups that employ physicists; and (M2) colleges can grow their STEM departments, creating more research projects and lab facilities that hire physicists. Both pathways can increase physicist employment.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3769-exp5",
         text: "Having more physicists can lead to (M1') more research funding and projects in the state, which leads to (M2') expansion of local universities, labs, and tech employers, which leads to (M3') more community college STEM programs and seats. That expansion can then result in more associate engineering degrees being awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9581,27 +9226,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4395-exp1",
         text: "More Master\u2019s degrees in communications technology can lead to more communications/telecom projects and startups in the region. That increases demand for people who design and maintain related electrical systems (mediator: growth in telecom/tech projects), which raises the number of electrical engineers in Alabama.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4395-exp2",
         text: "If Alabama has more electrical engineers, companies may expand engineering teams and lobby for better local training pipelines. Universities respond by creating or enlarging communications-technology Master\u2019s programs (mediator: industry demand and university program expansion), leading to more degrees awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4395-exp3",
         text: "A strong state economy and big investments in technology can increase both outcomes at the same time. When Alabama attracts more tech and infrastructure investment (confounder: statewide economic/tech investment), companies hire more electrical engineers and universities graduate more communications-technology Master\u2019s students.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4395-exp4",
         text: "More communications-technology Master\u2019s degrees could raise the number of electrical engineers through two different paths: (1) graduates take local jobs and stay in Alabama (mediator M1: local talent retention), and (2) the larger graduate program attracts more research funding and labs that hire engineers (mediator M2: increased university research funding/engineering hires).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4395-exp5",
         text: "More electrical engineers can set off a multi-step chain that ends with more communications-technology Master\u2019s degrees: engineers help companies grow (M1': company growth), which leads to more local high-tech jobs and higher salaries (M2': stronger job market), which motivates more people to enroll in relevant Master\u2019s programs and leads universities to expand seats (M3': program expansion), increasing degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9669,27 +9309,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-700-exp1",
         text: "More physical-science master\u2019s degrees means more trained candidates for faculty and research roles. That can increase competition among universities to hire/retain qualified professors, pushing up professor salaries as a result.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-700-exp2",
         text: "Higher professor salaries can attract and keep better faculty. Better faculty can expand programs and improve teaching/research quality, which draws more students and leads to more physical-science master\u2019s degrees being awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-700-exp3",
         text: "A stronger overall economy (or higher state funding for education) can simultaneously support more graduate education (more master\u2019s degrees awarded) and allow universities to pay professors more, creating a correlation without one directly causing the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-700-exp4",
         text: "(Path 1) More physical-science master\u2019s degrees can boost research output and grant activity at universities, and grant money can help support higher salaries. (Path 2) More degrees can increase tuition/fee revenue from larger graduate enrollments, and that added revenue can also support higher professor pay.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-700-exp5",
         text: "Higher professor salaries can attract more high-profile professors (M1'), which can raise a department\u2019s reputation and research strength (M2'), which can then attract more graduate applicants and enrollment (M3'), resulting in more physical-science master\u2019s degrees awarded (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9757,27 +9392,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8944-exp1",
         text: "When more people earn Master\u2019s degrees in legal studies, universities may expand law-related programs and course offerings. That expansion increases demand for instructors and can justify higher pay to hire and retain qualified lecturers, which raises lecturer salaries.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8944-exp2",
         text: "If university lecturer salaries rise, teaching jobs look more attractive and universities can recruit better faculty and offer more classes. With more (and better-supported) programs and instruction available, more students enroll and complete Master\u2019s degrees in legal studies.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8944-exp3",
         text: "A strong economy or higher state education funding can push both numbers up at the same time. With more money available, universities can pay lecturers more, and students may have more resources (or job incentives) to pursue Master\u2019s degrees in legal fields.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8944-exp4",
         text: "Two things could happen when legal Master\u2019s degrees increase: (1) universities may bring in more tuition revenue from these programs, and that extra revenue helps fund higher lecturer pay; and (2) universities may compete more for specialized law-related instructors as programs grow, and competition leads to higher salaries.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8944-exp5",
         text: "Higher lecturer salaries can attract and keep more experienced lecturers. With stronger faculty, universities can improve the quality and reputation of their graduate programs, which boosts student interest and enrollment. Higher enrollment then leads to more students graduating with Master\u2019s degrees in legal studies.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9850,27 +9480,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4863-exp1",
         text: "If there are more 2nd-grade public school students, schools may identify more children who need special education services. That raises the number of special-education programs and caseloads, which then leads districts to hire more special education teachers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4863-exp2",
         text: "If North Carolina hires more special education teachers, schools may be able to offer better support and services. That can make public schools more attractive to families of children who need those services, leading more families to enroll their 2nd graders in public school.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4863-exp3",
         text: "Population growth in North Carolina could increase both the number of 2nd-grade public school students and the number of special education teachers. When the overall child population rises, schools get more students and also need more staff, including special education teachers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4863-exp4",
         text: "More 2nd-grade students can increase special education teachers through two routes: (1) bigger overall school budgets and staffing plans, which allows more hiring, and (2) more evaluations and identified special-education needs, which directly increases demand for special education teachers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4863-exp5",
         text: "If the state increases the number of special education teachers, schools can expand special-education services, which can improve school reputation and family satisfaction, which then leads more families to choose and stay in public schools\u2014raising the number of 2nd-grade public school students.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -9937,27 +9562,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7065-exp1",
         text: "More Master\u2019s degrees in Education could lead to growth in the state\u2019s education sector (M), such as more schools, universities, and education administration jobs. That growth can attract or support more large employers and government programs that need risk and benefits analysis, which increases demand for actuaries in Indiana (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7065-exp2",
         text: "If Indiana has more actuaries, the insurance and finance sector may expand (M'). A bigger finance/insurance industry can increase state tax revenue and corporate funding for training and partnerships with universities, which can help universities offer more programs and scholarships\u2014leading to more Master\u2019s degrees awarded in Education (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7065-exp3",
         text: "Indiana\u2019s population growth (C) could drive both trends. More people can mean more demand for teachers and education administrators (raising Education Master\u2019s degrees awarded) and also more demand for insurance, pensions, and healthcare planning (raising the number of actuaries).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7065-exp4",
         text: "Education Master\u2019s degrees could increase (M1) the size/quality of Indiana\u2019s universities and professional training infrastructure, and also increase (M2) the overall number of educated professionals and administrators in the state. Both a stronger university system and a larger skilled workforce can attract insurance/finance employers, which raises the number of actuaries in Indiana (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7065-exp5",
         text: "More actuaries (B) can lead to (M1') a larger insurance/finance industry presence in Indiana, which can lead to (M2') higher state and local tax revenues or corporate giving, which can lead to (M3') expanded education budgets and graduate program capacity. That can result in more Master\u2019s degrees awarded in Education (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10024,27 +9644,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5454-exp1",
         text: "More engineering bachelor\u2019s degrees lead to more people qualifying for engineering jobs. Those jobs often pay well, which raises the typical (median) household income.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5454-exp2",
         text: "Higher median household income means families can more easily afford college costs (tuition, housing, time not working). That financial ability increases college enrollment and completion, including engineering degrees.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5454-exp3",
         text: "A third factor like a strong local economy/industry base (for example, a state with lots of tech, manufacturing, or energy companies) can both (1) create demand and support for engineering programs (more degrees) and (2) offer higher-paying jobs (higher household income).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5454-exp4",
         text: "Engineering degrees can raise household income through two routes: (M1) graduates move into high-paying engineering roles, and (M2) engineering-driven innovation creates new businesses and better productivity, lifting wages more broadly.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5454-exp5",
         text: "Higher household income can lead to (M1') better-funded schools and enrichment (stronger math/science preparation), which leads to (M2') more students feeling ready for STEM majors, which leads to (M3') higher engineering college enrollment and persistence, resulting in more engineering bachelor\u2019s degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10165,27 +9780,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6613-exp1",
         text: "(A) Higher Microsoft worldwide earnings can signal stronger PC/cloud/software demand. That can boost overall tech spending and device sales (M: higher demand for smartphones/PCs and related chips), which helps QUALCOMM sell more chips or license more technology, pushing (B) QCOM\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6613-exp2",
         text: "(B) If QUALCOMM\u2019s stock rises, investors may take it as a sign the smartphone and semiconductor market is strong. That can lift confidence and spending across the tech ecosystem (M': better overall tech market sentiment and business investment), which can help Microsoft sell more software and cloud services, raising (A) Microsoft earnings.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6613-exp3",
         text: "A shared driver can move both at the same time: (C) overall global economic/tech cycle (and interest rates). When the economy is strong and borrowing is cheaper, companies buy more software and cloud services (helping Microsoft earnings) and consumers buy more devices that use QUALCOMM chips (helping QCOM\u2019s stock). When conditions worsen, both can fall.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6613-exp4",
         text: "Microsoft earnings could affect QCOM through two different paths: (M1) Strong Microsoft earnings can reflect stronger PC sales and Windows-related device shipments, which increases demand for connectivity components and chips. (M2) Strong Microsoft cloud/AI earnings can encourage more data-center and AI investment, which can spill over into broader semiconductor optimism and valuations. Both channels can support QCOM\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6613-exp5",
         text: "(B) A rising QUALCOMM stock price can reflect a booming smartphone/chip market (M1': stronger semiconductor cycle). That can improve overall tech-company profits and hiring (M2': broader tech growth), which increases business IT budgets (M3': more spending on software/cloud). Higher IT spending can then raise (A) Microsoft worldwide earnings.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10303,27 +9913,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-6165-exp1",
         text: "More marketing managers in California can lead to more spending on marketing tools and software across companies. That higher demand can boost Microsoft\u2019s sales of products like Microsoft 365, Teams, LinkedIn ads, and Azure services, which can improve earnings and push up MSFT\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6165-exp2",
         text: "If Microsoft\u2019s stock price rises, it can signal a strong tech economy and boost investor and business confidence. That confidence can encourage companies (especially in California) to expand and hire more marketing managers to grow faster, which increases the count of marketing managers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6165-exp3",
         text: "A booming California economy (especially the tech sector) can cause both more marketing-manager hiring and higher Microsoft stock at the same time. When the economy is strong, companies hire more marketers, and investors also bid up major tech stocks like Microsoft.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6165-exp4",
         text: "More marketing managers in California can influence Microsoft\u2019s stock through two different routes: (1) they drive higher purchases of Microsoft marketing/sales tools (like Dynamics, LinkedIn, Microsoft 365), increasing revenue; and (2) they run bigger ad and digital campaigns that help many businesses grow, which can lift overall tech optimism and investor demand for large, stable tech stocks like Microsoft.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-6165-exp5",
         text: "If MSFT\u2019s stock price rises, Microsoft may become more valuable and willing to invest more in the region. That can lead to more Microsoft and partner expansion in California, which increases job openings at tech and related firms, which then leads those growing companies to build out their marketing departments\u2014ultimately increasing the number of marketing managers in California.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10441,27 +10046,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7743-exp1",
         text: "More mechanical engineers in California can lead to more hardware startups and product development (M: more new chip-using devices and industrial projects). That can increase demand for Intel\u2019s chips, which can help Intel\u2019s business results and push its stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7743-exp2",
         text: "If Intel\u2019s stock price rises, Intel and the broader tech sector may look healthier (M': more hiring and expansion by tech/manufacturing firms). That can attract or create more mechanical engineering jobs in California, raising the count of mechanical engineers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7743-exp3",
         text: "A strong California tech economy (C: overall economic and tech boom) can simultaneously create more mechanical engineering jobs and also improve investor confidence and sales prospects for major chip companies like Intel, lifting its stock price. The economy is driving both, making them look linked.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7743-exp4",
         text: "Mechanical engineers in California could affect Intel\u2019s stock price through two separate paths: (M1) more engineers -> more manufacturing/automation projects that use Intel-related hardware, raising demand; and (M2) more engineers -> more innovation and patents -> more partnerships and positive market expectations for chip demand. Both paths can independently help Intel\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7743-exp5",
         text: "Intel\u2019s stock price going up can trigger a chain: (M1') higher stock price -> Intel has easier access to money and confidence to invest; (M2') more investment -> more projects, suppliers, and contracts in the tech ecosystem; (M3') more ecosystem activity -> more mechanical engineering roles needed in California. This multi-step process can raise the number of mechanical engineers.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10688,27 +10288,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4700-exp1",
         text: "As the number of nuclear plants operating worldwide grows, nuclear technology and operating know\u2011how improve and become cheaper and more standardized (M: global learning, supply chains, and expertise). Spain can then maintain and run its reactors more efficiently or extend their operating lives, which increases Spain\u2019s nuclear electricity generation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4700-exp2",
         text: "If Spain\u2019s nuclear generation rises, it can signal strong nuclear performance and demand in a major European market (M': investor and policy confidence in nuclear). That added confidence can encourage other countries to keep plants open or start new ones, increasing the global count of operating nuclear plants.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4700-exp3",
         text: "A broader factor like global energy policy and fuel prices (C: concerns about energy security, carbon targets, high gas prices) can push many countries to keep or add nuclear plants, while also pushing Spain to run its existing nuclear plants more to produce more electricity. This makes A and B move together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4700-exp4",
         text: "More operating nuclear plants worldwide can affect Spain\u2019s generation through two channels: (M1) a stronger nuclear supply chain for parts and specialized services, reducing outages and improving reliability in Spain; and (M2) international regulatory norms and shared safety upgrades that help Spanish plants stay licensed and operating longer. Both channels can raise Spain\u2019s nuclear output.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4700-exp5",
         text: "Higher nuclear generation in Spain can reduce electricity prices or increase grid stability (M1': market and grid effects), which can improve public and political acceptance of nuclear in other countries (M2': political support), which then helps financing and approval of keeping plants online or building new ones (M3': investment and licensing). That chain can increase the global number of operating nuclear plants.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10825,27 +10420,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-8786-exp1",
         text: "(A) More solar power generation in South Korea can mean the country is investing more in high-tech manufacturing and clean-energy infrastructure. That investment can boost demand for semiconductor equipment (M), and Applied Materials sells that kind of equipment, which can help its revenues and stock price (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8786-exp2",
         text: "If Applied Materials\u2019 stock price (B) rises, it can signal a boom in the semiconductor industry. That can lead chipmakers to expand production (M'), which increases electricity demand and encourages more renewable build-out in South Korea, including more solar generation (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8786-exp3",
         text: "A shared driver (C) could be global economic growth (or a worldwide tech investment cycle). When the global economy is strong, South Korea invests more in solar (A) and tech companies like Applied Materials tend to do better in the stock market (B), making the two move together even if one doesn\u2019t cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8786-exp4",
         text: "Solar growth in South Korea (A) could affect AMAT (B) through two separate channels: (M1) it can trigger upgrades and investment in South Korea\u2019s factories and supply chain, increasing purchases of manufacturing equipment; and (M2) it can lower/steady energy costs over time, improving profitability for energy-intensive industries like chipmaking, which can lead to more chip-fab expansion and equipment orders from Applied Materials.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-8786-exp5",
         text: "A possible chain is: AMAT stock price rises (B) \u2192 investors expect more chip-fab construction globally (M1') \u2192 South Korean chip companies expand capacity and sign long-term power plans (M2') \u2192 government and utilities accelerate renewable procurement and grid projects (M3') \u2192 measured solar power generation in South Korea increases (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -10962,27 +10552,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7276-exp1",
         text: "More solar power generated worldwide (A) can signal that renewables are growing fast. That can influence U.S. utility regulators and customers to push for cleaner power. Xcel then invests more in wind/solar, improves its long-term growth outlook, and investors bid up Xcel\u2019s stock (B). Here the mediator (M) is \u201cexpectations and investment in renewables by utilities like Xcel.\u201d",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7276-exp2",
         text: "If Xcel\u2019s stock price (B) rises, it can lower the company\u2019s cost of raising money and make investors more willing to fund renewable projects. With easier financing, Xcel and similar companies can build or contract more solar projects, adding to global solar generation (A). The mediator (M') is \u201ccheaper/easier financing for building solar projects due to strong equity markets and utility valuations.\u201d",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7276-exp3",
         text: "A third factor (C) could be driving both: for example, a long period of low interest rates. Low rates make renewable projects (like solar) cheaper to finance, boosting global solar generation (A). At the same time, low rates often lift stock prices\u2014especially stable dividend-paying utilities like Xcel\u2014raising (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7276-exp4",
         text: "Global solar growth (A) could affect Xcel\u2019s stock (B) through two different channels. (M1) Technology cost declines: more solar deployment pushes costs down, making renewables cheaper for utilities, improving Xcel\u2019s future earnings outlook. (M2) Policy/ESG pressure: rising solar adoption increases political and customer demand for clean energy, leading to supportive regulations or incentives that benefit Xcel\u2019s clean-energy plans. Both mediators can independently push Xcel\u2019s stock higher.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7276-exp5",
         text: "Xcel\u2019s stock price (B) may rise because investors expect strong utility profits. That can lead to (M1') more capital raised by Xcel and peers, which leads to (M2') more renewable project development and contracting, which leads to (M3') more solar capacity being installed and connected to grids, ultimately increasing total solar power generated globally (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11068,27 +10653,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7725-exp1",
         text: "As GDP per person rises, the country has more money and tax revenue to invest in infrastructure. That can lead to bigger government and private investment in clean-energy policies and projects (M: more investment and supportive policy), which then increases wind power generation capacity.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7725-exp2",
         text: "When wind capacity grows, electricity can become more stable in price and less exposed to fuel price spikes. That improved energy cost stability and competitiveness for businesses (M': lower and more predictable energy costs) can support productivity and profits, which can raise GDP per person.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7725-exp3",
         text: "A third factor could push both up at the same time: overall technological progress and industrial development (C). As the economy becomes more advanced, GDP per person rises, and the same advances make wind turbines cheaper and easier to build, increasing wind capacity too.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7725-exp4",
         text: "Higher GDP per person can increase wind capacity through two different paths: (M1) more consumer and business demand for electricity, prompting utilities to add new generation including wind; and (M2) more public concern and willingness to pay for cleaner energy, leading to regulations, subsidies, or corporate commitments that drive wind buildout.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7725-exp5",
         text: "More wind capacity can lead to (M1') more renewable-energy jobs and local construction activity, which leads to (M2') stronger local supply chains and manufacturing/service growth, which leads to (M3') higher overall employment and wages\u2014together contributing to higher GDP per person.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11155,27 +10735,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-370-exp1",
         text: "More engineering bachelor\u2019s degrees means more trained engineers. These engineers help design, build, and maintain power plants and the electric grid (mediator: a larger skilled engineering workforce and better infrastructure), which increases electricity generation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-370-exp2",
         text: "When Cambodia generates more electricity, power becomes more reliable and cheaper for cities, factories, and schools. This supports universities (mediator: better-funded and better-equipped higher education\u2014labs, campuses, staff), making it easier to run engineering programs and graduate more engineers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-370-exp3",
         text: "A growing economy can raise both numbers. If Cambodia\u2019s economy and investment are expanding (confounder: economic growth/industrialization), the country builds more power capacity (higher generation) and also spends more on universities and students (more engineering degrees).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-370-exp4",
         text: "More engineering degrees can boost electricity generation through two different routes: (M1) more graduates join utilities and power companies, improving operations and maintenance; and (M2) more graduates work in construction/consulting/renewables, speeding up new power projects and grid expansion\u2014both raise generation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-370-exp5",
         text: "Higher electricity generation can set off a longer chain: (M1\u2019) more reliable power attracts factories and new businesses, which (M2\u2019) creates more technical jobs and higher wages, which (M3\u2019) increases demand for engineering education and government/university investment\u2014leading to more engineering bachelor\u2019s degrees.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11243,27 +10818,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4559-exp1",
         text: "More engineering-technology graduates can mean more skilled technicians and engineers available. Those people help design, build, operate, and maintain solar, hydro, and biomass projects, which makes renewable electricity production rise.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4559-exp2",
         text: "When renewable energy production increases, more renewable projects and companies appear. This raises demand for trained workers, pushing universities and students to expand and enroll in engineering-technology programs, so more degrees get awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4559-exp3",
         text: "A third factor like government investment and policy could drive both. If the government boosts funding for technical education and also funds renewable energy plants (or offers incentives), then engineering degrees and renewable production can rise together even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4559-exp4",
         text: "More engineering-technology degrees can raise renewable output through two paths: (M1) graduates join renewable companies and improve project execution and maintenance, reducing downtime; and (M2) graduates start or support local supplier businesses (parts, installation, testing), lowering costs and speeding up deployment\u2014both increasing production.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4559-exp5",
         text: "Higher renewable production can start a chain: (M1') more reliable electricity supply, which enables (M2') growth of industry and technical jobs, which leads to (M3') stronger demand and funding for technical training programs\u2014resulting in more engineering-technology degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11331,27 +10901,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-160-exp1",
         text: "More Master\u2019s graduates in engineering technologies (A) can mean more skilled engineers available for the power sector. Through the mediator of a stronger technical workforce in hydropower (M), Vietnam can design, operate, and maintain dams and turbines better, which can raise hydropower electricity generation (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-160-exp2",
         text: "When hydropower generation grows (B), the hydropower industry expands and needs more advanced skills. Through the mediator of increased job opportunities and employer demand for specialized credentials (M'), more people choose to enroll in and complete Master\u2019s programs in engineering technologies (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-160-exp3",
         text: "A third factor like national economic development and government investment (C) can push both trends. If Vietnam\u2019s economy and public spending rise, it can fund more universities and scholarships (raising A) and also finance new dams and grid upgrades (raising B), creating a correlation even if one doesn\u2019t directly cause the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-160-exp4",
         text: "More Master\u2019s graduates (A) could increase hydropower generation (B) through two different routes: (M1) better operations and maintenance practices that reduce downtime at existing plants, and (M2) improved project design and construction capability that helps build or upgrade hydropower facilities faster and more efficiently.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-160-exp5",
         text: "Higher hydropower generation (B) can trigger a chain of effects: (M1') lower electricity shortages and more reliable power, which supports (M2') industrial growth and higher incomes, which then leads to (M3') more ability and motivation to pursue graduate education\u2014ultimately increasing Master\u2019s degrees awarded in engineering technologies (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11418,27 +10983,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5507-exp1",
         text: "More engineering bachelor\u2019s degrees mean more trained engineers. Those engineers help design, build, and operate hydropower dams and turbines more efficiently. As a result, countries can expand hydropower capacity and generate more hydropower electricity.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5507-exp2",
         text: "When a country (or the world) generates more hydropower, it often reflects a bigger push toward renewable energy projects. That push creates more engineering jobs and career opportunities. Seeing those opportunities, more students choose engineering degrees, increasing the number of engineering bachelor\u2019s degrees awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5507-exp3",
         text: "Economic growth can drive both trends. As economies grow, they invest more in universities (producing more engineering graduates) and also invest more in large infrastructure like hydropower plants (raising hydropower generation). The correlation happens because both are tied to rising wealth and investment.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5507-exp4",
         text: "Engineering degrees can raise hydropower generation through two different routes: (M1) More graduates lead to better hydropower technology and higher efficiency at existing plants, increasing output. (M2) More graduates also increase the workforce available for building new dams and upgrading grids, expanding capacity and thus increasing total generation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5507-exp5",
         text: "Higher hydropower generation can set off a chain: (M1') More hydropower often means lower or more stable electricity costs. (M2') Cheaper, reliable power can attract and grow energy-intensive industries and the broader economy. (M3') A growing industrial economy increases demand for engineers and expands engineering programs\u2014leading to more engineering bachelor\u2019s degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11506,27 +11066,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3058-exp1",
         text: "More master\u2019s graduates in agriculture and natural resources can increase the number of specialists who work on land management, environmental permitting, and impact assessments. That can speed up siting and approval of wind farms, which then leads to more wind power being generated.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3058-exp2",
         text: "When Lithuania generates more wind power, the renewable-energy sector grows and offers more jobs and funding. That growth can push universities to create or expand related agriculture/natural-resources master\u2019s programs (e.g., environmental management, rural land-use planning), leading to more degrees awarded.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3058-exp3",
         text: "Government policy could be driving both trends at the same time. For example, a national push for the green transition might fund wind power projects while also funding universities and scholarships in environmental and natural-resources fields\u2014making A and B rise together even if neither directly causes the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3058-exp4",
         text: "A could affect B through two different routes: (M1) more graduates means more skilled workers for project planning and maintenance, which helps wind farms get built and run reliably; and (M2) more graduates can also increase research and innovation (better site selection, better grid integration, better environmental mitigation), which further boosts wind generation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3058-exp5",
         text: "More wind power generation can reduce reliance on imported fuels and lower energy costs. That can improve the economy and increase public and government budgets. With more funding available, universities may expand graduate education and provide more support for agriculture/natural-resources master\u2019s programs, increasing the number of degrees awarded.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11644,27 +11199,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2691-exp1",
         text: "If South Carolina has more agricultural equipment operators, farms may harvest and plant more efficiently. That can increase total farm output and food supply (M: higher agricultural production), which then adds a bit to overall U.S. economic output and shows up as higher real GDP growth (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2691-exp2",
         text: "When U.S. real GDP growth is strong, people have more income and businesses spend more. That can raise demand for food and farm products (M': higher demand/prices for crops), encouraging farms to expand operations and hire more equipment operators in South Carolina (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2691-exp3",
         text: "A third factor could move both at the same time. For example, favorable nationwide weather conditions (C) can boost crop yields, leading farms to employ more equipment operators in South Carolina (A), while also raising agricultural output enough to nudge overall U.S. GDP growth (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2691-exp4",
         text: "More equipment operators in South Carolina could affect GDP growth through two different channels: (M1) higher farm production and lower food costs, which supports consumer spending; and separately (M2) more purchases of fuel, repairs, and machinery services around farming, which increases activity in local and regional supply chains. Both channels can contribute to higher U.S. GDP growth (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2691-exp5",
         text: "Higher U.S. GDP growth (B) can increase consumer spending (M1') and exports demand (M2'), which can raise crop prices and expected farm profits (M3'). With better profit expectations, farms in South Carolina may expand acreage or intensity of operations and hire more agricultural equipment operators (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11727,27 +11277,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2919-exp1",
         text: "More rainy days in Columbus could change how many people actually show up to vote in person (M = voter turnout/ability to get to the polls). If bad weather keeps some groups home more than others, the total Republican vote count in Ohio could shift as a result.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2919-exp2",
         text: "A strong Republican vote could lead to different state and local policy priorities (M' = infrastructure and land-use decisions, like stormwater systems or urban development). Over time, those choices can affect local flooding and how often precipitation is recorded as a \u2018rain day\u2019 at the Columbus measurement sites, creating a correlation even though the direction is from votes to recorded rain days.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2919-exp3",
         text: "A third factor could influence both rain patterns in Columbus and Republican vote totals (C = time/seasonal and long-run climate patterns that line up with election years). For example, certain years may be wetter statewide due to broader climate cycles, and those same years might also coincide with national political moods that boost Republican voting\u2014making A and B move together without one causing the other.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2919-exp4",
         text: "Rainy days could affect Republican votes through two different pathways: (M1 = campaign activity) rain reduces door-knocking, rallies, and travel, changing how effectively campaigns mobilize supporters; and (M2 = news attention/issue salience) repeated storms can shift what voters care about (e.g., economy vs. local disruption), which can influence how people vote. Both channels could connect precipitation to vote totals.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2919-exp5",
         text: "Election outcomes could set off a multi-step chain: more Republican votes (B) could influence state leadership and policy direction (M1' = who runs state agencies), which could change funding and priorities for weather monitoring and reporting (M2' = where sensors are placed, how records are maintained), which could alter how precipitation days are counted or classified (M3' = measurement/recording practices), leading to apparent changes in Columbus \u2018rain days\u2019 (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11825,27 +11370,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7195-exp1",
         text: "More rain in Miami can change people\u2019s daily lives (mediator: disruption/attention to local issues). Heavy rain can cause flooding, traffic, and power problems, which can make residents pay more attention to government services and climate/infrastructure policy. That extra attention could shift some voters toward the Democratic presidential candidate, increasing Democratic votes statewide.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7195-exp2",
         text: "Higher Democratic votes could be a sign that the election year has more Democratic-leaning political activity in Miami (mediator: more Democratic-leaning population moving in or spending more time there). If those same conditions bring more people from wetter regions or change local development patterns, the measured rain at Miami\u2019s reporting stations might differ (for example, where people live determines which nearby weather station data get emphasized), creating a link where voting patterns come first.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7195-exp3",
         text: "A third factor could drive both: time of year and election timing (confounder: seasonality/year-to-year cycles). Florida presidential elections happen in November, which is near the end of hurricane season. In years with more active tropical weather, Miami gets more rain, and those same years may also coincide with higher turnout or different voter priorities statewide, changing Democratic vote totals. The rain and the votes move together because of the same underlying yearly/seasonal pattern.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7195-exp4",
         text: "Rain could affect Democratic votes through two separate pathways: (M1) turnout and access\u2014bad weather can make it harder or easier for certain groups to vote (for example, travel difficulties or more early/mail voting), changing totals; and (M2) issue salience\u2014rain/flooding can make climate resilience, insurance, and infrastructure feel more urgent, nudging some voters toward the Democratic candidate. Both routes start with rain and end with vote totals.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7195-exp5",
         text: "Voting outcomes could reflect longer-term political control and policies (M1': which party controls local/state decision-making), which can influence (M2') urban development and drainage/infrastructure investment, which affects (M3') how much flooding and standing water occurs and even how rainfall is recorded/experienced in Miami. Over time, those policy and development choices can make the same storms produce higher measured precipitation impacts, creating a chain from votes to policy to infrastructure to apparent rain outcomes.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -11927,27 +11467,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4828-exp1",
         text: "More truck drivers in Alabama can mean more shipping activity and stronger demand for vehicles and parts. That can boost sales at Toyota\u2019s North American operations (mediator: overall auto-shipping/vehicle demand), which can lead investors to bid up Toyota\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4828-exp2",
         text: "If Toyota\u2019s stock price rises, Toyota may expand production or investment in the U.S. (mediator: Toyota expansion decisions and new contracts). That can increase freight needs for moving cars and parts, which can lead to more trucking jobs in Alabama.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4828-exp3",
         text: "A strong U.S. economy can raise both: it increases trucking employment in Alabama (more goods being moved) and also improves expectations for car sales and profits, lifting Toyota\u2019s stock price. Here the economy is the common factor affecting both.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4828-exp4",
         text: "More truck drivers in Alabama may signal (M1) higher manufacturing and retail shipping volumes in the Southeast and also (M2) lower freight bottlenecks and delivery delays. Both can improve overall auto sales/availability and investor confidence, which can push Toyota\u2019s stock price up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4828-exp5",
         text: "Toyota\u2019s stock price rising can (M1') increase the company\u2019s market value and access to cheaper funding, which can (M2') lead Toyota and its suppliers to invest more in U.S. production and distribution, which can (M3') create more freight contracts in the region\u2014ultimately increasing the number of truck drivers in Alabama.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12070,27 +11605,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-3636-exp1",
         text: "When households spend more on furnishings and equipment, it often reflects people moving into new homes or renovating. That boosts demand for new housing and home-related upgrades, which can improve Lennar\u2019s sales and profits. Investors then bid up Lennar\u2019s stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3636-exp2",
         text: "If Lennar\u2019s stock price rises, it can signal that the housing market is strong. That can make consumers feel more confident about buying homes and spending on home goods. The stronger confidence and housing activity then leads to higher household spending on furnishings and equipment.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3636-exp3",
         text: "A common driver could be the overall economy (jobs, wage growth, and consumer confidence). When the economy is doing well, households spend more on furnishings, and homebuilders like Lennar tend to sell more homes and look more profitable\u2014pushing their stock price up too.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3636-exp4",
         text: "Household spending can connect to Lennar\u2019s stock through two different channels: (M1) More spending suggests more home purchases and moves, which raises demand for new homes and helps Lennar\u2019s revenue. (M2) More spending also reflects stronger consumer confidence, which can make investors more optimistic about housing companies, lifting Lennar\u2019s valuation.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-3636-exp5",
         text: "A rising Lennar stock price can trigger a chain reaction: (M1') higher stock price improves investor sentiment about housing, which (M2') encourages more new-home construction and marketing activity, which (M3') leads to more people buying/moving into homes\u2014ultimately increasing household spending on furnishings and equipment.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12213,27 +11743,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4241-exp1",
         text: "More breweries can mean more beer-related events, taprooms, and nightlife. That can increase demand for non-alcohol options like energy drinks (people want a boost before/after going out). Higher demand can raise Monster\u2019s sales and profits, which can push MNST\u2019s stock price up. (A: more breweries \u2192 M: more nightlife/occasions for energy drinks \u2192 B: higher MNST stock price.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4241-exp2",
         text: "If Monster\u2019s stock price rises, it often reflects strong performance and optimism in the beverage sector. That can attract more investors to beverage businesses in general, making it easier for small drink companies (including craft breweries) to get funding and confidence to expand. That can increase the number of breweries. (B: higher MNST stock price \u2192 M\u2019: more investor interest/funding for beverages \u2192 A: more breweries.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4241-exp3",
         text: "A strong economy can cause both to move together. When people have more disposable income, more entrepreneurs open breweries and customers buy more drinks; at the same time, consumers may buy more convenience products like energy drinks, improving Monster\u2019s results and stock price. (C: overall economic growth/consumer spending \u2192 A and B both rise.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4241-exp4",
         text: "Breweries growing can affect Monster\u2019s stock through two different channels: (1) more breweries \u2192 more bars/venues and late-night socializing \u2192 more energy-drink purchases; and (2) more breweries \u2192 more competition for shelf space and distributor attention in stores \u2192 Monster invests more in marketing/distribution and can gain visibility and sales. Both channels can influence profits and, in turn, the stock price. (A \u2192 M1 \u2192 B and A \u2192 M2 \u2192 B.)",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4241-exp5",
         text: "A rising MNST stock price can set off a multi-step chain: higher stock price \u2192 more positive headlines and investor confidence \u2192 more money flowing into consumer/food-and-beverage investing \u2192 easier financing for small drink startups \u2192 more people start or expand craft breweries. (B \u2192 M1\u2019: media/investor enthusiasm \u2192 M2\u2019: more investment in the sector \u2192 M3\u2019: easier startup financing \u2192 A: more breweries.)",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12356,27 +11881,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-7068-exp1",
         text: "More breweries can make beer culture and local \u201changout\u201d spending grow in general. That broader rise in food-and-drink going out (M: overall restaurant/caf\u00e9 traffic and spending) can also lift sales and investor optimism for Starbucks, which can push SBUX stock up.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7068-exp2",
         text: "If Starbucks\u2019 stock price rises, it can reflect a strong economy and confident investors. That confidence can make financing easier and encourage entrepreneurship (M': access to funding / startup investment), which can lead to more people opening breweries.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7068-exp3",
         text: "A third factor could be driving both: a strong economy (C: overall economic growth). In good times, more people start new breweries and investors bid up stocks like Starbucks because they expect higher consumer spending.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7068-exp4",
         text: "Breweries could be linked to Starbucks\u2019 stock through two separate pathways: (M1) breweries often concentrate in growing, trendy neighborhoods, which also attracts Starbucks stores and boosts local sales; and (M2) a booming craft-beer scene can be a sign of higher disposable income and lifestyle spending in an area, which can increase demand for premium coffee and improve Starbucks\u2019 performance\u2014both supporting the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-7068-exp5",
         text: "A rising SBUX stock price can be part of a broader market upswing (M1': bullish stock market), which can increase wealth and optimism (M2': higher consumer/investor confidence), which can lead to more spending on \u201cexperience\u201d businesses and more entrepreneurs taking risks (M3': more small-business formation), eventually resulting in more breweries opening.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12499,27 +12019,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-2671-exp1",
         text: "When households spend more on meat, poultry, fish, and eggs, it can signal stronger demand for animal protein overall. That can encourage more small-scale livestock raising and backyard chicken keeping. Tractor Supply benefits from that because people buy feed, fencing, coops, waterers, and animal health supplies there\u2014boosting sales and potentially lifting the stock price.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2671-exp2",
         text: "If Tractor Supply\u2019s stock price rises, the company can find it easier to invest and expand (for example opening more stores, improving distribution, or running more promotions). Those expansions and promotions can make it easier or cheaper for customers to raise animals at home, which increases the supply of eggs/meat locally and can influence how much households end up spending on those foods.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2671-exp3",
         text: "A strong economy (like higher employment and wages) can push both variables up at the same time. People with more income tend to spend more on groceries including meat and eggs, and investors also tend to bid up retail stocks like Tractor Supply because they expect higher sales. So the economy could be the real driver behind both.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2671-exp4",
         text: "There could be two separate pathways from higher household spending on meat/eggs to a higher Tractor Supply stock price: (1) Higher meat/egg spending can reflect higher feed-grain demand, which encourages more farmers and hobbyists to buy feed and supplies\u2014raising Tractor Supply revenue. (2) Higher meat/egg spending can also reflect more interest in at-home food production (backyard chickens, home-raised animals), leading to more purchases of coops, fencing, brooders, and animal care items\u2014again boosting Tractor Supply sales and its stock.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-2671-exp5",
         text: "Tractor Supply\u2019s stock price can rise \u2192 the company gets more investor confidence and funding flexibility \u2192 it expands stores/online offerings and runs more marketing for livestock and backyard chicken products \u2192 more households start or expand raising animals at home \u2192 that changes what they buy at the grocery store (for example buying different amounts of meat and eggs), which affects total household spending on meats, poultry, fish, and eggs.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12771,27 +12286,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-732-exp1",
         text: "Higher US tax revenue often goes along with a stronger economy. In a strong economy, more cars are sold and driven, and regulators and manufacturers have more resources to test and investigate issues. That can lead to more suspension problems being detected and formally recalled (Economy/industry activity is the mediator between tax revenue and recalls).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-732-exp2",
         text: "A spike in suspension recalls can hurt car sales and slow down production, and it can also reduce profits at automakers and suppliers. Lower profits and slower sales can reduce the taxes the government collects (Automotive business performance is the mediator between recalls and tax revenue).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-732-exp3",
         text: "Overall economic conditions can drive both numbers at the same time. When the economy grows, people earn more and spend more (raising tax revenue), and there are also more vehicles on the road and more production (which can increase the number of recalls). So the economy could be causing both the tax revenue and the recalls to move together.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-732-exp4",
         text: "Tax revenue might connect to recalls through two separate paths: (1) More tax revenue can mean more funding for safety regulators and investigations, which can uncover more suspension defects and trigger recalls. (2) More tax revenue can reflect higher consumer spending, which boosts vehicle sales and miles driven, increasing the chances that suspension issues show up and get reported\u2014leading to more recalls.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-732-exp5",
         text: "More suspension recalls can lead to more warranty claims and repair costs, which can lead companies to cut production or jobs, which can reduce overall economic activity, which then lowers income and business taxes collected by the government. In this chain, recalls affect costs, costs affect jobs/output, and jobs/output affect tax revenue.",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -12864,27 +12374,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-4742-exp1",
         text: "More associate degrees in math and statistics can lead to more people with strong technical and problem-solving skills entering the local workforce. That can increase enrollment in trade programs or apprenticeships (M), which then results in more trained electricians in Idaho (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4742-exp2",
         text: "If Idaho has more electrician jobs available, that can raise overall demand for postsecondary education and credentials. Community colleges may respond by expanding offerings and recruiting more students (M'), which can lead to more associate degrees being awarded in math and statistics (A).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4742-exp3",
         text: "Idaho\u2019s population growth or overall economic expansion (C) could drive both trends at once: more residents and students means more math/stat associate degrees (A), and more construction and business activity means more electrician jobs (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4742-exp4",
         text: "An increase in math/stat associate degrees (A) could raise the number of electricians (B) through two routes: (M1) community colleges grow and invest more in technical education overall, including electrical programs; and (M2) employers see a stronger local talent pipeline and expand operations or hire more, increasing electrician positions.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-4742-exp5",
         text: "More electricians in Idaho (B) can signal a boom in construction and infrastructure work (M1'). That boom can increase state and local tax revenue or school funding (M2'), which allows community colleges to expand programs and student support (M3'), leading to more math and statistics associate degrees being awarded (A).",
-        persuasionMode: "logos",
       },
     ],
   },
@@ -13006,27 +12511,22 @@ export const MOCK_CORRELATIONS: CorrelationData[] = [
       {
         id: "corr-5213-exp1",
         text: "Household spending on education (A) could lead more people to get college and law-school preparation, increasing the number of law school applicants and graduates (M: more law graduates). That, in turn, raises the number of lawyers in the U.S. (B).",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5213-exp2",
         text: "If the number of lawyers (B) rises, legal services may become more visible and accessible, and families may see higher returns to professional degrees and credentials (M': stronger perceived payoff to formal education). That can motivate households to spend more on education (A) to help children reach those careers.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5213-exp3",
         text: "A growing economy and rising household incomes (C) can make families spend more on education (A) and also create more business activity and regulation that increases demand for legal services, leading to more lawyers (B). So both move together because of income/economic growth.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5213-exp4",
         text: "Education spending (A) could increase the number of lawyers (B) through two separate paths: (M1) more spending improves college readiness and test prep, producing more law school entrants; and (M2) more spending boosts overall educational attainment and networking/opportunities, making legal careers easier to access\u2014both paths increase the lawyer count.",
-        persuasionMode: "logos",
       },
       {
         id: "corr-5213-exp5",
         text: "More lawyers (B) could contribute to more lawsuits and legal complexity in society (M1'), which can raise compliance and credential requirements in many industries (M2'). That can increase competition for well-qualified jobs (M3'), leading families to spend more on education (A) to keep up.",
-        persuasionMode: "logos",
       },
     ],
   },

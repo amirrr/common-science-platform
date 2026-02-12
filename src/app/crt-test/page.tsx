@@ -5,14 +5,23 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import type { CRTData, ProgressiveSavePayload } from "@/types/correlation";
-import { CRT_RESPONSES_STORAGE_KEY, NUM_POST_CORRELATION_PAGES_WITH_PROGRESS } from "@/types/correlation";
+import {
+  CRT_RESPONSES_STORAGE_KEY,
+  NUM_POST_CORRELATION_PAGES_WITH_PROGRESS,
+} from "@/types/correlation";
 
 const crtSchema = z.object({
   crtAnswer1: z.string().min(1, "Please provide an answer"),
@@ -42,7 +51,8 @@ export default function CRTTestPage() {
     fetchCount();
   }, []);
 
-  const totalStudyParts = numCorrelations + NUM_POST_CORRELATION_PAGES_WITH_PROGRESS;
+  const totalStudyParts =
+    numCorrelations + NUM_POST_CORRELATION_PAGES_WITH_PROGRESS;
   const currentOverallStep = numCorrelations + 1;
   const progressValue = (currentOverallStep / totalStudyParts) * 100;
 
@@ -90,21 +100,24 @@ export default function CRTTestPage() {
     });
 
     // 3. Trigger background save (non-blocking)
-    saveCRTToFirestore(data).then(() => {
-      update({
-        id: "save-success",
-        title: "Answers saved!",
-        description: "Moving to demographics section.",
-        variant: "default",
-      } as any);
-    }).catch((err) => {
-      update({
-        id: "save-error",
-        title: "Sync Error",
-        description: "Could not sync answers to server. They are saved locally.",
-        variant: "destructive",
-      } as any);
-    });
+    saveCRTToFirestore(data)
+      .then(() => {
+        update({
+          id: "save-success",
+          title: "Answers saved!",
+          description: "Moving to demographics section.",
+          variant: "default",
+        } as any);
+      })
+      .catch((err) => {
+        update({
+          id: "save-error",
+          title: "Sync Error",
+          description:
+            "Could not sync answers to server. They are saved locally.",
+          variant: "destructive",
+        } as any);
+      });
 
     // 4. Navigate immediately
     router.push("/demographics");
@@ -124,14 +137,16 @@ export default function CRTTestPage() {
           <CardHeader>
             <CardTitle>Cognitive Reflection Test</CardTitle>
             <CardDescription>
-              Please answer the following three questions. Don&apos;t spend too much time on each; just provide what you think is the best answer.
+              Please answer the following three questions. Don&apos;t spend too
+              much time on each; just provide what you think is the best answer.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-3">
                 <Label htmlFor="crtAnswer1">
-                  A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? _____ cents.
+                  A bat and a ball cost $1.10 in total. The bat costs $1.00 more
+                  than the ball. How much does the ball cost? _____ cents.
                 </Label>
                 <Input
                   id="crtAnswer1"
@@ -139,13 +154,16 @@ export default function CRTTestPage() {
                   {...register("crtAnswer1")}
                 />
                 {errors.crtAnswer1 && (
-                  <p className="text-sm text-destructive">{errors.crtAnswer1.message}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.crtAnswer1.message}
+                  </p>
                 )}
               </div>
 
               <div className="space-y-3">
                 <Label htmlFor="crtAnswer2">
-                  If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets? _____ minutes.
+                  If it takes 5 machines 5 minutes to make 5 widgets, how long
+                  would it take 100 machines to make 100 widgets? _____ minutes.
                 </Label>
                 <Input
                   id="crtAnswer2"
@@ -153,13 +171,18 @@ export default function CRTTestPage() {
                   {...register("crtAnswer2")}
                 />
                 {errors.crtAnswer2 && (
-                  <p className="text-sm text-destructive">{errors.crtAnswer2.message}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.crtAnswer2.message}
+                  </p>
                 )}
               </div>
 
               <div className="space-y-3">
                 <Label htmlFor="crtAnswer3">
-                  In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days for the patch to cover the entire lake, how long would it take for the patch to cover half of the lake? _____ days.
+                  In a lake, there is a patch of lily pads. Every day, the patch
+                  doubles in size. If it takes 48 days for the patch to cover
+                  the entire lake, how long would it take for the patch to cover
+                  half of the lake? _____ days.
                 </Label>
                 <Input
                   id="crtAnswer3"
@@ -167,7 +190,9 @@ export default function CRTTestPage() {
                   {...register("crtAnswer3")}
                 />
                 {errors.crtAnswer3 && (
-                  <p className="text-sm text-destructive">{errors.crtAnswer3.message}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.crtAnswer3.message}
+                  </p>
                 )}
               </div>
 

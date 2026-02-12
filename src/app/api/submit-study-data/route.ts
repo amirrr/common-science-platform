@@ -101,8 +101,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Validate the shape and size of formData
-        const { rankedExplanationIds, explanationText } =
-          crData.formData;
+        const { rankedExplanationIds, explanationText } = crData.formData;
         if (
           !Array.isArray(rankedExplanationIds) ||
           rankedExplanationIds.length === 0 ||

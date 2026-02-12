@@ -15,7 +15,7 @@ import type {
 } from "@/types/correlation";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { ArrowRight, Home } from "lucide-react";
+import { Home } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
   RESPONSES_STORAGE_KEY,

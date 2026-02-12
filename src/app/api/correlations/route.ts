@@ -11,7 +11,7 @@ export async function GET() {
   const selectedCorrelations = getRandomizedCorrelations(
     allCorrelations,
     sessionId,
-    15,
+    10,
   );
 
   const summary = selectedCorrelations.map((c) => ({

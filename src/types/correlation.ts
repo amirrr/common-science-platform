@@ -13,8 +13,6 @@ export type PersuasionMode = "ethos" | "pathos" | "logos" | "other";
 export interface ExplanationOption {
   id: string;
   text: string;
-  persuasionMode: string;
-  isCorrect?: boolean; // For AI feedback purposes, not shown to users
 }
 
 export interface CorrelationData {
