@@ -30,11 +30,8 @@ export function CookieBanner() {
         <div className="flex items-center mb-3 sm:mb-0">
           <Cookie className="h-6 w-6 mr-3 text-primary" />
           <p className="text-sm">
-            This website uses browser `localStorage` to save your study progress
-            and preferences. This is essential for the study to function
-            correctly. By continuing to use this site, you consent to this use.
-            Please see our Research Study Notice on the introduction page for
-            more details on data handling.
+            We use cookies to manage your session and record your responses
+            anonymously. No personally identifiable information is collected.
           </p>
         </div>
         <Button
