@@ -1,9 +1,8 @@
 import "server-only";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import admin from "firebase-admin";
-import { initializeApp, getApps, cert } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import type admin from "firebase-admin";
+import { db } from "@/lib/firebase-admin";
 import type {
   ProgressiveSavePayload,
   CorrelationResponsePayload,
@@ -12,31 +11,6 @@ import type {
 } from "@/types/correlation";
 import { getSessionId } from "@/lib/session";
 import { rateLimit } from "@/lib/rate-limit";
-
-// Firebase Admin SDK Initialization
-const serviceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-};
-
-if (!getApps().length) {
-  try {
-    initializeApp({
-      credential: cert(serviceAccount as admin.ServiceAccount),
-    });
-    console.log("Firebase Admin SDK initialized successfully.");
-  } catch (e) {
-    console.error("Firebase Admin SDK initialization error:", e);
-  }
-}
-
-let db: admin.firestore.Firestore | null = null;
-try {
-  db = getFirestore();
-} catch (e) {
-  console.error("Error getting Firestore instance:", e);
-}
 
 export async function POST(request: NextRequest) {
   if (!db) {
@@ -146,6 +120,8 @@ export async function POST(request: NextRequest) {
           ...(data as DemographicsData),
           submittedAt: timestamp,
         };
+        updateData.status = "finished";
+        updateData.finishedAt = timestamp;
         break;
       default:
         return NextResponse.json(

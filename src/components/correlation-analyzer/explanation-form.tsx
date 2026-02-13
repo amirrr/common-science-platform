@@ -438,7 +438,7 @@ export function ExplanationForm({
                         <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">
                           Available Explanations
                         </h3>
-                        <div className="space-y-3 bg-muted/10 p-4 rounded-xl border border-border/50 min-h-[300px]">
+                        <div className="space-y-3 bg-muted/10 p-4 rounded-xl border border-border/50">
                           <SortableContext
                             items={items.pool}
                             strategy={verticalListSortingStrategy}
@@ -463,8 +463,7 @@ export function ExplanationForm({
                               })}
                               {items.pool.length === 0 && (
                                 <div className="text-center py-8 text-muted-foreground italic text-sm">
-                                  All items ranked! Drag back here if you change
-                                  your mind.
+                                  All items ranked!
                                 </div>
                               )}
                             </DroppableContainer>
@@ -684,7 +683,7 @@ function DroppableContainer({
   });
 
   return (
-    <div ref={setNodeRef} className="space-y-3 min-h-[200px] h-full">
+    <div ref={setNodeRef} className="space-y-3 min-h-[80px] h-full">
       {children}
     </div>
   );

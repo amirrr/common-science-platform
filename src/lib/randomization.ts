@@ -41,3 +41,16 @@ export function getRandomizedCorrelations<T>(
   const shuffled = seededShuffle(items, seed);
   return shuffled.slice(0, count);
 }
+
+/**
+ * Deterministically assigns a group (X or Y) based on the sessionId.
+ * This ensures stable assignment without race conditions in high-concurrency.
+ */
+export function assignGroup(sessionId: string): "X" | "Y" {
+  let hash = 0;
+  for (let i = 0; i < sessionId.length; i++) {
+    hash = (hash << 5) - hash + sessionId.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash) % 2 === 0 ? "X" : "Y";
+}
