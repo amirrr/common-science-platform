@@ -75,7 +75,8 @@ export async function POST(request: NextRequest) {
         }
 
         // Validate the shape and size of formData
-        const { rankedExplanationIds, explanationText } = crData.formData;
+        const { rankedExplanationIds, convictionLevel, explanationText } =
+          crData.formData;
         if (
           !Array.isArray(rankedExplanationIds) ||
           rankedExplanationIds.length === 0 ||
@@ -88,6 +89,24 @@ export async function POST(request: NextRequest) {
             { status: 400 },
           );
         }
+
+        // Validate convictionLevel
+        const validConvictionLevels = [
+          "not-convinced",
+          "slightly-convinced",
+          "moderately-convinced",
+          "very-convinced",
+        ];
+        if (
+          convictionLevel === undefined ||
+          !validConvictionLevels.includes(convictionLevel)
+        ) {
+          return NextResponse.json(
+            { message: "Invalid or missing convictionLevel." },
+            { status: 400 },
+          );
+        }
+
         if (
           explanationText !== undefined &&
           (typeof explanationText !== "string" || explanationText.length > 5000)
@@ -101,6 +120,7 @@ export async function POST(request: NextRequest) {
         // Only save the fields you expect
         const sanitizedFormData = {
           rankedExplanationIds,
+          convictionLevel,
           explanationText,
           submittedAt: timestamp,
         };

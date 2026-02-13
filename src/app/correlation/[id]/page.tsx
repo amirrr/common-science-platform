@@ -242,7 +242,7 @@ export default function CorrelationPage() {
         </div>
       </header>
 
-      <main className="w-full max-w-4xl space-y-6 md:space-y-8 mt-24">
+      <main className="w-full max-w-4xl space-y-6 md:space-y-8 mt-12">
         <CorrelationDisplay correlation={currentCorrelation} />
 
         <ExplanationForm

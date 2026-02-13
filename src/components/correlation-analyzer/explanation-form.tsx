@@ -38,11 +38,29 @@ import { CSS } from "@dnd-kit/utilities";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { Loader2, Info, ArrowRight, GripVertical, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  Field,
+  FieldContent,
+  FieldLabel,
+  FieldTitle,
+} from "@/components/ui/field";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const explanationFormSchema = z.object({
-  rankedExplanationIds: z.array(z.string()).length(3, {
-    message: "Please rank exactly 3 explanations.",
+  rankedExplanationIds: z.array(z.string()).length(2, {
+    message: "Please rank exactly 2 explanations.",
   }),
+  convictionLevel: z.enum(
+    [
+      "not-convinced",
+      "slightly-convinced",
+      "moderately-convinced",
+      "very-convinced",
+    ],
+    {
+      required_error: "Please select how convinced you are.",
+    },
+  ),
   explanationText: z
     .string()
     .max(500, {
@@ -101,6 +119,7 @@ export function ExplanationForm({
     resolver: zodResolver(explanationFormSchema),
     defaultValues: {
       rankedExplanationIds: existingResponse?.rankedExplanationIds || [],
+      convictionLevel: existingResponse?.convictionLevel || undefined,
       explanationText: existingResponse?.explanationText || "",
     },
     mode: "onChange",
@@ -164,8 +183,8 @@ export function ExplanationForm({
       )
         return prev;
 
-      // Prevent adding more than 3 items to ranked
-      if (overContainer === "ranked" && prev.ranked.length >= 3) return prev;
+      // Prevent adding more than 2 items to ranked
+      if (overContainer === "ranked" && prev.ranked.length >= 2) return prev;
 
       const activeItems = prev[activeContainer];
       const overItems = prev[overContainer];
@@ -299,11 +318,11 @@ export function ExplanationForm({
 
     // Enforce max 3 items in ranked
     setItems((prev) => {
-      if (prev.ranked.length > 3) {
-        const extra = prev.ranked.slice(3);
+      if (prev.ranked.length > 2) {
+        const extra = prev.ranked.slice(2);
         return {
           pool: [...prev.pool, ...extra],
-          ranked: prev.ranked.slice(0, 3),
+          ranked: prev.ranked.slice(0, 2),
         };
       }
       return prev;
@@ -360,11 +379,12 @@ export function ExplanationForm({
                 <FormItem className="space-y-6">
                   <div>
                     <FormLabel className="text-lg font-medium">
-                      Rank your top 3 explanations
+                      Which of these explanations do you think is more likely to
+                      be true?
                     </FormLabel>
                     <p className="text-sm text-muted-foreground mt-1">
                       Drag explanations from the pool into the slots below. You
-                      must fill all 3 slots.
+                      must fill all 2 slots.
                     </p>
                   </div>
 
@@ -389,7 +409,7 @@ export function ExplanationForm({
                             {/* FIX #1: Filled slots render SortableExplanationItem directly
                                 (no DroppableSlot wrapper) so useSortable droppables don't
                                 conflict with useDroppable — enables reordering within ranked */}
-                            {[0, 1, 2].map((index) => {
+                            {[0, 1].map((index) => {
                               const id = items.ranked[index];
                               const explanation = id
                                 ? explanationsToList.find((e) => e.id === id)
@@ -420,11 +440,7 @@ export function ExplanationForm({
                                   isFilled={false}
                                 >
                                   <div className="h-full flex items-center justify-center text-muted-foreground/40 text-sm font-medium border-2 border-dashed border-border rounded-xl p-4 transition-colors hover:border-primary/20 hover:bg-muted/50">
-                                    {index === 0
-                                      ? "1st Choice"
-                                      : index === 1
-                                        ? "2nd Choice"
-                                        : "3rd Choice"}
+                                    {index === 0 ? "1st Choice" : "2nd Choice"}
                                   </div>
                                 </DroppableSlot>
                               );
@@ -487,6 +503,87 @@ export function ExplanationForm({
                       ) : null}
                     </DragOverlay>
                   </DndContext>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="convictionLevel"
+              render={({ field }) => (
+                <FormItem className="space-y-4">
+                  <div>
+                    <FormLabel className="text-lg font-medium">
+                      How convinced are you that your chosen explanation is
+                      true?
+                    </FormLabel>
+                  </div>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-3"
+                      disabled={existingResponse !== null || isSubmitting}
+                    >
+                      <FieldLabel htmlFor="not-convinced">
+                        <Field
+                          orientation="horizontal"
+                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                        >
+                          <FieldContent>
+                            <FieldTitle>1. Not convinced</FieldTitle>
+                          </FieldContent>
+                          <RadioGroupItem
+                            value="not-convinced"
+                            id="not-convinced"
+                          />
+                        </Field>
+                      </FieldLabel>
+                      <FieldLabel htmlFor="slightly-convinced">
+                        <Field
+                          orientation="horizontal"
+                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                        >
+                          <FieldContent>
+                            <FieldTitle>2. Slightly convinced</FieldTitle>
+                          </FieldContent>
+                          <RadioGroupItem
+                            value="slightly-convinced"
+                            id="slightly-convinced"
+                          />
+                        </Field>
+                      </FieldLabel>
+                      <FieldLabel htmlFor="moderately-convinced">
+                        <Field
+                          orientation="horizontal"
+                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                        >
+                          <FieldContent>
+                            <FieldTitle>3. Moderately convinced</FieldTitle>
+                          </FieldContent>
+                          <RadioGroupItem
+                            value="moderately-convinced"
+                            id="moderately-convinced"
+                          />
+                        </Field>
+                      </FieldLabel>
+                      <FieldLabel htmlFor="very-convinced">
+                        <Field
+                          orientation="horizontal"
+                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+                        >
+                          <FieldContent>
+                            <FieldTitle>4. Very convinced</FieldTitle>
+                          </FieldContent>
+                          <RadioGroupItem
+                            value="very-convinced"
+                            id="very-convinced"
+                          />
+                        </Field>
+                      </FieldLabel>
+                    </RadioGroup>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -578,7 +675,7 @@ function SortableExplanationItem({
 
   if (isOverlay) {
     return (
-      <div className="flex items-center space-x-3 p-4 rounded-xl border-2 shadow-2xl border-primary bg-card z-50">
+      <div className="flex items-center space-x-3 p-4 rounded-xl border-2 shadow-2xl border-primary bg-card z-50 touch-none">
         <div className="p-2">
           <GripVertical className="h-5 w-5 text-muted-foreground" />
         </div>
@@ -603,7 +700,7 @@ function SortableExplanationItem({
       {...attributes}
       {...listeners}
       className={cn(
-        "flex items-center space-x-3 p-4 rounded-xl border-2 transition-colors duration-200 bg-card group relative select-none",
+        "flex items-center space-x-3 p-4 rounded-xl border-2 transition-colors duration-200 bg-card group relative select-none touch-none",
         isDragging
           ? "opacity-30 border-dashed border-primary/50"
           : "shadow-sm border-border hover:border-primary/50",

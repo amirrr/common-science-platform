@@ -43,19 +43,21 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
     <Card className="w-full shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl font-bold">
+          Why is{" "}
           <span style={{ color: "hsl(var(--chart-1))" }}>
             {correlation.series1Name}
           </span>
-          <span className="text-muted-foreground mx-2">vs</span>
+          <span className="text-muted-foreground mx-2">correlated with</span>
           <span style={{ color: "hsl(var(--chart-2))" }}>
             {correlation.series2Name}
-          </span>
+          </span>{" "}
+          ?
         </CardTitle>
         <CardDescription className="text-base">
           {correlation.description}
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="!px-0">
         {correlation.imagePlaceholder ? (
           <div className="aspect-video w-full overflow-hidden rounded-lg border">
             <Image
@@ -103,7 +105,6 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                     strokeDasharray: "3 3",
                   }}
                 />
-                <Legend content={<ChartLegendContent className="pt-5" />} />
                 <Line
                   yAxisId="left"
                   type="monotone"

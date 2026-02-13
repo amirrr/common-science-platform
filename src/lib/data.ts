@@ -12657,6 +12657,13 @@ export function getCorrelationById(id: string) {
   return MOCK_BIDIRECTIONAL_DATA.find((c) => c.id === id);
 }
 
+function shuffle<T>(array: T[]): T[] {
+  return array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
 /**
  * Logic for the Experiment Groups (X and Y)
  *
@@ -12678,9 +12685,16 @@ export function getExplanationsForGroup(
   const directionData =
     group === "X" ? correlation.forward : correlation.backward;
 
+  // randomize the array of explanations order
+  const shuffleddirectionData = shuffle([
+    directionData.explanations.type1,
+    directionData.explanations.type2,
+    directionData.explanations.type3,
+  ]);
+
+  // Return only 2 of the 3 shuffled explanations
   return [
-    { id: "exp1", text: directionData.explanations.type1 },
-    { id: "exp2", text: directionData.explanations.type2 },
-    { id: "exp3", text: directionData.explanations.type3 },
+    { id: "exp1", text: shuffleddirectionData[0] },
+    { id: "exp2", text: shuffleddirectionData[1] },
   ];
 }
