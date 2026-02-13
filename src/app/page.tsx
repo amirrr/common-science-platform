@@ -102,7 +102,7 @@ export default function ResearchNoticePage() {
           </div>
         ) : (
           <p className="text-red-500 mt-8">
-            No correlations available to start the study.
+            Loading...
           </p>
         )}
       </main>
