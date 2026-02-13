@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Correlation Analyzer Study",
+  title: "Common Science",
   description:
-    "Participate in a research study about understanding data correlations.",
+    "Participate in a research study about understanding explanations.",
 };
 
 export default function RootLayout({
