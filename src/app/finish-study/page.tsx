@@ -70,7 +70,7 @@ export default function FinishStudyPage() {
           </Link>
         </div>
       </main>
-      <footer className="w-full max-w-4xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
+      <footer className="w-full max-w-5xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
         <p>
           &copy; {new Date().getFullYear()} Correlation Study. Your
           participation is valuable.

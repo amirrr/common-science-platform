@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,62 +13,15 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { ExplanationOption } from "@/types/correlation";
+import { Slider } from "@/components/ui/slider";
 import {
-  DndContext,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragOverlay,
-  defaultDropAnimationSideEffects,
-  type DropAnimation,
-  useDroppable,
-} from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-  useSortable,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import { restrictToWindowEdges } from "@dnd-kit/modifiers";
-import { Loader2, Info, ArrowRight, GripVertical, X } from "lucide-react";
+  explanationFormSchema,
+  type ExplanationFormValues,
+  type ExplanationOption,
+  CONVICTION_LEVELS,
+} from "@/types/correlation";
+import { Loader2, Info, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {
-  Field,
-  FieldContent,
-  FieldLabel,
-  FieldTitle,
-} from "@/components/ui/field";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
-export const explanationFormSchema = z.object({
-  rankedExplanationIds: z.array(z.string()).length(2, {
-    message: "Please rank exactly 2 explanations.",
-  }),
-  convictionLevel: z.enum(
-    [
-      "not-convinced",
-      "slightly-convinced",
-      "moderately-convinced",
-      "very-convinced",
-    ],
-    {
-      required_error: "Please select how convinced you are.",
-    },
-  ),
-  explanationText: z
-    .string()
-    .max(500, {
-      message: "Your explanation must not exceed 500 characters.",
-    })
-    .optional()
-    .default(""),
-});
-
-export type ExplanationFormValues = z.infer<typeof explanationFormSchema>;
 
 interface ExplanationFormProps {
   explanationsToList: ExplanationOption[];
@@ -78,24 +29,7 @@ interface ExplanationFormProps {
   onNext?: () => void;
   isSubmitting: boolean;
   existingResponse?: ExplanationFormValues | null;
-}
-
-/** Pure function to compute items from props — used by lazy initializer and prop-change handler */
-function computeInitialItems(
-  explanationsToList: ExplanationOption[],
-  existingResponse?: ExplanationFormValues | null,
-): { pool: string[]; ranked: string[] } {
-  if (existingResponse?.rankedExplanationIds) {
-    const ranked = existingResponse.rankedExplanationIds.slice(0, 3);
-    const pool = explanationsToList
-      .map((e) => e.id)
-      .filter((id) => !ranked.includes(id));
-    return { pool, ranked };
-  }
-  return {
-    pool: explanationsToList.map((e) => e.id),
-    ranked: [],
-  };
+  experimentGroup: "X" | "Y";
 }
 
 export function ExplanationForm({
@@ -104,253 +38,128 @@ export function ExplanationForm({
   onNext,
   isSubmitting,
   existingResponse,
+  experimentGroup,
 }: ExplanationFormProps) {
-  const [items, setItems] = useState<{ pool: string[]; ranked: string[] }>(() =>
-    computeInitialItems(explanationsToList, existingResponse),
-  );
-  const [activeId, setActiveId] = useState<string | null>(null);
-
-  // Re-initialize items when props change
-  useEffect(() => {
-    setItems(computeInitialItems(explanationsToList, existingResponse));
-  }, [explanationsToList, existingResponse]);
-
   const form = useForm<ExplanationFormValues>({
     resolver: zodResolver(explanationFormSchema),
     defaultValues: {
-      rankedExplanationIds: existingResponse?.rankedExplanationIds || [],
-      convictionLevel: existingResponse?.convictionLevel || undefined,
+      rankedExplanations: existingResponse?.rankedExplanations || [],
       explanationText: existingResponse?.explanationText || "",
+      experimentGroup: existingResponse?.experimentGroup || experimentGroup,
     },
     mode: "onChange",
   });
 
-  // Sync internal ranked state → react-hook-form (this is fine: setValue is an external-system call)
-  useEffect(() => {
-    form.setValue("rankedExplanationIds", items.ranked, {
+  // Determine which options to show.
+  // CRITICAL: If we have an existing response, we MUST use the explanations from there
+  // to avoid the shuffling issue on refresh.
+  const initialExplanations =
+    existingResponse?.rankedExplanations &&
+    existingResponse.rankedExplanations.length === 2
+      ? existingResponse.rankedExplanations.map((e) => ({
+          id: e.type,
+          text: e.text,
+        }))
+      : explanationsToList;
+
+  const optionA = initialExplanations[0];
+  const optionB = initialExplanations[1];
+  if (!optionA || !optionB) {
+    return <div>Error: Missing explanation options</div>;
+  }
+
+  const rankedExplanations = form.watch("rankedExplanations") || [];
+  const selectedType = rankedExplanations[0]?.type;
+  const convictionA = rankedExplanations.find(
+    (e) => e.type === optionA?.id,
+  )?.conviction;
+  const convictionB = rankedExplanations.find(
+    (e) => e.type === optionB?.id,
+  )?.conviction;
+
+  const convictionToIndex = (level: string | undefined) => {
+    if (!level) return null;
+    return CONVICTION_LEVELS.indexOf(level as any);
+  };
+  const handleOptionSelect = (optionId: string) => {
+    const selectedOption = optionId === optionA.id ? optionA : optionB;
+    const otherOption = optionId === optionA.id ? optionB : optionA;
+
+    // We preserve existing convictions if we're just flipping the rank
+    const currentExplanations = form.getValues("rankedExplanations");
+    const getConviction = (id: string) =>
+      currentExplanations.find((e) => e.type === id)?.conviction;
+
+    form.setValue(
+      "rankedExplanations",
+      [
+        {
+          type: selectedOption.id,
+          text: selectedOption.text,
+          conviction: getConviction(selectedOption.id) as any,
+        },
+        {
+          type: otherOption.id,
+          text: otherOption.text,
+          conviction: getConviction(otherOption.id) as any,
+        },
+      ],
+      {
+        shouldValidate: true,
+        shouldDirty: true,
+      },
+    );
+  };
+  const handleConvictionChange = (option: "A" | "B", value: number[]) => {
+    const optionId = option === "A" ? optionA.id : optionB.id;
+    const stringValue = CONVICTION_LEVELS[value[0]];
+
+    const currentExplanations = form.getValues("rankedExplanations");
+    // Ensure we have both options in the array if they weren't selected yet
+    let newExplanations = [...currentExplanations];
+
+    if (newExplanations.length < 2) {
+      // If nothing selected yet, we put this one first?
+      // Actually, if they haven't ranked, we should probably initialize it.
+      // But the schema requires 2. Let's initialize if empty.
+      if (newExplanations.length === 0) {
+        newExplanations = [
+          {
+            type: optionA.id,
+            text: optionA.text,
+            conviction: undefined as any,
+          },
+          {
+            type: optionB.id,
+            text: optionB.text,
+            conviction: undefined as any,
+          },
+        ];
+      }
+    }
+
+    const index = newExplanations.findIndex((e) => e.type === optionId);
+    if (index !== -1) {
+      newExplanations[index].conviction = stringValue;
+    }
+
+    form.setValue("rankedExplanations", newExplanations as any, {
       shouldValidate: true,
       shouldDirty: true,
     });
-  }, [items.ranked, form]);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 5,
-      },
-    }),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
-
-  function handleDragStart(event: any) {
-    setActiveId(event.active.id);
-  }
-
-  function handleDragOver(event: any) {
-    const { active, over } = event;
-    if (!over || active.id === over.id) return;
-
-    setItems((prev) => {
-      const activeIdStr = active.id as string;
-      const overId = String(over.id);
-
-      // Find containers using prev state (avoids stale closure)
-      const activeContainer: "pool" | "ranked" | null = prev.pool.includes(
-        activeIdStr,
-      )
-        ? "pool"
-        : prev.ranked.includes(activeIdStr)
-          ? "ranked"
-          : null;
-
-      let overContainer: "pool" | "ranked" | null = prev.pool.includes(overId)
-        ? "pool"
-        : prev.ranked.includes(overId)
-          ? "ranked"
-          : null;
-
-      if (!overContainer) {
-        if (overId === "pool-container") overContainer = "pool";
-        else if (overId.startsWith("slot-")) overContainer = "ranked";
-      }
-
-      if (
-        !activeContainer ||
-        !overContainer ||
-        activeContainer === overContainer
-      )
-        return prev;
-
-      // Prevent adding more than 2 items to ranked
-      if (overContainer === "ranked" && prev.ranked.length >= 2) return prev;
-
-      const activeItems = prev[activeContainer];
-      const overItems = prev[overContainer];
-      const activeIndex = activeItems.indexOf(activeIdStr);
-
-      // Determine insertion index
-      let newIndex: number;
-      if (overId.startsWith("slot-")) {
-        newIndex = Math.min(parseInt(overId.split("-")[1]), overItems.length);
-      } else if (overId === "pool-container") {
-        newIndex = overItems.length;
-      } else {
-        const overIndex = overItems.indexOf(overId);
-        const isBelowOverItem =
-          over &&
-          active.rect.current.translated &&
-          active.rect.current.translated.top > over.rect.top + over.rect.height;
-        newIndex =
-          overIndex >= 0
-            ? overIndex + (isBelowOverItem ? 1 : 0)
-            : overItems.length;
-      }
-
-      return {
-        ...prev,
-        [activeContainer]: activeItems.filter((item) => item !== activeIdStr),
-        [overContainer]: [
-          ...overItems.slice(0, newIndex),
-          activeItems[activeIndex],
-          ...overItems.slice(newIndex),
-        ],
-      };
-    });
-  }
-
-  function handleDragEnd(event: any) {
-    const { active, over } = event;
-
-    if (!over) {
-      setActiveId(null);
-      return;
-    }
-
-    setItems((prev) => {
-      const activeIdStr = active.id as string;
-      const overIdStr = String(over.id);
-
-      const activeContainer: "pool" | "ranked" | null = prev.pool.includes(
-        activeIdStr,
-      )
-        ? "pool"
-        : prev.ranked.includes(activeIdStr)
-          ? "ranked"
-          : null;
-
-      let overContainer: "pool" | "ranked" | null = prev.pool.includes(
-        overIdStr,
-      )
-        ? "pool"
-        : prev.ranked.includes(overIdStr)
-          ? "ranked"
-          : null;
-
-      if (!overContainer) {
-        if (overIdStr === "pool-container") overContainer = "pool";
-        else if (overIdStr.startsWith("slot-")) overContainer = "ranked";
-      }
-
-      if (!activeContainer || !overContainer) return prev;
-
-      if (activeContainer === overContainer) {
-        const containerItems = prev[activeContainer];
-        const activeIndex = containerItems.indexOf(activeIdStr);
-        let overIndex: number;
-
-        if (overIdStr.startsWith("slot-")) {
-          overIndex = Math.min(
-            parseInt(overIdStr.split("-")[1]),
-            containerItems.length - 1,
-          );
-        } else {
-          overIndex = containerItems.indexOf(overIdStr);
-        }
-
-        if (
-          activeIndex !== -1 &&
-          overIndex !== -1 &&
-          activeIndex !== overIndex
-        ) {
-          return {
-            ...prev,
-            [activeContainer]: arrayMove(
-              containerItems,
-              activeIndex,
-              overIndex,
-            ),
-          };
-        }
-        return prev;
-      }
-
-      // Cross-container fallback (in case handleDragOver didn't fire)
-      if (overContainer === "ranked" && prev.ranked.length >= 3) return prev;
-
-      const sourceItems = prev[activeContainer].filter(
-        (id) => id !== activeIdStr,
-      );
-      const targetItems = [...prev[overContainer]];
-
-      let insertIndex: number;
-      if (overIdStr.startsWith("slot-")) {
-        insertIndex = Math.min(
-          parseInt(overIdStr.split("-")[1]),
-          targetItems.length,
-        );
-      } else if (overIdStr === "pool-container") {
-        insertIndex = targetItems.length;
-      } else {
-        const idx = targetItems.indexOf(overIdStr);
-        insertIndex = idx >= 0 ? idx : targetItems.length;
-      }
-
-      targetItems.splice(insertIndex, 0, activeIdStr);
-
-      return {
-        ...prev,
-        [activeContainer]: sourceItems,
-        [overContainer]: targetItems,
-      };
-    });
-
-    // Enforce max 3 items in ranked
-    setItems((prev) => {
-      if (prev.ranked.length > 2) {
-        const extra = prev.ranked.slice(2);
-        return {
-          pool: [...prev.pool, ...extra],
-          ranked: prev.ranked.slice(0, 2),
-        };
-      }
-      return prev;
-    });
-
-    setActiveId(null);
-  }
-
-  const moveBackToPool = (id: string) => {
-    setItems((prev) => ({
-      pool: [...prev.pool, id],
-      ranked: prev.ranked.filter((item) => item !== id),
-    }));
   };
-
-  const dropAnimation: DropAnimation = {
-    sideEffects: defaultDropAnimationSideEffects({
-      styles: {
-        active: {
-          opacity: "0.5",
-        },
-      },
-    }),
-  };
-
   function handleSubmit(values: ExplanationFormValues) {
     onSubmitAttempt(values);
   }
+
+  const convictionLabels = [
+    "Not convinced",
+    "Slightly convinced",
+    "Moderately convinced",
+    "Very convinced",
+  ];
+
+  const isDisabled = existingResponse !== null || isSubmitting;
 
   return (
     <Card className="w-full mt-6 shadow-lg">
@@ -374,7 +183,7 @@ export function ExplanationForm({
           >
             <FormField
               control={form.control}
-              name="rankedExplanationIds"
+              name="rankedExplanations"
               render={() => (
                 <FormItem className="space-y-6">
                   <div>
@@ -383,211 +192,173 @@ export function ExplanationForm({
                       be true?
                     </FormLabel>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Drag explanations from the pool into the slots below. You
-                      must fill all 2 slots.
+                      Select one option and rate your conviction for each
+                      explanation.
                     </p>
                   </div>
 
-                  <DndContext
-                    sensors={sensors}
-                    onDragStart={handleDragStart}
-                    onDragOver={handleDragOver}
-                    onDragEnd={handleDragEnd}
-                    modifiers={[restrictToWindowEdges]}
-                  >
-                    <div className="grid grid-cols-1 gap-6">
-                      {/* Ranked Slots Area */}
-                      <div className="space-y-4">
-                        <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">
-                          Your Ranking
-                        </h3>
-                        <div className="space-y-3 bg-secondary/20 p-4 rounded-xl border border-border/50">
-                          <SortableContext
-                            items={items.ranked}
-                            strategy={verticalListSortingStrategy}
-                          >
-                            {/* FIX #1: Filled slots render SortableExplanationItem directly
-                                (no DroppableSlot wrapper) so useSortable droppables don't
-                                conflict with useDroppable — enables reordering within ranked */}
-                            {[0, 1].map((index) => {
-                              const id = items.ranked[index];
-                              const explanation = id
-                                ? explanationsToList.find((e) => e.id === id)
-                                : null;
-
-                              if (explanation) {
-                                return (
-                                  <SortableExplanationItem
-                                    key={explanation.id}
-                                    id={explanation.id}
-                                    text={explanation.text}
-                                    index={index + 1}
-                                    disabled={
-                                      existingResponse !== null || isSubmitting
-                                    }
-                                    onRemove={() =>
-                                      moveBackToPool(explanation.id)
-                                    }
-                                  />
-                                );
-                              }
-
-                              return (
-                                <DroppableSlot
-                                  key={`slot-${index}`}
-                                  index={index}
-                                  id={`slot-${index}`}
-                                  isFilled={false}
-                                >
-                                  <div className="h-full flex items-center justify-center text-muted-foreground/40 text-sm font-medium border-2 border-dashed border-border rounded-xl p-4 transition-colors hover:border-primary/20 hover:bg-muted/50">
-                                    {index === 0 ? "1st Choice" : "2nd Choice"}
-                                  </div>
-                                </DroppableSlot>
-                              );
-                            })}
-                          </SortableContext>
-                        </div>
-                      </div>
-
-                      {/* Pool Area */}
-                      <div className="space-y-4">
-                        <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">
-                          Available Explanations
-                        </h3>
-                        <div className="space-y-3 bg-muted/10 p-4 rounded-xl border border-border/50">
-                          <SortableContext
-                            items={items.pool}
-                            strategy={verticalListSortingStrategy}
-                            id="pool"
-                          >
-                            <DroppableContainer id="pool-container">
-                              {items.pool.map((id) => {
-                                const explanation = explanationsToList.find(
-                                  (e) => e.id === id,
-                                );
-                                if (!explanation) return null;
-                                return (
-                                  <SortableExplanationItem
-                                    key={explanation.id}
-                                    id={explanation.id}
-                                    text={explanation.text}
-                                    disabled={
-                                      existingResponse !== null || isSubmitting
-                                    }
-                                  />
-                                );
-                              })}
-                              {items.pool.length === 0 && (
-                                <div className="text-center py-8 text-muted-foreground italic text-sm">
-                                  All items ranked!
-                                </div>
-                              )}
-                            </DroppableContainer>
-                          </SortableContext>
-                        </div>
-                      </div>
-                    </div>
-
-                    <DragOverlay dropAnimation={dropAnimation}>
-                      {activeId ? (
-                        <div className="opacity-90 scale-105 cursor-grabbing">
-                          <SortableExplanationItem
-                            id={activeId}
-                            text={
-                              explanationsToList.find((e) => e.id === activeId)
-                                ?.text || ""
-                            }
-                            isOverlay
-                          />
-                        </div>
-                      ) : null}
-                    </DragOverlay>
-                  </DndContext>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="convictionLevel"
-              render={({ field }) => (
-                <FormItem className="space-y-4">
-                  <div>
-                    <FormLabel className="text-lg font-medium">
-                      How convinced are you that your chosen explanation is
-                      true?
-                    </FormLabel>
+                  {/* Radio Cards Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <RadioOptionCard
+                      id={optionA.id}
+                      label="Option A"
+                      text={optionA.text}
+                      selected={selectedType === optionA.id}
+                      onSelect={() => handleOptionSelect(optionA.id)}
+                      disabled={isDisabled}
+                    />
+                    <RadioOptionCard
+                      id={optionB.id}
+                      label="Option B"
+                      text={optionB.text}
+                      selected={selectedType === optionB.id}
+                      onSelect={() => handleOptionSelect(optionB.id)}
+                      disabled={isDisabled}
+                    />
                   </div>
-                  <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      className="grid grid-cols-1 md:grid-cols-2 gap-3"
-                      disabled={existingResponse !== null || isSubmitting}
-                    >
-                      <FieldLabel htmlFor="not-convinced">
-                        <Field
-                          orientation="horizontal"
-                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                        >
-                          <FieldContent>
-                            <FieldTitle>1. Not convinced</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value="not-convinced"
-                            id="not-convinced"
-                          />
-                        </Field>
-                      </FieldLabel>
-                      <FieldLabel htmlFor="slightly-convinced">
-                        <Field
-                          orientation="horizontal"
-                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                        >
-                          <FieldContent>
-                            <FieldTitle>2. Slightly convinced</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value="slightly-convinced"
-                            id="slightly-convinced"
-                          />
-                        </Field>
-                      </FieldLabel>
-                      <FieldLabel htmlFor="moderately-convinced">
-                        <Field
-                          orientation="horizontal"
-                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                        >
-                          <FieldContent>
-                            <FieldTitle>3. Moderately convinced</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value="moderately-convinced"
-                            id="moderately-convinced"
-                          />
-                        </Field>
-                      </FieldLabel>
-                      <FieldLabel htmlFor="very-convinced">
-                        <Field
-                          orientation="horizontal"
-                          className="p-4 hover:bg-muted/50 transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5"
-                        >
-                          <FieldContent>
-                            <FieldTitle>4. Very convinced</FieldTitle>
-                          </FieldContent>
-                          <RadioGroupItem
-                            value="very-convinced"
-                            id="very-convinced"
-                          />
-                        </Field>
-                      </FieldLabel>
-                    </RadioGroup>
-                  </FormControl>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* Conviction Sliders Row */}
+            <div className="space-y-4">
+              <FormLabel className="text-lg font-medium">
+                How convinced are you of each explanation?
+              </FormLabel>
+              <p className="text-sm text-muted-foreground">
+                Slide to rate your conviction level for each option.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4">
+                <FormField
+                  control={form.control}
+                  name="rankedExplanations" // This name is used for validation of the array, not individual convictions
+                  render={() => (
+                    <FormItem className="space-y-4">
+                      <div className="flex flex-col items-center">
+                        <FormLabel className="text-sm font-semibold mb-4">
+                          Option A Conviction
+                        </FormLabel>
+                        <div className="flex items-center gap-6 w-full justify-center">
+                          <Slider
+                            value={[convictionToIndex(convictionA) ?? 0]}
+                            onValueChange={(value: number[]) =>
+                              handleConvictionChange("A", value)
+                            }
+                            min={0}
+                            max={3}
+                            step={1}
+                            disabled={isDisabled}
+                            className={cn(
+                              "h-64 md:h-48 transition-all",
+                              !convictionA &&
+                                !isDisabled &&
+                                "grayscale opacity-60",
+                            )}
+                            orientation="vertical"
+                          />
+                          <div className="flex flex-col justify-between h-64 md:h-48 text-xs text-muted-foreground py-2">
+                            {[...convictionLabels]
+                              .reverse()
+                              .map((label, idx) => (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() =>
+                                    handleConvictionChange("A", [3 - idx])
+                                  }
+                                  disabled={isDisabled}
+                                  className={cn(
+                                    "text-right hover:text-primary transition-colors",
+                                    !isDisabled && "cursor-pointer",
+                                  )}
+                                >
+                                  {label}
+                                </button>
+                              ))}
+                          </div>
+                        </div>
+                        {convictionA && (
+                          <p className="text-sm font-medium mt-4 text-center">
+                            {
+                              convictionLabels[
+                                convictionToIndex(convictionA) ?? 0
+                              ]
+                            }
+                          </p>
+                        )}
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="rankedExplanations" // This name is used for validation of the array, not individual convictions
+                  render={() => (
+                    <FormItem className="space-y-4">
+                      <div className="flex flex-col items-center">
+                        <FormLabel className="text-sm font-semibold mb-4">
+                          Option B Conviction
+                        </FormLabel>
+                        <div className="flex items-center gap-6 w-full justify-center">
+                          <Slider
+                            value={[convictionToIndex(convictionB) ?? 0]}
+                            onValueChange={(value: number[]) =>
+                              handleConvictionChange("B", value)
+                            }
+                            min={0}
+                            max={3}
+                            step={1}
+                            disabled={isDisabled}
+                            className={cn(
+                              "h-64 md:h-48 transition-all",
+                              !convictionB &&
+                                !isDisabled &&
+                                "grayscale opacity-60",
+                            )}
+                            orientation="vertical"
+                          />
+                          <div className="flex flex-col justify-between h-64 md:h-48 text-xs text-muted-foreground py-2">
+                            {[...convictionLabels]
+                              .reverse()
+                              .map((label, idx) => (
+                                <button
+                                  key={idx}
+                                  type="button"
+                                  onClick={() =>
+                                    handleConvictionChange("B", [3 - idx])
+                                  }
+                                  disabled={isDisabled}
+                                  className={cn(
+                                    "text-right hover:text-primary transition-colors",
+                                    !isDisabled && "cursor-pointer",
+                                  )}
+                                >
+                                  {label}
+                                </button>
+                              ))}
+                          </div>
+                        </div>
+                        {convictionB && (
+                          <p className="text-sm font-medium mt-4 text-center">
+                            {
+                              convictionLabels[
+                                convictionToIndex(convictionB) ?? 0
+                              ]
+                            }
+                          </p>
+                        )}
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
 
             <FormField
               control={form.control}
@@ -595,14 +366,14 @@ export function ExplanationForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-lg font-medium">
-                    Provide your reasoning or any other insights (Optional):
+                    Provide your reasoning or any other insights:
                   </FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="e.g., I believe this explanation is most likely because..."
                       className="resize-none min-h-[100px]"
                       {...field}
-                      disabled={field.disabled}
+                      disabled={isDisabled}
                     />
                   </FormControl>
                   <FormMessage />
@@ -642,146 +413,57 @@ export function ExplanationForm({
   );
 }
 
-interface SortableExplanationItemProps {
+interface RadioOptionCardProps {
   id: string;
+  label: string;
   text: string;
-  index?: number;
+  selected: boolean;
+  onSelect: () => void;
   disabled?: boolean;
-  onRemove?: () => void;
-  isOverlay?: boolean;
 }
 
-function SortableExplanationItem({
+function RadioOptionCard({
   id,
+  label,
   text,
-  index,
+  selected,
+  onSelect,
   disabled,
-  onRemove,
-  isOverlay,
-}: SortableExplanationItemProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id, disabled });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
-  if (isOverlay) {
-    return (
-      <div className="flex items-center space-x-3 p-4 rounded-xl border-2 shadow-2xl border-primary bg-card z-50 touch-none">
-        <div className="p-2">
-          <GripVertical className="h-5 w-5 text-muted-foreground" />
-        </div>
-        {index !== undefined && (
-          <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-bold text-xs shrink-0">
-            {index}
+}: RadioOptionCardProps) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      disabled={disabled}
+      className={cn(
+        "relative p-6 rounded-xl border-2 transition-all duration-200 text-left",
+        "hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+        selected
+          ? "border-primary bg-primary/5 shadow-sm"
+          : "border-border bg-card hover:border-primary/50",
+        disabled && "opacity-70 cursor-not-allowed hover:shadow-none",
+      )}
+    >
+      <div className="flex items-start gap-4">
+        <div className="shrink-0 mt-1">
+          <div
+            className={cn(
+              "h-5 w-5 rounded-full border-2 flex items-center justify-center transition-colors",
+              selected
+                ? "border-primary bg-primary"
+                : "border-muted-foreground/40 bg-background",
+            )}
+          >
+            {selected && <div className="h-2 w-2 rounded-full bg-background" />}
           </div>
-        )}
+        </div>
         <div className="flex-1 min-w-0">
-          <span className="text-base font-medium leading-normal text-foreground break-words">
-            {text}
-          </span>
+          <div className="font-semibold text-sm mb-2 text-foreground">
+            {label}
+          </div>
+          <p className="text-sm leading-relaxed text-foreground/90">{text}</p>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-      className={cn(
-        "flex items-center space-x-3 p-4 rounded-xl border-2 transition-colors duration-200 bg-card group relative select-none touch-none",
-        isDragging
-          ? "opacity-30 border-dashed border-primary/50"
-          : "shadow-sm border-border hover:border-primary/50",
-        disabled
-          ? "opacity-70 pointer-events-none grayscale-[0.2]"
-          : "cursor-grab active:cursor-grabbing",
-      )}
-    >
-      <div className="shrink-0 p-1 rounded-md hover:bg-accent/50 transition-colors">
-        <GripVertical className="h-5 w-5 text-muted-foreground/60 group-hover:text-foreground" />
-      </div>
-
-      {index !== undefined && (
-        <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-bold text-xs shrink-0">
-          {index}
-        </div>
-      )}
-
-      <div className="flex-1 min-w-0 pr-6">
-        <p className="text-sm md:text-base font-medium leading-normal text-foreground break-words">
-          {text}
-        </p>
-      </div>
-
-      {onRemove && !disabled && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onRemove();
-          }}
-          className="absolute top-2 right-2 p-1.5 text-muted-foreground/60 hover:text-destructive hover:bg-destructive/10 rounded-full transition-colors opacity-0 group-hover:opacity-100"
-          type="button"
-        >
-          <X className="h-4 w-4" />
-        </button>
-      )}
-    </div>
-  );
-}
-
-function DroppableSlot({
-  children,
-  id,
-  isFilled,
-}: {
-  children: React.ReactNode;
-  id: string;
-  index: number;
-  isFilled: boolean;
-}) {
-  const { setNodeRef, isOver } = useDroppable({
-    id,
-  });
-
-  return (
-    <div
-      ref={setNodeRef}
-      className={cn(
-        "relative rounded-xl transition-all duration-200",
-        isOver && !isFilled && "ring-2 ring-primary ring-offset-2 bg-primary/5",
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-function DroppableContainer({
-  children,
-  id,
-}: {
-  children: React.ReactNode;
-  id: string;
-}) {
-  const { setNodeRef } = useDroppable({
-    id,
-  });
-
-  return (
-    <div ref={setNodeRef} className="space-y-3 min-h-[80px] h-full">
-      {children}
-    </div>
+    </button>
   );
 }

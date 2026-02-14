@@ -218,14 +218,14 @@ export default function ResultsPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-background text-foreground p-4 md:p-8">
-      <header className="w-full max-w-4xl sticky top-0 bg-background/80 backdrop-blur-md py-4 z-10 mb-8">
+      <header className="w-full max-w-5xl sticky top-0 bg-background/80 backdrop-blur-md py-4 z-10 mb-8">
         <Progress value={progressValue} className="w-full h-3 mb-2" />
         <p className="text-sm text-muted-foreground text-center">
           Study Results (Final Step {currentOverallStepForDisplay} of{" "}
           {totalStudyPartsForDisplay})
         </p>
       </header>
-      <main className="w-full max-w-4xl space-y-8">
+      <main className="w-full max-w-5xl space-y-8">
         <div className="text-center mb-10">
           <BarChart3 className="h-16 w-16 text-accent mx-auto mb-4" />
           <h1 className="text-3xl font-bold text-primary">
@@ -356,7 +356,7 @@ export default function ResultsPage() {
         {userResponsesWithAnalysis.length > 0 ? (
           userResponsesWithAnalysis.map((response, index) => {
             const correlation = correlationsMap[response.correlationId];
-            const rankedIds = response.formData.rankedExplanationIds || [];
+            const rankedIds = response.formData.rankedExplanations || [];
 
             const displayIds = rankedIds.slice(0, 3);
 
@@ -378,11 +378,11 @@ export default function ResultsPage() {
                         displayIds.map((id, rankIndex) => {
                           const explanation =
                             correlation?.suggestedExplanations.find(
-                              (opt) => opt.id === id,
+                              (opt) => opt.text === id.text,
                             );
                           return (
                             <div
-                              key={id}
+                              key={id.text}
                               className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50"
                             >
                               <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-bold text-xs shrink-0 mt-0.5">

@@ -1,14 +1,45 @@
-import type { z } from "zod";
-// Import the Zod schema directly for ExplanationFormValues
-import type { explanationFormSchema } from "@/components/correlation-analyzer/explanation-form";
+import { z } from "zod";
+
+export const CONVICTION_LEVELS = [
+  "not-convinced",
+  "slightly-convinced",
+  "moderately-convinced",
+  "very-convinced",
+] as const;
+
+export const convictionLevelSchema = z
+  .enum(CONVICTION_LEVELS)
+  .or(z.undefined())
+  .refine((val) => val !== undefined, {
+    message: "Please rate your conviction.",
+  });
+
+export const explanationFormSchema = z.object({
+  rankedExplanations: z
+    .array(
+      z.object({
+        type: z.string(),
+        text: z.string().max(500),
+        conviction: convictionLevelSchema,
+      }),
+    )
+    .length(2, {
+      message: "Please select an explanation.",
+    }),
+  explanationText: z
+    .string()
+    .max(500, {
+      message: "Your explanation must not exceed 500 characters.",
+    })
+    .optional(),
+  experimentGroup: z.enum(["X", "Y"]),
+});
 
 export interface SeriesDataPoint {
   label: string; // e.g., Year, Month
   value1: number;
   value2: number;
 }
-
-export type PersuasionMode = "ethos" | "pathos" | "logos" | "other";
 
 export interface ExplanationOption {
   id: string;
@@ -23,6 +54,7 @@ export interface CorrelationData {
   series2Name: string;
   data: SeriesDataPoint[];
   suggestedExplanations: ExplanationOption[];
+  experimentGroup?: "X" | "Y";
   imagePlaceholder?: {
     url: string;
     alt: string;

@@ -47,45 +47,38 @@ export default function ResearchNoticePage() {
           <h1 className="text-3xl font-bold text-primary">
             Research Study Notice
           </h1>
-          <p className="text-lg text-muted-foreground mt-2">
-            Understanding How People Interpret Correlations
-          </p>
         </header>
 
         <section className="text-left space-y-4 p-6 bg-card rounded-lg shadow">
           <p>
             Welcome! You are invited to participate in a research study designed
-            to help us understand how people perceive and explain statistical
-            correlations.
+            to help us understand how people select explanations for phenomena.
           </p>
           <p>
-            In this study, you will be presented with a series of data
-            visualizations showing correlations between two variables. For each
-            visualization, you will be asked to:
+            In this study, you will be presented with a series of correlations
+            between two variables. For each visualization, you will be asked to:
           </p>
           <ul className="list-disc list-inside space-y-1 pl-4">
             <li>Review the presented correlation.</li>
+            <li>Review the candidate explanations.</li>
             <li>
-              Choose what you believe is the most plausible explanation from a
-              given list.
+              Choose the explanation that you think is most likely to be true.
             </li>
-            <li>Briefly provide your reasoning (optional).</li>
           </ul>
           <p>
             You will also be asked to complete a short Cognitive Reflection Test
             and provide some anonymous demographic information.
           </p>
           <p>
-            Your anonymous responses will be used to analyze common patterns in
-            reasoning and potential misconceptions. This research aims to
-            improve how data literacy and critical thinking about statistics are
-            taught. Upon completion, your anonymized data (including a unique
-            participant ID, your responses to correlations, CRT answers, and
-            demographic information) will be submitted for research analysis.
+            Your anonymous responses will be used to study how people understand
+            explanations. Upon completion, your anonymized data (including a
+            unique participant ID, your responses to correlations, CRT answers,
+            and demographic information) will be submitted for research
+            analysis.
           </p>
           <p>
             Participation is voluntary, and you can withdraw at any time. The
-            study is expected to take approximately 15-20 minutes to complete.
+            study is expected to take approximately 10-15 minutes to complete.
           </p>
         </section>
 
@@ -101,12 +94,10 @@ export default function ResearchNoticePage() {
             </Link>
           </div>
         ) : (
-          <p className="text-red-500 mt-8">
-            Loading...
-          </p>
+          <p className="text-red-500 mt-8">Loading...</p>
         )}
       </main>
-      <footer className="w-full max-w-4xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
+      <footer className="w-full max-w-5xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
         <p>
           &copy; {new Date().getFullYear()} Research Project. All data is
           anonymized and handled responsibly.

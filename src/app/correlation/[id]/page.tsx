@@ -4,14 +4,12 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { CorrelationDisplay } from "@/components/correlation-analyzer/correlation-display";
-import {
-  ExplanationForm,
-  type ExplanationFormValues,
-} from "@/components/correlation-analyzer/explanation-form";
+import { ExplanationForm } from "@/components/correlation-analyzer/explanation-form";
 import type {
   CorrelationData,
   ExplanationOption,
   ProgressiveSavePayload,
+  ExplanationFormValues,
 } from "@/types/correlation";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -227,7 +225,7 @@ export default function CorrelationPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-background text-foreground p-4 md:p-8">
-      <header className="w-full max-w-4xl sticky top-0 bg-background/95 backdrop-blur-md py-3 z-50 border-b">
+      <header className="w-full max-w-5xl sticky top-0 bg-background/95 backdrop-blur-md py-3 z-50 border-b">
         <Progress value={progressValue} className="w-full h-2 mb-1" />
         <p className="text-xs text-muted-foreground text-center mb-2">
           Correlation {currentIndex + 1} of {numCorrelations} (Overall task{" "}
@@ -242,7 +240,7 @@ export default function CorrelationPage() {
         </div>
       </header>
 
-      <main className="w-full max-w-4xl space-y-6 md:space-y-8 mt-12">
+      <main className="w-full max-w-5xl space-y-6 md:space-y-8 mt-12">
         <CorrelationDisplay correlation={currentCorrelation} />
 
         <ExplanationForm
@@ -252,9 +250,10 @@ export default function CorrelationPage() {
           onNext={handleNextCorrelation}
           isSubmitting={false}
           existingResponse={userResponses[currentCorrelationId] || null}
+          experimentGroup={currentCorrelation.experimentGroup || "X"}
         />
       </main>
-      <footer className="w-full max-w-4xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
+      <footer className="w-full max-w-5xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
         <p>
           &copy; {new Date().getFullYear()} Correlation Study. All data is
           anonymized.

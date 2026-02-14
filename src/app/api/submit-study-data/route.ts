@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import type admin from "firebase-admin";
 import { db } from "@/lib/firebase-admin";
-import type {
-  ProgressiveSavePayload,
-  CorrelationResponsePayload,
-  CRTData,
-  DemographicsData,
+import {
+  explanationFormSchema,
+  type ProgressiveSavePayload,
+  type CorrelationResponsePayload,
+  type CRTData,
+  type DemographicsData,
 } from "@/types/correlation";
 import { getSessionId } from "@/lib/session";
 import { rateLimit } from "@/lib/rate-limit";
@@ -74,54 +75,23 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        // Validate the shape and size of formData
-        const { rankedExplanationIds, convictionLevel, explanationText } =
-          crData.formData;
-        if (
-          !Array.isArray(rankedExplanationIds) ||
-          rankedExplanationIds.length === 0 ||
-          !rankedExplanationIds.every(
-            (id) => typeof id === "string" && id.length <= 100,
-          )
-        ) {
+        // Validate with Zod
+        const result = explanationFormSchema.safeParse(crData.formData);
+        if (!result.success) {
           return NextResponse.json(
-            { message: "Invalid rankedExplanationIds." },
+            { message: result.error.errors[0].message || "Invalid form data." },
             { status: 400 },
           );
         }
 
-        // Validate convictionLevel
-        const validConvictionLevels = [
-          "not-convinced",
-          "slightly-convinced",
-          "moderately-convinced",
-          "very-convinced",
-        ];
-        if (
-          convictionLevel === undefined ||
-          !validConvictionLevels.includes(convictionLevel)
-        ) {
-          return NextResponse.json(
-            { message: "Invalid or missing convictionLevel." },
-            { status: 400 },
-          );
-        }
-
-        if (
-          explanationText !== undefined &&
-          (typeof explanationText !== "string" || explanationText.length > 5000)
-        ) {
-          return NextResponse.json(
-            { message: "Explanation text too long or invalid." },
-            { status: 400 },
-          );
-        }
+        const { rankedExplanations, explanationText, experimentGroup } =
+          result.data;
 
         // Only save the fields you expect
         const sanitizedFormData = {
-          rankedExplanationIds,
-          convictionLevel,
+          rankedExplanations,
           explanationText,
+          experimentGroup,
           submittedAt: timestamp,
         };
 

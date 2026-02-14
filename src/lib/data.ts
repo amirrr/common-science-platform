@@ -12658,10 +12658,12 @@ export function getCorrelationById(id: string) {
 }
 
 function shuffle<T>(array: T[]): T[] {
-  return array
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
 /**
@@ -12685,16 +12687,16 @@ export function getExplanationsForGroup(
   const directionData =
     group === "X" ? correlation.forward : correlation.backward;
 
-  // randomize the array of explanations order
-  const shuffleddirectionData = shuffle([
-    directionData.explanations.type1,
-    directionData.explanations.type2,
-    directionData.explanations.type3,
-  ]);
+  // Create an array of potential explanation objects with their types
+  const explanationPool = [
+    { id: "type1", text: directionData.explanations.type1 },
+    { id: "type2", text: directionData.explanations.type2 },
+    { id: "type3", text: directionData.explanations.type3 },
+  ];
+
+  // Shuffle the pool
+  const shuffledPool = shuffle(explanationPool);
 
   // Return only 2 of the 3 shuffled explanations
-  return [
-    { id: "exp1", text: shuffleddirectionData[0] },
-    { id: "exp2", text: shuffleddirectionData[1] },
-  ];
+  return shuffledPool.slice(0, 2);
 }
