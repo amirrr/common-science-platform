@@ -109,17 +109,26 @@ export default function ResultsPage() {
     const loadData = async () => {
       setIsLoading(true);
       try {
-        // Fetch session ID from API (Securely managed via HttpOnly cookie)
+        // Fetch session ID from API
         const sessionRes = await fetch("/api/session");
         if (sessionRes.ok) {
           const sessionData = await sessionRes.json();
           setSessionId(sessionData.sessionId);
         }
 
-        // Fetch correlation summaries
-        const listResponse = await fetch("/api/correlations");
-        const listData = await listResponse.json();
-        setNumCorrelations(listData.length);
+        // Fetch full correlation details in one batch call
+        const listResponse = await fetch("/api/correlations?full=true");
+        if (!listResponse.ok) throw new Error("Failed to fetch correlations");
+
+        const fullCorrelations =
+          (await listResponse.json()) as CorrelationData[];
+        setNumCorrelations(fullCorrelations.length);
+
+        const fetchedCorrelations: Record<string, CorrelationData> = {};
+        fullCorrelations.forEach((c) => {
+          fetchedCorrelations[c.id] = c;
+        });
+        setCorrelationsMap(fetchedCorrelations);
 
         const storedResponsesRaw = localStorage.getItem(RESPONSES_STORAGE_KEY);
         const allCorrelationResponses = storedResponsesRaw
@@ -128,22 +137,6 @@ export default function ResultsPage() {
               ExplanationFormValues
             >)
           : {};
-
-        // Fetch full data for each answered correlation (including answers for results page)
-        const fetchedCorrelations: Record<string, CorrelationData> = {};
-        for (const correlationId in allCorrelationResponses) {
-          try {
-            const res = await fetch(
-              `/api/correlation/${correlationId}?includeAnswers=true`,
-            );
-            if (res.ok) {
-              fetchedCorrelations[correlationId] = await res.json();
-            }
-          } catch (e) {
-            console.error(`Failed to fetch correlation ${correlationId}:`, e);
-          }
-        }
-        setCorrelationsMap(fetchedCorrelations);
 
         const storedDemographicsRaw = localStorage.getItem(
           DEMOGRAPHICS_STORAGE_KEY,
@@ -355,10 +348,8 @@ export default function ResultsPage() {
         </h2>
         {userResponsesWithAnalysis.length > 0 ? (
           userResponsesWithAnalysis.map((response, index) => {
-            const correlation = correlationsMap[response.correlationId];
-            const rankedIds = response.formData.rankedExplanations || [];
-
-            const displayIds = rankedIds.slice(0, 3);
+            const rankedExplanations =
+              response.formData.rankedExplanations || [];
 
             return (
               <Card key={index} className="mt-6 shadow-md border-primary/10">
@@ -368,29 +359,41 @@ export default function ResultsPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 pt-4">
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center">
                       <BarChart3 className="h-4 w-4 mr-2" />
-                      Your Ranking
+                      Your Ranking & Conviction
                     </h4>
-                    <div className="space-y-2">
-                      {displayIds.length > 0 ? (
-                        displayIds.map((id, rankIndex) => {
-                          const explanation =
-                            correlation?.suggestedExplanations.find(
-                              (opt) => opt.text === id.text,
-                            );
+                    <div className="space-y-3">
+                      {rankedExplanations.length > 0 ? (
+                        rankedExplanations.map((item, rankIndex) => {
+                          const conviction = item.conviction;
                           return (
                             <div
-                              key={id.text}
-                              className="flex items-start gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50"
+                              key={item.text}
+                              className="flex items-start gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 group"
                             >
-                              <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 text-primary font-bold text-xs shrink-0 mt-0.5">
+                              <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary font-bold text-sm shrink-0 mt-0.5">
                                 {rankIndex + 1}
                               </div>
-                              <p className="text-sm font-medium leading-relaxed">
-                                {explanation?.text || "Unknown Explanation"}
-                              </p>
+                              <div className="flex-1 space-y-2">
+                                <p className="text-sm font-medium leading-relaxed">
+                                  {item.text}
+                                </p>
+                                {conviction && (
+                                  <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
+                                    <Lightbulb className="w-3 h-3 mr-1" />
+                                    {conviction
+                                      .split("-")
+                                      .map(
+                                        (word) =>
+                                          word.charAt(0).toUpperCase() +
+                                          word.slice(1),
+                                      )
+                                      .join(" ")}
+                                  </div>
+                                )}
+                              </div>
                             </div>
                           );
                         })
