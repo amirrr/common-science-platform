@@ -340,6 +340,8 @@ export default function ResultsPage() {
                             className="resize-none"
                             {...field}
                             disabled={feedbackLoading}
+                            minLength={10}
+                            maxLength={400}
                           />
                         </FormControl>
                         <FormMessage />
