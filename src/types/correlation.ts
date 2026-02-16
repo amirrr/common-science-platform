@@ -26,12 +26,6 @@ export const explanationFormSchema = z.object({
     .length(2, {
       message: "Please select an explanation.",
     }),
-  explanationText: z
-    .string()
-    .max(500, {
-      message: "Your explanation must not exceed 500 characters.",
-    })
-    .optional(),
   experimentGroup: z.enum(["X", "Y"]),
 });
 
@@ -97,20 +91,27 @@ export interface CRTData {
 }
 
 // Types for progressive save API payload
+
 export type ProgressiveSaveDataType =
   | "correlationResponse"
   | "crtData"
-  | "demographicsData";
+  | "demographicsData"
+  | "feedback";
 
 export interface CorrelationResponsePayload {
   correlationId: string;
   formData: ExplanationFormValues;
 }
 
+
+export interface FeedbackPayload {
+  message: string;
+}
+
 export interface ProgressiveSavePayload {
   userId?: string; // Optional: handled by session cookie on server
   dataType: ProgressiveSaveDataType;
-  data: CorrelationResponsePayload | CRTData | DemographicsData;
+  data: CorrelationResponsePayload | CRTData | DemographicsData | FeedbackPayload;
 }
 
 // Storage Keys

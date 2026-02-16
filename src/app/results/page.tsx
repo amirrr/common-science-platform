@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,10 +27,20 @@ import {
   UserCheck2,
   Lightbulb,
   Info,
+  MessageCircleWarning,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { EMPLOYMENT_STATUS_OPTIONS } from "@/lib/demographic-options";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 export default function ResultsPage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -43,6 +56,53 @@ export default function ResultsPage() {
     Record<string, CorrelationData>
   >({});
   const [numCorrelations, setNumCorrelations] = useState(0);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [feedbackLoading, setFeedbackLoading] = useState(false);
+  // Feedback form schema
+  const FeedbackSchema = z.object({
+    feedback: z
+      .string()
+      .min(10, { message: "Feedback must be at least 10 characters." })
+      .max(500, {
+        message: "Feedback must not be longer than 500 characters.",
+      }),
+  });
+
+  const feedbackForm = useForm<z.infer<typeof FeedbackSchema>>({
+    resolver: zodResolver(FeedbackSchema),
+    defaultValues: { feedback: "" },
+  });
+
+  const handleFeedbackSubmit = async (
+    values: z.infer<typeof FeedbackSchema>,
+  ) => {
+    setFeedbackLoading(true);
+    try {
+      const res = await fetch("/api/submit-study-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          dataType: "feedback",
+          data: { message: values.feedback },
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit feedback");
+      setFeedbackSubmitted(true);
+      toast({
+        title: "Feedback submitted!",
+        description: "Thank you for your feedback.",
+        variant: "default",
+      });
+    } catch (e) {
+      toast({
+        title: "Error submitting feedback",
+        description: "Could not submit your feedback. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setFeedbackLoading(false);
+    }
+  };
 
   const { toast } = useToast();
 
@@ -250,6 +310,66 @@ export default function ResultsPage() {
           </CardContent>
         </Card>
 
+        {!feedbackSubmitted ? (
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-xl flex items-center">
+                <MessageCircleWarning className="mr-2 h-6 w-6 text-primary" />
+                Submit Feedback (Optional)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                We value your feedback! If you have any comments about the study
+                or your experience, please let us know.
+              </p>
+              <Form {...feedbackForm}>
+                <form
+                  onSubmit={feedbackForm.handleSubmit(handleFeedbackSubmit)}
+                  className="grid w-full gap-4"
+                >
+                  <FormField
+                    control={feedbackForm.control}
+                    name="feedback"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Feedback</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Type your message here."
+                            className="resize-none"
+                            {...field}
+                            disabled={feedbackLoading}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" disabled={feedbackLoading}>
+                    {feedbackLoading ? "Sending..." : "Send message"}
+                  </Button>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card className="shadow-lg border-green-500">
+            <CardHeader>
+              <CardTitle className="text-xl flex items-center text-green-600">
+                <Info className="mr-2 h-6 w-6" />
+                Feedback Submitted
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Thank you for submitting your feedback! We appreciate your input
+                and will use it to improve future studies.
+              </p>
+            </CardContent>
+          </Card>
+        )}
+
         {demographics && (
           <Card className="shadow-lg">
             <CardHeader>
@@ -404,17 +524,6 @@ export default function ResultsPage() {
                       )}
                     </div>
                   </div>
-
-                  {response.formData.explanationText && (
-                    <div className="pt-2 border-t border-border/50">
-                      <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                        Your Reasoning
-                      </h4>
-                      <p className="text-sm italic leading-relaxed text-foreground/80 bg-accent/5 p-3 rounded-lg border border-accent/10">
-                        &quot;{response.formData.explanationText}&quot;
-                      </p>
-                    </div>
-                  )}
                 </CardContent>
               </Card>
             );

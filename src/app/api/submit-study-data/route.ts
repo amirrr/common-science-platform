@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     };
 
     switch (dataType) {
-      case "correlationResponse":
+      case "correlationResponse": {
         const crData = data as CorrelationResponsePayload;
         if (!crData.correlationId || crData.formData === undefined) {
           return NextResponse.json(
@@ -84,13 +84,11 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        const { rankedExplanations, explanationText, experimentGroup } =
-          result.data;
+        const { rankedExplanations, experimentGroup } = result.data;
 
         // Only save the fields you expect
         const sanitizedFormData = {
           rankedExplanations,
-          explanationText,
           experimentGroup,
           submittedAt: timestamp,
         };
@@ -99,13 +97,15 @@ export async function POST(request: NextRequest) {
         updateData[`correlationResponses.${crData.correlationId}`] =
           sanitizedFormData;
         break;
-      case "crtData":
+      }
+      case "crtData": {
         updateData.crtResponses = {
           ...(data as CRTData),
           submittedAt: timestamp,
         };
         break;
-      case "demographicsData":
+      }
+      case "demographicsData": {
         updateData.demographics = {
           ...(data as DemographicsData),
           submittedAt: timestamp,
@@ -113,6 +113,28 @@ export async function POST(request: NextRequest) {
         updateData.status = "finished";
         updateData.finishedAt = timestamp;
         break;
+      }
+      case "feedback": {
+        // Accepts: { message: string }
+        const feedbackData = data as { message: string };
+        if (
+          !feedbackData.message ||
+          typeof feedbackData.message !== "string" ||
+          feedbackData.message.length < 10
+        ) {
+          return NextResponse.json(
+            { message: "Feedback message must be at least 10 characters." },
+            { status: 400 },
+          );
+        }
+        // Store feedback as a single object (overwrites any previous feedback)
+        updateData.feedback = {
+          message: feedbackData.message,
+          submittedAt: timestamp,
+        };
+        break;
+      }
+
       default:
         return NextResponse.json(
           { message: "Invalid dataType." },

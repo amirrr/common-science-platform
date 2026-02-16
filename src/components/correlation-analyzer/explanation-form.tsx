@@ -5,13 +5,11 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -44,7 +42,6 @@ export function ExplanationForm({
     resolver: zodResolver(explanationFormSchema),
     defaultValues: {
       rankedExplanations: existingResponse?.rankedExplanations || [],
-      explanationText: existingResponse?.explanationText || "",
       experimentGroup: existingResponse?.experimentGroup || experimentGroup,
     },
     mode: "onChange",
@@ -110,6 +107,7 @@ export function ExplanationForm({
       },
     );
   };
+
   const handleConvictionChange = (option: "A" | "B", value: number[]) => {
     const optionId = option === "A" ? optionA.id : optionB.id;
     const stringValue = CONVICTION_LEVELS[value[0]];
@@ -139,6 +137,7 @@ export function ExplanationForm({
     }
 
     const index = newExplanations.findIndex((e) => e.type === optionId);
+
     if (index !== -1) {
       newExplanations[index].conviction = stringValue;
     }
@@ -148,6 +147,7 @@ export function ExplanationForm({
       shouldDirty: true,
     });
   };
+
   function handleSubmit(values: ExplanationFormValues) {
     onSubmitAttempt(values);
   }
@@ -360,26 +360,6 @@ export function ExplanationForm({
               </div>
             </div>
 
-            <FormField
-              control={form.control}
-              name="explanationText"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-lg font-medium">
-                    Provide your reasoning or any other insights:
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="e.g., I believe this explanation is most likely because..."
-                      className="resize-none min-h-[100px]"
-                      {...field}
-                      disabled={isDisabled}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             {existingResponse ? (
               <Button
                 type="button"
