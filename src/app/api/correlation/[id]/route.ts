@@ -1,9 +1,14 @@
 import "server-only";
 import { NextRequest, NextResponse } from "next/server";
-import { getCorrelationById, getExplanationsForGroup } from "@/lib/data";
+import {
+  getCorrelationById,
+  getExplanationsForGroup,
+  getExplanationsWithMixedDirections,
+} from "@/lib/data";
 import { getSessionId } from "@/lib/session";
 import { assignGroup } from "@/lib/randomization";
 import { db } from "@/lib/firebase-admin";
+import { EXPERIMENT_DESIGN } from "@/lib/experiment-config";
 
 export async function GET(
   request: NextRequest,
@@ -30,8 +35,48 @@ export async function GET(
     );
   }
 
-  // 1. Determine Experiment Group (stability check)
-  let experimentGroup: "X" | "Y";
+  const includeAnswers =
+    request.nextUrl.searchParams.get("includeAnswers") === "true";
+
+  // ── V2: Within-subject mixed directions ──
+  if (EXPERIMENT_DESIGN === "v2-within-subject") {
+    // Deterministic per session+correlation (seeded random, refresh-safe)
+    const explanations = getExplanationsWithMixedDirections(
+      correlation,
+      sessionId,
+    );
+
+    // Neutral title since explanations come from mixed directions
+    const title = `${correlation.labels.A} correlates with ${correlation.labels.B}`;
+
+    if (includeAnswers) {
+      return NextResponse.json({
+        ...correlation,
+        series1Name: correlation.labels.A,
+        series2Name: correlation.labels.B,
+        description: "",
+        title,
+        suggestedExplanations: explanations,
+        designVersion: EXPERIMENT_DESIGN,
+      });
+    }
+
+    return NextResponse.json({
+      ...correlation,
+      series1Name: correlation.labels.A,
+      series2Name: correlation.labels.B,
+      description: "",
+      title,
+      suggestedExplanations: explanations,
+      designVersion: EXPERIMENT_DESIGN,
+      // No experimentGroup — direction is per-explanation
+    });
+  }
+
+  // ── V1: Group-based (original logic, unchanged) ──
+
+  // 1. Determine Experiment Group (stability check from Firestore)
+  let experimentGroup: "forward" | "backward";
   const participantDoc = await db
     .collection("studyParticipants")
     .doc(sessionId)
@@ -39,7 +84,7 @@ export async function GET(
 
   if (participantDoc.exists) {
     experimentGroup =
-      (participantDoc.data()?.experimentGroup as "X" | "Y") ||
+      (participantDoc.data()?.experimentGroup as "forward" | "backward") ||
       assignGroup(sessionId);
   } else {
     experimentGroup = assignGroup(sessionId);
@@ -47,11 +92,8 @@ export async function GET(
 
   // 2. Apply Bidirectional Logic
   const directionData =
-    experimentGroup === "X" ? correlation.forward : correlation.backward;
+    experimentGroup === "forward" ? correlation.forward : correlation.backward;
   const explanations = getExplanationsForGroup(correlation, experimentGroup);
-
-  const includeAnswers =
-    request.nextUrl.searchParams.get("includeAnswers") === "true";
 
   if (includeAnswers) {
     return NextResponse.json({
@@ -61,6 +103,7 @@ export async function GET(
       description: "",
       title: directionData.title,
       suggestedExplanations: explanations,
+      designVersion: EXPERIMENT_DESIGN,
     });
   }
 
@@ -71,8 +114,9 @@ export async function GET(
     series2Name: correlation.labels.B,
     description: "",
     title: directionData.title,
-    experimentGroup, // Include for diagnostic/tracking
+    experimentGroup,
     suggestedExplanations: explanations,
+    designVersion: EXPERIMENT_DESIGN,
   };
 
   return NextResponse.json(sanitizedCorrelation);

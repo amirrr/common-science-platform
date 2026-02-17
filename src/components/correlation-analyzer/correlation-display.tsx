@@ -6,11 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  ChartContainer,
-  ChartTooltipContent,
-  ChartLegendContent,
-} from "@/components/ui/chart";
+import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart";
 import {
   LineChart,
   Line,
@@ -18,7 +14,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import Image from "next/image";
@@ -32,10 +27,34 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
     series1: {
       label: correlation.series1Name,
       color: "hsl(var(--chart-1))",
+      minDomain: Math.floor(
+        correlation.data.reduce(
+          (min, point) => Math.min(min, point.value1),
+          Number.POSITIVE_INFINITY,
+        ),
+      ),
+      maxDomain: Math.ceil(
+        correlation.data.reduce(
+          (max, point) => Math.max(max, point.value1),
+          Number.NEGATIVE_INFINITY,
+        ),
+      ),
     },
     series2: {
       label: correlation.series2Name,
       color: "hsl(var(--chart-2))",
+      minDomain: Math.floor(
+        correlation.data.reduce(
+          (min, point) => Math.min(min, point.value2),
+          Number.POSITIVE_INFINITY,
+        ),
+      ),
+      maxDomain: Math.ceil(
+        correlation.data.reduce(
+          (max, point) => Math.max(max, point.value2),
+          Number.NEGATIVE_INFINITY,
+        ),
+      ),
     },
   };
 
@@ -86,11 +105,22 @@ export function CorrelationDisplay({ correlation }: CorrelationDisplayProps) {
                   stroke="hsl(var(--border))"
                 />
                 <XAxis dataKey="label" stroke="hsl(var(--foreground))" />
-                <YAxis yAxisId="left" stroke="hsl(var(--chart-1))" />
+                <YAxis
+                  yAxisId="left"
+                  stroke="hsl(var(--chart-1))"
+                  domain={[
+                    chartConfig.series1.minDomain,
+                    chartConfig.series1.maxDomain,
+                  ]}
+                />
                 <YAxis
                   yAxisId="right"
                   orientation="right"
                   stroke="hsl(var(--chart-2))"
+                  domain={[
+                    chartConfig.series2.minDomain,
+                    chartConfig.series2.maxDomain,
+                  ]}
                 />
                 <Tooltip
                   content={

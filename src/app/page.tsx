@@ -4,29 +4,43 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function ResearchNoticePage() {
   const [firstCorrelationId, setFirstCorrelationId] = useState<string>("");
 
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    // Fetch first correlation ID
     const fetchCorrelations = async () => {
       try {
-        const response = await fetch("/api/correlations");
+        // Capture Prolific params (uppercase as per current docs)
+        const prolificPid = searchParams.get("PROLIFIC_PID");
+        const studyId = searchParams.get("STUDY_ID");
+        const sessionIdProlific = searchParams.get("SESSION_ID");
+
+        // Build query string to forward them to API
+        const forwardParams = new URLSearchParams();
+        if (prolificPid) forwardParams.set("PROLIFIC_PID", prolificPid);
+        if (studyId) forwardParams.set("STUDY_ID", studyId);
+        if (sessionIdProlific)
+          forwardParams.set("SESSION_ID", sessionIdProlific);
+
+        const apiUrl = `/api/correlations${forwardParams.toString() ? `?${forwardParams.toString()}` : ""}`;
+
+        const response = await fetch(apiUrl);
         if (response.ok) {
           const data = (await response.json()) as {
             id: string;
             title: string;
           }[];
           if (data.length > 0) {
-            // Check for first unanswered
             const storedResponsesRaw = localStorage.getItem(
               "correlation_analyzer_responses",
             );
             const userResponses = storedResponsesRaw
               ? (JSON.parse(storedResponsesRaw) as Record<string, any>)
               : {};
-
             const firstUnanswered = data.find((c) => !userResponses[c.id]);
             setFirstCorrelationId(
               firstUnanswered ? firstUnanswered.id : data[0].id,
@@ -37,8 +51,9 @@ export default function ResearchNoticePage() {
         console.error("Failed to fetch correlations:", error);
       }
     };
+
     fetchCorrelations();
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-4 md:p-8">

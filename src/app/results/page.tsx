@@ -19,6 +19,11 @@ import {
   DEMOGRAPHICS_STORAGE_KEY,
   CRT_RESPONSES_STORAGE_KEY,
   NUM_POST_CORRELATION_PAGES_WITH_PROGRESS,
+  REQUIRED_CORRELATIONS,
+  REQUIRED_DEMOGRAPHICS,
+  REQUIRED_CRT,
+  PROLIFIC_BASE_URL,
+  PROLIFIC_COMPLETION_CODE,
 } from "@/types/correlation";
 import {
   Loader2,
@@ -58,6 +63,12 @@ export default function ResultsPage() {
   const [numCorrelations, setNumCorrelations] = useState(0);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [feedbackLoading, setFeedbackLoading] = useState(false);
+
+  const [completionDetails, setCompletionDetails] = useState<ReturnType<
+    typeof getCompletionDetails
+  > | null>(null);
+  const [isComplete, setIsComplete] = useState(false);
+
   // Feedback form schema
   const FeedbackSchema = z.object({
     feedback: z
@@ -165,6 +176,27 @@ export default function ResultsPage() {
     [],
   );
 
+  const getCompletionDetails = () => {
+    const correlationResponsesRaw = localStorage.getItem(RESPONSES_STORAGE_KEY);
+    const correlations = correlationResponsesRaw
+      ? (JSON.parse(correlationResponsesRaw) as Record<
+          string,
+          ExplanationFormValues
+        >)
+      : {};
+    const numCorrelationsDone = Object.keys(correlations).length;
+
+    const hasDemographics = !!localStorage.getItem(DEMOGRAPHICS_STORAGE_KEY);
+    const hasCRT = !!localStorage.getItem(CRT_RESPONSES_STORAGE_KEY);
+
+    return {
+      correlationsDone: numCorrelationsDone,
+      correlationsTotal: numCorrelations || REQUIRED_CORRELATIONS,
+      hasCRT,
+      hasDemographics,
+    };
+  };
+
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
@@ -215,6 +247,10 @@ export default function ResultsPage() {
           fetchedCorrelations,
         );
         setUserResponsesWithAnalysis(analyzedResponses);
+
+        const details = getCompletionDetails();
+        setCompletionDetails(details);
+        setIsComplete(isStudyComplete());
       } catch (e) {
         console.error("Error loading data:", e);
         toast({
@@ -227,6 +263,7 @@ export default function ResultsPage() {
       }
     };
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [processResponses, toast]);
 
   const calculateCRTScore = () => {
@@ -258,6 +295,26 @@ export default function ResultsPage() {
       status: "incorrect",
       text: `Incorrect. The correct answer is ${correctAnswers[qIndex - 1].label}.`,
     };
+  };
+
+  const isStudyComplete = () => {
+    const correlationResponsesRaw = localStorage.getItem(RESPONSES_STORAGE_KEY);
+    const correlations = correlationResponsesRaw
+      ? (JSON.parse(correlationResponsesRaw) as Record<
+          string,
+          ExplanationFormValues
+        >)
+      : {};
+    const numCompletedCorrelations = Object.keys(correlations).length;
+
+    const hasDemographics = !!localStorage.getItem(DEMOGRAPHICS_STORAGE_KEY);
+    const hasCRT = !!localStorage.getItem(CRT_RESPONSES_STORAGE_KEY);
+
+    return (
+      numCompletedCorrelations >= REQUIRED_CORRELATIONS &&
+      (!REQUIRED_CRT || hasCRT) &&
+      (!REQUIRED_DEMOGRAPHICS || hasDemographics)
+    );
   };
 
   if (isLoading) {
@@ -294,18 +351,101 @@ export default function ResultsPage() {
           <CardHeader>
             <CardTitle className="text-xl flex items-center">
               <Info className="mr-2 h-6 w-6 text-primary" />
-              Data Saving
+              Study Status & Next Steps
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
               Your responses were saved progressively to our secure database.
-              All data collected is anonymized and session-protected.
+              All data is anonymized and session-protected.
             </p>
+
             {sessionId && (
-              <p className="text-xs text-muted-foreground mt-2 font-mono">
-                Session ID: {sessionId}
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-muted/30 p-3 rounded-md">
+                <div>
+                  <p className="text-xs text-muted-foreground font-mono">
+                    Session ID:{" "}
+                    <span className="font-semibold">{sessionId}</span>
+                  </p>
+                </div>
+
+                {/* Prolific redirect button – always show, style based on completion */}
+                <Button
+                  onClick={() => {
+                    window.location.href = `${PROLIFIC_BASE_URL}${PROLIFIC_COMPLETION_CODE}`;
+                  }}
+                  size="lg"
+                  className={
+                    isComplete
+                      ? "bg-green-600 hover:bg-green-700 text-white"
+                      : "bg-amber-600 hover:bg-amber-700 text-white"
+                  }
+                  disabled={!sessionId} // safety
+                >
+                  {isComplete
+                    ? "Complete Study – Return to Prolific"
+                    : "Return to Prolific Anyway"}
+                </Button>
+              </div>
+            )}
+
+            {/* Completion warning / status */}
+            {completionDetails && !isComplete && (
+              <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <MessageCircleWarning className="h-6 w-6 text-amber-600 mt-0.5" />
+                  <div className="space-y-2">
+                    <p className="font-medium text-amber-800 dark:text-amber-300">
+                      You haven&apos;t finished the survey completely
+                    </p>
+                    <ul className="text-sm text-amber-700 dark:text-amber-400 list-disc pl-5 space-y-1">
+                      {completionDetails.correlationsDone <
+                        completionDetails.correlationsTotal && (
+                        <li>
+                          Correlations: {completionDetails.correlationsDone}/
+                          {completionDetails.correlationsTotal} completed
+                        </li>
+                      )}
+                      {!completionDetails.hasCRT && (
+                        <li>Cognitive Reflection Test is missing</li>
+                      )}
+                      {!completionDetails.hasDemographics && (
+                        <li>Demographic information is missing</li>
+                      )}
+                    </ul>
+                    <p className="text-xs text-amber-600 dark:text-amber-500 italic mt-2">
+                      Returning to Prolific now may result in an invalid or
+                      rejected submission. We recommend going back and
+                      completing the remaining parts if possible.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isComplete && (
+              <div className="mt-4 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <UserCheck2 className="h-6 w-6 text-green-600" />
+                  <p className="font-medium text-green-800 dark:text-green-300">
+                    All required parts completed – thank you!
+                  </p>
+                </div>
+                {completionDetails && (
+                  <ul className="text-sm text-green-800 dark:text-green-300 list-disc pl-5 pt-4 space-y-1">
+                    <li>
+                      Correlations: {completionDetails.correlationsDone}/
+                      {completionDetails.correlationsTotal} completed
+                    </li>
+                    {completionDetails.hasCRT && (
+                      <li>Cognitive Reflection Test is submitted!</li>
+                    )}
+                    {completionDetails.hasDemographics && (
+                      <li>Demographic information is submitted!</li>
+                    )}
+                  </ul>
+                )}
+              </div>
             )}
           </CardContent>
         </Card>
@@ -545,6 +685,30 @@ export default function ResultsPage() {
               <Home className="mr-2 h-5 w-5" /> Return to Introduction
             </Button>
           </Link>
+        </div>
+
+        {!isComplete &&
+          `Return to start page if you want to review or complete your responses. Returning to Prolific without completing all parts may result in an invalid submission.`}
+
+        <div className="mt-12 text-center pb-12 space-y-6">
+          {sessionId && (
+            <Button
+              onClick={() => {
+                window.location.href =
+                  PROLIFIC_BASE_URL + PROLIFIC_COMPLETION_CODE;
+              }}
+              size="lg"
+              className={
+                isComplete
+                  ? "bg-green-600 hover:bg-green-700 text-white text-lg"
+                  : "bg-amber-600 hover:bg-amber-700 text-white text-lg"
+              }
+            >
+              {isComplete
+                ? "Finish & Return to Prolific"
+                : "Return to Prolific (Partial Completion)"}
+            </Button>
+          )}
         </div>
       </main>
     </div>

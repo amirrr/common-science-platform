@@ -17,20 +17,24 @@ import {
   type ExplanationFormValues,
   type ExplanationOption,
   CONVICTION_LEVELS,
+  CorrelationData,
 } from "@/types/correlation";
 import { Loader2, Info, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ExplanationFormProps {
+  currentCorrelation: CorrelationData;
   explanationsToList: ExplanationOption[];
   onSubmitAttempt: (data: ExplanationFormValues) => void;
   onNext?: () => void;
   isSubmitting: boolean;
   existingResponse?: ExplanationFormValues | null;
-  experimentGroup: "X" | "Y";
+  /** V1: group-level direction. V2: undefined (direction is per-explanation). */
+  experimentGroup?: "forward" | "backward";
 }
 
 export function ExplanationForm({
+  currentCorrelation,
   explanationsToList,
   onSubmitAttempt,
   onNext,
@@ -42,20 +46,20 @@ export function ExplanationForm({
     resolver: zodResolver(explanationFormSchema),
     defaultValues: {
       rankedExplanations: existingResponse?.rankedExplanations || [],
+      // V1: pass the group; V2: omit
       experimentGroup: existingResponse?.experimentGroup || experimentGroup,
     },
     mode: "onChange",
   });
 
-  // Determine which options to show.
-  // CRITICAL: If we have an existing response, we MUST use the explanations from there
-  // to avoid the shuffling issue on refresh.
+  // If we have an existing response, use those explanations (preserves order on refresh)
   const initialExplanations =
     existingResponse?.rankedExplanations &&
     existingResponse.rankedExplanations.length === 2
       ? existingResponse.rankedExplanations.map((e) => ({
           id: e.type,
           text: e.text,
+          direction: e.direction, // Preserve direction from saved response
         }))
       : explanationsToList;
 
@@ -78,11 +82,11 @@ export function ExplanationForm({
     if (!level) return null;
     return CONVICTION_LEVELS.indexOf(level as any);
   };
+
   const handleOptionSelect = (optionId: string) => {
     const selectedOption = optionId === optionA.id ? optionA : optionB;
     const otherOption = optionId === optionA.id ? optionB : optionA;
 
-    // We preserve existing convictions if we're just flipping the rank
     const currentExplanations = form.getValues("rankedExplanations");
     const getConviction = (id: string) =>
       currentExplanations.find((e) => e.type === id)?.conviction;
@@ -93,11 +97,13 @@ export function ExplanationForm({
         {
           type: selectedOption.id,
           text: selectedOption.text,
+          direction: selectedOption.direction, // v2: carries direction
           conviction: getConviction(selectedOption.id) as any,
         },
         {
           type: otherOption.id,
           text: otherOption.text,
+          direction: otherOption.direction, // v2: carries direction
           conviction: getConviction(otherOption.id) as any,
         },
       ],
@@ -109,37 +115,39 @@ export function ExplanationForm({
   };
 
   const handleConvictionChange = (option: "A" | "B", value: number[]) => {
-    const optionId = option === "A" ? optionA.id : optionB.id;
+    const opt = option === "A" ? optionA : optionB;
     const stringValue = CONVICTION_LEVELS[value[0]];
 
     const currentExplanations = form.getValues("rankedExplanations");
-    // Ensure we have both options in the array if they weren't selected yet
     let newExplanations = [...currentExplanations];
 
     if (newExplanations.length < 2) {
-      // If nothing selected yet, we put this one first?
-      // Actually, if they haven't ranked, we should probably initialize it.
-      // But the schema requires 2. Let's initialize if empty.
       if (newExplanations.length === 0) {
         newExplanations = [
           {
             type: optionA.id,
             text: optionA.text,
+            direction: optionA.direction,
             conviction: undefined as any,
           },
           {
             type: optionB.id,
             text: optionB.text,
+            direction: optionB.direction,
             conviction: undefined as any,
           },
         ];
       }
     }
 
-    const index = newExplanations.findIndex((e) => e.type === optionId);
+    const index = newExplanations.findIndex((e) => e.type === opt.id);
 
     if (index !== -1) {
       newExplanations[index].conviction = stringValue;
+      // Ensure direction is preserved
+      if (!newExplanations[index].direction && opt.direction) {
+        newExplanations[index].direction = opt.direction;
+      }
     }
 
     form.setValue("rankedExplanations", newExplanations as any, {
@@ -197,7 +205,6 @@ export function ExplanationForm({
                     </p>
                   </div>
 
-                  {/* Radio Cards Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <RadioOptionCard
                       id={optionA.id}
@@ -223,9 +230,10 @@ export function ExplanationForm({
             />
 
             {/* Conviction Sliders Row */}
-            <div className="space-y-4">
+            <div className="space-y-4 pb-8">
               <FormLabel className="text-lg font-medium">
-                How convinced are you of each explanation?
+                Which of these explanations do you think is more likely to hold
+                in the future over the next few years?
               </FormLabel>
               <p className="text-sm text-muted-foreground">
                 Slide to rate your conviction level for each option.
@@ -234,7 +242,7 @@ export function ExplanationForm({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4">
                 <FormField
                   control={form.control}
-                  name="rankedExplanations" // This name is used for validation of the array, not individual convictions
+                  name="rankedExplanations"
                   render={() => (
                     <FormItem className="space-y-4">
                       <div className="flex flex-col items-center">
@@ -297,7 +305,7 @@ export function ExplanationForm({
 
                 <FormField
                   control={form.control}
-                  name="rankedExplanations" // This name is used for validation of the array, not individual convictions
+                  name="rankedExplanations"
                   render={() => (
                     <FormItem className="space-y-4">
                       <div className="flex flex-col items-center">
@@ -360,32 +368,34 @@ export function ExplanationForm({
               </div>
             </div>
 
-            {existingResponse ? (
-              <Button
-                type="button"
-                onClick={onNext}
-                size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90"
-              >
-                Next Correlation <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                disabled={isSubmitting || form.formState.disabled}
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  "Submit Explanation"
-                )}
-              </Button>
-            )}
+            <div className="flex w-full justify-end">
+              {existingResponse ? (
+                <Button
+                  type="button"
+                  onClick={onNext}
+                  size="lg"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90"
+                >
+                  Next Correlation <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  disabled={isSubmitting || form.formState.disabled}
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "Submit Explanation"
+                  )}
+                </Button>
+              )}
+            </div>
           </form>
         </Form>
       </CardContent>

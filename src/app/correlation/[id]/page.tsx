@@ -34,7 +34,6 @@ export default function CorrelationPage() {
   const [userResponses, setUserResponses] = useState<
     Record<string, ExplanationFormValues>
   >({});
-  const [hasSubmittedCurrent, setHasSubmittedCurrent] = useState(false);
 
   const [allCorrelations, setAllCorrelations] = useState<
     { id: string; title: string }[]
@@ -59,7 +58,6 @@ export default function CorrelationPage() {
       setUserResponses(JSON.parse(storedResponsesRaw));
     }
 
-    // Fetch all correlations for navigation and progress
     const fetchAll = async () => {
       try {
         const response = await fetch("/api/correlations");
@@ -122,7 +120,7 @@ export default function CorrelationPage() {
           "Failed to save correlation response to Firestore:",
           error,
         );
-        throw error; // Rethrow to handle in caller
+        throw error;
       }
     },
     [currentCorrelationId, toast],
@@ -130,7 +128,6 @@ export default function CorrelationPage() {
 
   const handleSaveResponseAndNavigate = useCallback(
     async (formData: ExplanationFormValues) => {
-      // 1. Update local state and storage immediately
       const updatedResponses = {
         ...userResponses,
         [currentCorrelationId]: formData,
@@ -140,15 +137,12 @@ export default function CorrelationPage() {
         JSON.stringify(updatedResponses),
       );
       setUserResponses(updatedResponses);
-      setHasSubmittedCurrent(true);
 
-      // 2. Show a resolving toast
       const { update } = toast({
         title: "Saving response...",
         description: "Your answer is being synced to the server.",
       });
 
-      // 3. Trigger background save (non-blocking)
       saveResponseToFirestore(formData)
         .then(() => {
           update({
@@ -158,7 +152,7 @@ export default function CorrelationPage() {
             variant: "default",
           } as any);
         })
-        .catch((err) => {
+        .catch(() => {
           update({
             id: "save-error",
             title: "Sync Error",
@@ -167,7 +161,6 @@ export default function CorrelationPage() {
           } as any);
         });
 
-      // 4. Navigate immediately to the next correlation
       handleNextCorrelation();
     },
     [
@@ -191,12 +184,6 @@ export default function CorrelationPage() {
         if (response.ok) {
           const correlation = (await response.json()) as CorrelationData;
           setCurrentCorrelation(correlation);
-
-          const currentResponse = userResponses[currentCorrelationId];
-          setHasSubmittedCurrent(!!currentResponse);
-
-          // Ordering logic removed because persuasionMode is stripped.
-          // If needed, this should be handled by the API taking a preference parameter.
           setDisplayExplanations(correlation.suggestedExplanations);
         } else {
           router.push("/");
@@ -244,13 +231,15 @@ export default function CorrelationPage() {
         <CorrelationDisplay correlation={currentCorrelation} />
 
         <ExplanationForm
-          key={currentCorrelation.id} // Important for re-rendering form with new defaults
+          key={currentCorrelation.id}
+          currentCorrelation={currentCorrelation}
           explanationsToList={displayExplanations}
           onSubmitAttempt={handleSaveResponseAndNavigate}
           onNext={handleNextCorrelation}
           isSubmitting={false}
           existingResponse={userResponses[currentCorrelationId] || null}
-          experimentGroup={currentCorrelation.experimentGroup || "X"}
+          // V1 passes experimentGroup; V2 passes undefined (direction is per-explanation)
+          experimentGroup={currentCorrelation.experimentGroup}
         />
       </main>
       <footer className="w-full max-w-5xl mt-12 pt-8 border-t text-center text-muted-foreground text-sm">

@@ -19,6 +19,8 @@ export const explanationFormSchema = z.object({
     .array(
       z.object({
         type: z.string(),
+        // v2: each explanation carries its own direction
+        direction: z.enum(["forward", "backward"]).optional(),
         text: z.string().max(500),
         conviction: convictionLevelSchema,
       }),
@@ -26,11 +28,14 @@ export const explanationFormSchema = z.object({
     .length(2, {
       message: "Please select an explanation.",
     }),
-  experimentGroup: z.enum(["X", "Y"]),
+  // v1: single group for all explanations; v2: omitted (direction is per-explanation)
+  experimentGroup: z.enum(["forward", "backward"]).optional(),
+  // Which design produced this response
+  designVersion: z.string().optional(),
 });
 
 export interface SeriesDataPoint {
-  label: string; // e.g., Year, Month
+  label: string;
   value1: number;
   value2: number;
 }
@@ -38,6 +43,8 @@ export interface SeriesDataPoint {
 export interface ExplanationOption {
   id: string;
   text: string;
+  /** v2: which direction (forward/backward) this explanation was drawn from */
+  direction?: "forward" | "backward";
 }
 
 export interface CorrelationData {
@@ -48,7 +55,10 @@ export interface CorrelationData {
   series2Name: string;
   data: SeriesDataPoint[];
   suggestedExplanations: ExplanationOption[];
-  experimentGroup?: "X" | "Y";
+  /** v1: the group this user was assigned to */
+  experimentGroup?: "forward" | "backward";
+  /** Which experiment design version produced this data */
+  designVersion?: string;
   imagePlaceholder?: {
     url: string;
     alt: string;
@@ -62,17 +72,14 @@ export type AnalysisResultData = {
   explanationQuality: string;
 };
 
-// Type for the data submitted from the explanation form, derived from Zod schema
 export type ExplanationFormValues = z.infer<typeof explanationFormSchema>;
 
-// Type for storing user responses with correlation ID for local storage and AI processing
 export interface UserCorrelationResponse {
   correlationId: string;
   formData: ExplanationFormValues;
   analysis?: AnalysisResultData | null;
 }
 
-// Type for demographic data
 export interface DemographicsData {
   birthYear: number;
   gender: string;
@@ -83,14 +90,11 @@ export interface DemographicsData {
   country: string;
 }
 
-// Type for CRT data
 export interface CRTData {
   crtAnswer1: string;
   crtAnswer2: string;
   crtAnswer3: string;
 }
-
-// Types for progressive save API payload
 
 export type ProgressiveSaveDataType =
   | "correlationResponse"
@@ -103,15 +107,18 @@ export interface CorrelationResponsePayload {
   formData: ExplanationFormValues;
 }
 
-
 export interface FeedbackPayload {
   message: string;
 }
 
 export interface ProgressiveSavePayload {
-  userId?: string; // Optional: handled by session cookie on server
+  userId?: string;
   dataType: ProgressiveSaveDataType;
-  data: CorrelationResponsePayload | CRTData | DemographicsData | FeedbackPayload;
+  data:
+    | CorrelationResponsePayload
+    | CRTData
+    | DemographicsData
+    | FeedbackPayload;
 }
 
 // Storage Keys
@@ -122,5 +129,12 @@ export const CRT_RESPONSES_STORAGE_KEY = "correlation_analyzer_crt_responses";
 export const LAST_CHOSEN_MODE_KEY = "correlation_analyzer_last_mode";
 export const COOKIE_CONSENT_KEY = "correlation_analyzer_cookie_consent";
 
-// Study flow constants
-export const NUM_POST_CORRELATION_PAGES_WITH_PROGRESS = 2; // CRT Test, Demographics
+export const REQUIRED_CORRELATIONS = 10;
+export const REQUIRED_CRT = true;
+export const REQUIRED_DEMOGRAPHICS = true;
+
+export const PROLIFIC_COMPLETION_CODE = "C1ODYYUA";
+export const PROLIFIC_BASE_URL =
+  "https://app.prolific.com/submissions/complete?cc=";
+
+export const NUM_POST_CORRELATION_PAGES_WITH_PROGRESS = 2;
